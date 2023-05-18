@@ -1,0 +1,153 @@
+﻿<Page x:Class="Catering.Order"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Catering"
+      mc:Ignorable="d" 
+      d:DesignHeight="666" d:DesignWidth="980"
+      Title="Order">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="FloralWhite"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Bd" CornerRadius="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="linen"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="linen"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="187*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="438.4"/>
+            <RowDefinition Height="83.2"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.ColumnSpan="2">
+            <StackPanel  HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                <TextBlock Text="Заказы" 
+                           FontFamily="Verdana" FontSize="18" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                <Image Source="searchmagnifierinterfacesymbol_79894.png"
+                       Margin="5" Width="25"/>
+                <TextBlock Text="Номер:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0,0,5,0" 
+                           FontSize="14" FontFamily="Verdana"/>
+                <TextBox Height="25" Width="106" 
+                         FontFamily="Verdana" FontSize="14"
+                       Margin="0,11,0,10.4"/>
+                <TextBlock Text="ФИО:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="15,0,5,0" 
+                           FontSize="14" FontFamily="Verdana"/>
+                <TextBox Height="25" Width="460" 
+                         FontFamily="Verdana" FontSize="14"
+                       Margin="0,11,0,10.4"/>
+                <TextBlock Text="Дата:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="15,0,5,0" 
+                           FontSize="14" FontFamily="Verdana"/>
+                <DatePicker Height="25" Width="164" 
+                         FontFamily="Verdana" FontSize="14" Margin="0,11,0,10.4"/>
+                <Image Source="searchmagnifierinterfacesymbol_79894.png"
+                       Margin="5" Width="25"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2" Margin="2" Grid.Column="0">
+            <StackPanel  VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
+                <TextBlock Text="Заказ"
+                           FontFamily="Verdana" FontSize="14" />
+                <DataGrid Height="420" Margin="0,0,0.4,0"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" Margin="2">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Блюда"
+                           FontFamily="Verdana" FontSize="14" />
+                <DataGrid Height="257" Margin="0,0,0.4,0"/>
+                <TextBlock Text="Посуда"
+                           FontFamily="Verdana" FontSize="14" />
+                <DataGrid Height="144" Margin="0,0,0.4,0"></DataGrid>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="3" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center" 
+                        Margin="2,0,1,0" 
+                        Width="977">
+                <Button Content="Добавить" 
+                        FontFamily="Verdana" 
+                        FontSize="16" 
+                        Height="71" 
+                        Style="{DynamicResource ButtonStyle}" 
+                        Width="338" Click="Button_Click_1"/>
+                <Button Content="Редактировать" 
+                        FontFamily="Verdana" 
+                        FontSize="16" 
+                        Height="71" 
+                        Style="{DynamicResource ButtonStyle}" 
+                        Width="320" Click="Button_Click_2"/>
+                <Button Content="Удалить" 
+                    FontFamily="Verdana" 
+                    FontSize="16" 
+                    Height="71" 
+                    Style="{DynamicResource ButtonStyle}" 
+                    Width="320"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="4" Grid.ColumnSpan="2">
+            <StackPanel>
+                <Button Content="Назначить курьера/автомобиль" 
+                        Height="38"
+                        Style="{DynamicResource ButtonStyle}" Margin="2" Width="976" 
+                         FontFamily="Verdana" 
+                    FontSize="14" Click="Button_Click" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

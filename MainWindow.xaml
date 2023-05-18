@@ -1,0 +1,121 @@
+﻿<Window x:Class="Catering.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Catering"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="FloralWhite"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Bd" CornerRadius="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="linen"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="linen"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/фон-автор.jpg" TileMode="None"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="441*"/>
+            <ColumnDefinition Width="182*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="108*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="162*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Grid.Column="1">
+            <TextBlock Text="Аутентификация" 
+                       FontFamily="Cambria" FontSize="28"/>
+        </Border>
+        <WrapPanel Grid.Row="1" Grid.Column="1"
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Логин:" 
+                           FontFamily="Verdana"
+                           FontSize="16"
+                           Margin="0,0,10,5"/>
+                <TextBox Height="20" 
+                         Text=""
+                         Width="236"
+                         FontFamily="Verdana" FontSize="16" Margin="0,0,0,5"/>
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1"
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Top" Width="355" Height="162" Margin="58.4,0.2,28.2,0">
+            <StackPanel Orientation="Horizontal" Width="357">
+                <TextBlock Text="Пароль:" 
+                        FontFamily="Verdana"
+                           FontSize="16"
+                           Margin="0,20,10,5"/>
+                <TextBox Height="20" 
+                         Text=""
+                         Width="237"
+                         FontFamily="Verdana" 
+                         FontSize="16" 
+                         Margin="0,20,0,5"/>
+
+            </StackPanel>
+            <StackPanel>
+                <Button Content="Войти" 
+                        Width="184"
+                        FontFamily="Verdana" 
+                        FontSize="16" 
+                        Height="24" 
+                        Background="FloralWhite"
+                        Margin="85,40,0,0"
+                        Style="{DynamicResource ButtonStyle}" 
+                        Click="Button_Click"/>
+            </StackPanel>
+        </WrapPanel>
+
+
+
+    </Grid>
+</Window>
