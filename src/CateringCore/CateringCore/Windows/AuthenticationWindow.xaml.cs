@@ -6,9 +6,9 @@ namespace CateringCore
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class AuthenticationWindow
 	{
-		public MainWindow()
+		public AuthenticationWindow()
 		{
 			InitializeComponent();
 			DbWorker.Open();
