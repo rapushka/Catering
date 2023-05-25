@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:CateringCore.Windows"
         mc:Ignorable="d"
         Title="ManagerMainWindow" Height="450" Width="800">
     <Grid>
@@ -67,9 +66,11 @@
                        FontFamily="Verdana" Height="39" Margin="0,0,843.8,0" />
         </StackPanel>
         <Grid Grid.Column="1" Grid.Row="1">
-            <!-- <Grid.Background> -->
-            <!--     <ImageBrush ImageSource="/фон-автор.jpg" TileMode="FlipXY" /> -->
-            <!-- </Grid.Background> -->
+            <Grid.Background>
+                <ImageBrush
+                    ImageSource="../../Resources/BackgroundAuthorization.jpg"
+                    TileMode="FlipXY" />
+            </Grid.Background>
             <Frame Name="MainF"
                    BorderBrush="Black"
                    HorizontalAlignment="Stretch"
