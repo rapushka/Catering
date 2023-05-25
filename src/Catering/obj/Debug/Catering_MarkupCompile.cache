@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Projects\Diploms\Catering\obj\Debug\
+C:\Projects\Diploms\Catering\src\Catering\obj\Debug\
 Catering
 none
 false
 DEBUG;TRACE
-C:\Projects\Diploms\Catering\App.xaml
+C:\Projects\Diploms\Catering\src\Catering\App.xaml
 16-1391423182
 
 20-486885308
 13-38814620
 AddOrder.xaml;AddOrderNext.xaml;Car.xaml;Category.xaml;Cook.xaml;Courier.xaml;CourierCar.xaml;Dishes.xaml;EditOderNext.xaml;EditOrder.xaml;Employees.xaml;Food.xaml;MainWindow.xaml;Manager.xaml;Order.xaml;View.xaml;
 
-False
+True
 
