@@ -2,8 +2,11 @@
 
 public partial class CourierMainWindow
 {
-	public CourierMainWindow()
+	private Model.Courier _courier;
+
+	public CourierMainWindow(Model.Courier courier)
 	{
+		_courier = courier;
 		InitializeComponent();
 	}
 }

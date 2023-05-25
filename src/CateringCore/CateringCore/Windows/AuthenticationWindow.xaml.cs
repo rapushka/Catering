@@ -4,6 +4,7 @@ using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Windows;
+using CateringCore.Windows.Courier;
 using OrganizerCore.Tools;
 
 namespace CateringCore;
@@ -29,11 +30,11 @@ public partial class AuthenticationWindow
 			return;
 		}
 
-		var userWindow = user switch
+		Window userWindow = user switch
 		{
 			Manager manager => new ManagerMainWindow(manager),
+			Courier courier => new CourierMainWindow(courier),
 			Cook cook       => throw new NotImplementedException(),
-			Courier courier => throw new NotImplementedException(),
 			_               => throw new ArgumentException("Unknown role!"),
 		};
 
