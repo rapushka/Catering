@@ -11,4 +11,7 @@ public class User : Table
 	public       string Login       { get; set; } = null!;
 	public       string Password    { get; set; } = null!;
 	public       string PhoneNumber { get; set; } = null!;
+
+	public bool Authorize(string login, string password)
+		=> Login == login && Password == password;
 }

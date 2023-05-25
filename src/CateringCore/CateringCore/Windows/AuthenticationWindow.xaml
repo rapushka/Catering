@@ -3,10 +3,78 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CateringCore"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush
+                ImageSource="/Resources/BackgroundAuthorization.jpg"
+                TileMode="None" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170*" />
+            <ColumnDefinition Width="441*" />
+            <ColumnDefinition Width="182*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="108*" />
+            <RowDefinition Height="89*" />
+            <RowDefinition Height="162*" />
+            <RowDefinition Height="61*" />
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.Column="1">
+            <TextBlock Text="Аутентификация"
+                       FontFamily="Cambria" FontSize="28" />
+        </Border>
+        <WrapPanel Grid.Row="1" Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Логин:"
+                           FontFamily="Verdana"
+                           FontSize="16"
+                           Margin="0,0,10,5" />
+                <TextBox
+                    Name="LoginTextBox"
+                    Height="20"
+                    Text=""
+                    Width="236"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Margin="0,0,0,5" />
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2" Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Width="355" Height="162" Margin="58.4,0.2,28.2,0">
+            <StackPanel Orientation="Horizontal" Width="357">
+                <TextBlock Text="Пароль:"
+                           FontFamily="Verdana"
+                           FontSize="16"
+                           Margin="0,20,10,5" />
+                <TextBox
+                    Name="PasswordTextBox"
+                    Height="20"
+                    Text=""
+                    Width="237"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Margin="0,20,0,5" />
+
+            </StackPanel>
+            <StackPanel>
+                <Button Content="Войти"
+                        Width="184"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        Height="24"
+                        Margin="85,40,0,0"
+                        Style="{DynamicResource ButtonStyle}"
+                        Click="LoginButton_Click" />
+            </StackPanel>
+        </WrapPanel>
 
     </Grid>
 </Window>

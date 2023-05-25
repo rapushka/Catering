@@ -18,7 +18,7 @@ public static class DbWorker
 
 #region Tooling
 
-	private static IEnumerable<User> Users
+	public static IEnumerable<User> Users
 		=> Context.Managers.AsEnumerable()
 		           .Cast<User>()
 		           .Concat(Context.Couriers)
