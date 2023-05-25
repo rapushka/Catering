@@ -7,9 +7,7 @@
         Title="Вход" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush
-                ImageSource="../Resources/Background.jpg"
-                TileMode="None" />
+            <DynamicResource ResourceKey="Background" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="170*" />

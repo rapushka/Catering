@@ -44,5 +44,13 @@
             </Setter>
         </Style>
 
+        <!-- resources -->
+        <ImageBrush x:Key="Background"
+                    ImageSource="pack://application:,,,/CateringCore;component/Resources/Background.jpg" />
+        <ImageBrush x:Key="Avatar"
+                    ImageSource="pack://application:,,,/CateringCore;component/Resources/Avatar.png" />
+        <ImageBrush x:Key="Search"
+                    ImageSource="pack://application:,,,/CateringCore;component/Resources/Search.png" />
+
     </Application.Resources>
 </Application>

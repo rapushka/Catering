@@ -23,6 +23,8 @@
       <Resource Include="Resources\Avatar.png" />
       <None Remove="Resources\Search.png" />
       <Resource Include="Resources\Search.png" />
+      <None Remove="Resources\Background.jpg" />
+      <Resource Include="Resources\Background.jpg" />
     </ItemGroup>
 
 </Project>
