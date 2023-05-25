@@ -4,6 +4,7 @@ using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Windows;
+using CateringCore.Windows.Cook;
 using CateringCore.Windows.Courier;
 using OrganizerCore.Tools;
 
@@ -34,7 +35,7 @@ public partial class AuthenticationWindow
 		{
 			Manager manager => new ManagerMainWindow(manager),
 			Courier courier => new CourierMainWindow(courier),
-			Cook cook       => throw new NotImplementedException(),
+			Cook cook       => new CookMainWindow(cook),
 			_               => throw new ArgumentException("Unknown role!"),
 		};
 
