@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using CateringCore.Model;
 
 namespace Catering.DbWorking;
 
 public static class Dependencies
 {
-	private static ApplicationContext Context => DataBaseConnection.Instance.CurrentContext;
+	private static ApplicationContext Context => DbWorker.Context;
 
 	// private static IEnumerable<Lesson> Lessons => Context.Lessons.AsEnumerable();
 
