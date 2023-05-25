@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Diploms\\CateringCore\\CateringCore\\CateringCore.csproj": {}
+    "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Diploms\\CateringCore\\CateringCore\\CateringCore.csproj": {
+    "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Diploms\\CateringCore\\CateringCore\\CateringCore.csproj",
+        "projectUniqueName": "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj",
         "projectName": "CateringCore",
-        "projectPath": "C:\\Projects\\Diploms\\CateringCore\\CateringCore\\CateringCore.csproj",
+        "projectPath": "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj",
         "packagesPath": "C:\\Users\\Rapuska\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Diploms\\CateringCore\\CateringCore\\obj\\",
+        "outputPath": "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Rapuska\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,26 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "PropertyTools.Wpf.Extended.Toolkit": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
