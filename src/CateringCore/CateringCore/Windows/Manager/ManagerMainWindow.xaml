@@ -25,7 +25,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" 
+                    Click="OrderButton_OnClick"/>
             <Button Content="Сотрудники"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -33,7 +34,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" 
+                    Click="EmployeesButton_OnClick"/>
             <Button Content="Блюда"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -41,7 +43,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" 
+                    Click="FoodButton_OnClick"/>
             <Button Content="Посуда"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -49,7 +52,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" 
+                    Click="DishesButton_OnClick"/>
             <Button Content="Автомобиль"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -57,7 +61,8 @@
                     Margin="2,2,2.2,2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" />
+                    FontWeight="Bold" 
+                    Click="CarsButton_OnClick"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                     Orientation="Horizontal">
@@ -75,7 +80,7 @@
                     ImageSource="../../Resources/BackgroundAuthorization.jpg"
                     TileMode="FlipXY" />
             </Grid.Background>
-            <Frame Name="MainFrame"
+            <Frame Name="Frame"
                    BorderBrush="Black"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"

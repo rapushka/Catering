@@ -1,9 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using CateringCore.Model;
 
 namespace CateringCore.Windows;
 
-public partial class ManagerMainWindow : Window
+public partial class ManagerMainWindow
 {
 	private const string ManagerSuffix = ", Менеджер";
 
@@ -16,7 +17,19 @@ public partial class ManagerMainWindow : Window
 	}
 
 	private void ManagerMainWindow_OnLoaded(object sender, RoutedEventArgs e)
-	{
-		EmployeeFullnameTextBlock.Text = _manager.Fullname + ManagerSuffix;
-	}
+		=> EmployeeFullnameTextBlock.Text = _manager.Fullname + ManagerSuffix;
+
+	private void OrderButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void EmployeesButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void FoodButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void DishesButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void CarsButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void Open<T>()
+		where T : Page, new()
+		=> Frame.Content = new T();
 }
