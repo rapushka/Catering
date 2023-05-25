@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CateringCore.Model;
 
-public class Order
+public class Order : Table
 {
 	[Key] public int      Id             { get; set; }
 	public       Manager  Manager        { get; set; } = null!;

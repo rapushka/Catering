@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CateringCore.Model;
 
-public class FoodInOrder
+public class FoodInOrder : Table
 {
 	[Key] public int     Id     { get; set; }
 	public       Food    Food   { get; set; } = null!;
