@@ -77,7 +77,7 @@
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.Background>
                 <ImageBrush
-                    ImageSource="../../Resources/BackgroundAuthorization.jpg"
+                    ImageSource="../../Resources/Background.jpg"
                     TileMode="FlipXY" />
             </Grid.Background>
             <Frame Name="Frame"

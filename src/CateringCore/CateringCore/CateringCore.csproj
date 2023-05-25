@@ -19,7 +19,6 @@
 
     <ItemGroup>
       <None Remove="Resources\BackgroundAuthorization.jpg" />
-      <Resource Include="Resources\BackgroundAuthorization.jpg" />
       <None Remove="Resources\Avatar.png" />
       <Resource Include="Resources\Avatar.png" />
       <None Remove="Resources\Search.png" />

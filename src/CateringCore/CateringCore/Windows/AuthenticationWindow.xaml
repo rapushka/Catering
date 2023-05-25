@@ -8,7 +8,7 @@
     <Grid>
         <Grid.Background>
             <ImageBrush
-                ImageSource="../Resources/BackgroundAuthorization.jpg"
+                ImageSource="../Resources/Background.jpg"
                 TileMode="None" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
