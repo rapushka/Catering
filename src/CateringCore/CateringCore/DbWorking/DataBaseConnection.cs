@@ -28,5 +28,6 @@ public class DataBaseConnection
 		_currentContext.Database.EnsureCreated();
 
 		_currentContext.Managers.Load();
+		_currentContext.Couriers.Load();
 	}
 }

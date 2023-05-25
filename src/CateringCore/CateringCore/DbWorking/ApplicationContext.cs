@@ -6,10 +6,12 @@ namespace Catering.DbWorking
 	public class ApplicationContext : DbContext
 	{
 		public DbSet<Manager> Managers { get; set; } = null!;
+		public DbSet<Courier> Couriers { get; set; } = null!;
 
 		public ApplicationContext()
 		{
 			Table<Manager>.Value = Managers;
+			Table<Courier>.Value = Couriers;
 		}
 
 		public DbSet<T> GetTable<T>()
