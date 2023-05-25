@@ -17,4 +17,14 @@
       <PackageReference Include="PropertyTools.Wpf.Extended.Toolkit" Version="3.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\BackgroundAuthorization.jpg" />
+      <None Remove="Resources\Avatar.png" />
+      <Resource Include="Resources\Avatar.png" />
+      <None Remove="Resources\Search.png" />
+      <Resource Include="Resources\Search.png" />
+      <None Remove="Resources\Background.jpg" />
+      <Resource Include="Resources\Background.jpg" />
+    </ItemGroup>
+
 </Project>

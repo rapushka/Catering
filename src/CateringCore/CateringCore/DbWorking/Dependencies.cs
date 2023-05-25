@@ -5,11 +5,10 @@ namespace Catering.DbWorking;
 
 public static class Dependencies
 {
-	private static ApplicationContext Context => DbWorker.Context;
+	// private static IEnumerable<Lesson> Lessons => DbWorker.Context.Lessons.AsEnumerable();
 
-	// private static IEnumerable<Lesson> Lessons => Context.Lessons.AsEnumerable();
-
-	public static List<string> For<T>(Table table)
+	public static List<string> For<T>(T table)
+		where T : Table
 		=> table.Visit
 		(
 
