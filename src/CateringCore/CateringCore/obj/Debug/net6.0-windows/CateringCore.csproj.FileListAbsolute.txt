@@ -80,4 +80,3 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\OrderPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.lref
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Courier\CourierMainWindow.baml
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Resources.baml

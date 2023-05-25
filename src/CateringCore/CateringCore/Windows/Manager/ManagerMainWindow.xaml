@@ -25,8 +25,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" 
-                    Click="OrderButton_OnClick"/>
+                    FontWeight="Bold"
+                    Click="OrderButton_OnClick" />
             <Button Content="Сотрудники"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -34,8 +34,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" 
-                    Click="EmployeesButton_OnClick"/>
+                    FontWeight="Bold"
+                    Click="EmployeesButton_OnClick" />
             <Button Content="Блюда"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -43,8 +43,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" 
-                    Click="FoodButton_OnClick"/>
+                    FontWeight="Bold"
+                    Click="FoodButton_OnClick" />
             <Button Content="Посуда"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -52,8 +52,8 @@
                     Margin="2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" 
-                    Click="DishesButton_OnClick"/>
+                    FontWeight="Bold"
+                    Click="DishesButton_OnClick" />
             <Button Content="Автомобиль"
                     FontFamily="Verdana"
                     FontSize="16"
@@ -61,14 +61,14 @@
                     Margin="2,2,2.2,2"
                     HorizontalAlignment="Stretch"
                     Style="{DynamicResource ButtonStyle}"
-                    FontWeight="Bold" 
-                    Click="CarsButton_OnClick"/>
+                    FontWeight="Bold"
+                    Click="CarsButton_OnClick" />
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                     Orientation="Horizontal">
-            <Image Source="../../Resources/Avatar.png"
-                   Height="31"
-                   Margin="5" />
+            <Border Background="{DynamicResource Avatar}"
+                    Height="31"
+                    Margin="5" />
             <TextBlock
                 Name="EmployeeFullnameTextBlock"
                 Text="[ФИО сотрудникa], Менеджер"

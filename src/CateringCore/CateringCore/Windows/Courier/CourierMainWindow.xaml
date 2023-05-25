@@ -19,15 +19,15 @@
             <RowDefinition Height="57.6" />
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="../../../Resources/Background.jpg" TileMode="FlipXY" />
+            <DynamicResource ResourceKey="Background" />
         </Grid.Background>
         <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,-0.4,2">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left"
                         Background="FloralWhite">
-                <Image Source="../../Resources/Avatar.png"
-                       Height="31" Width="34"
-                       Margin="5,0,0,0" />
+                <Border Background="{StaticResource Avatar}"
+                        Height="31" Width="34"
+                        Margin="5,0,0,0" />
                 <TextBlock Text="ФИО сотрудникa, Курьер"
                            FontFamily="Verdana" />
             </StackPanel>
@@ -35,10 +35,9 @@
         <Border Grid.Row="1" Grid.Column="0" Margin="0,1,0,11.4">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <Image Source="../../Resources/Search.png"
-                       Stretch="Fill"
-                       Width="25" Height="25"
-                       Margin="5,0,0,0" />
+                <Border Background="{StaticResource Search}"
+                        Width="25" Height="25"
+                        Margin="5,0,0,0" />
                 <Label Content="Код заказа:"
                        FontFamily="Verdana" FontSize="14"
                        VerticalAlignment="Center" />
@@ -50,10 +49,9 @@
         </Border>
         <Border Grid.Row="1" Grid.Column="1" Margin="0,1,-0.4,11.4">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Resources/Search.png"
-                       Stretch="Fill"
-                       Width="25" Height="25"
-                       Margin="5,0,0,0" />
+                <Border Background="{StaticResource Search}"
+                        Width="25" Height="25"
+                        Margin="5,0,0,0" />
                 <Label Content="Номер телефона:"
                        FontFamily="Verdana" FontSize="14"
                        VerticalAlignment="Center" />

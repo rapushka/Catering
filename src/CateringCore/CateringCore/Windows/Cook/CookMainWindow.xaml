@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left"
                         Background="FloralWhite">
-                <Image Source="../../Resources/Avatar.png"
+                <Border Background="{DynamicResource Avatar}"
                        Height="31" Width="34"
                        Margin="5,0,0,0" />
                 <TextBlock Text="ФИО сотрудникa, Повар"
@@ -34,10 +34,9 @@
         <Border Grid.Row="1" Grid.Column="0" Margin="0,1,0,11.4">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
-                <Image Source="../../Resources/Search.png"
-                       Stretch="Fill"
-                       Width="25" Height="25"
-                       Margin="5,0,0,0" />
+                <Border Background="{DynamicResource Search}"
+                        Width="25" Height="25"
+                        Margin="5,0,0,0" />
                 <Label Content="Код заказа:"
                        FontFamily="Verdana" FontSize="14"
                        VerticalAlignment="Center" />
@@ -49,10 +48,9 @@
         </Border>
         <Border Grid.Row="1" Grid.Column="1" Margin="0,1,-0.4,11.4">
             <StackPanel Orientation="Horizontal">
-                <Image Source="../../Resources/Search.png"
-                       Stretch="Fill"
-                       Width="25" Height="25"
-                       Margin="5,0,0,0" />
+                <Border Background="{DynamicResource Search}"
+                        Width="25" Height="25"
+                        Margin="5,0,0,0" />
                 <Label Content="Блюдо:"
                        FontFamily="Verdana" FontSize="14"
                        VerticalAlignment="Center" />
