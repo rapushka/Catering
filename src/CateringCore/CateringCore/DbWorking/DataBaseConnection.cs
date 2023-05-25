@@ -29,5 +29,6 @@ public class DataBaseConnection
 
 		_currentContext.Managers.Load();
 		_currentContext.Couriers.Load();
+		_currentContext.Cars.Load();
 	}
 }

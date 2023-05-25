@@ -7,11 +7,13 @@ namespace Catering.DbWorking
 	{
 		public DbSet<Manager> Managers { get; set; } = null!;
 		public DbSet<Courier> Couriers { get; set; } = null!;
+		public DbSet<Car>     Cars     { get; set; } = null!;
 
 		public ApplicationContext()
 		{
 			Table<Manager>.Value = Managers;
 			Table<Courier>.Value = Couriers;
+			Table<Car>.Value = Cars;
 		}
 
 		public DbSet<T> GetTable<T>()
