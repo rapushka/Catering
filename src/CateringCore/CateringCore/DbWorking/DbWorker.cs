@@ -1,4 +1,8 @@
-﻿namespace Catering.DbWorking;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CateringCore.Model;
+
+namespace Catering.DbWorking;
 
 public static class DbWorker
 {
@@ -11,4 +15,14 @@ public static class DbWorker
 	public static void SaveAll() => Context.SaveChanges();
 
 	public static void ResetAll() => Connection.ResetAll();
+
+#region Tooling
+
+	private static IEnumerable<User> Users
+		=> Context.Managers.AsEnumerable()
+		           .Cast<User>()
+		           .Concat(Context.Couriers)
+		           .Concat(Context.Cooks);
+
+#endregion
 }
