@@ -55,11 +55,9 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\bin\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\bin\Debug\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.csproj.AssemblyReference.cache
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\App.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.cache
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.lref
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.g.resources
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.AssemblyInfoInputs.cache
@@ -71,3 +69,5 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.pdb
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.genruntimeconfig.cache
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\ref\CateringCore.dll
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\MainWindow.g.cs
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\MainWindow.baml
