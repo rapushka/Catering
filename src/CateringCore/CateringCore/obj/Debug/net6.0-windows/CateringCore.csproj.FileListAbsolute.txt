@@ -57,7 +57,6 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\bin\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.csproj.AssemblyReference.cache
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\App.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.cache
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.lref
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.g.resources
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.AssemblyInfoInputs.cache

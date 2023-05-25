@@ -4,7 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="ManagerMainWindow" Height="450" Width="800">
+        Title="ManagerMainWindow" Height="450" Width="800"
+        Loaded="ManagerMainWindow_OnLoaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="192.8" />
@@ -62,8 +63,10 @@
             <Image Source="../../Resources/Avatar.png"
                    Height="31"
                    Margin="5" />
-            <TextBlock Text="ФИО сотрудникa, Менеджер"
-                       FontFamily="Verdana" Height="39" Margin="0,0,843.8,0" />
+            <TextBlock
+                Name="EmployeeFullnameTextBlock"
+                Text="[ФИО сотрудникa], Менеджер"
+                FontFamily="Verdana" Height="39" Margin="0,0,843.8,0" />
         </StackPanel>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.Background>
