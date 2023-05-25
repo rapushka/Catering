@@ -27,8 +27,17 @@ public class DataBaseConnection
 		_currentContext.Database.Migrate();
 		_currentContext.Database.EnsureCreated();
 
-		_currentContext.Managers.Load();
-		_currentContext.Couriers.Load();
 		_currentContext.Cars.Load();
+		_currentContext.Cooks.Load();
+		_currentContext.Couriers.Load();
+		_currentContext.Dishes.Load();
+		_currentContext.DishTypes.Load();
+		_currentContext.DishesInOrders.Load();
+		_currentContext.Foods.Load();
+		_currentContext.FoodCategories.Load();
+		_currentContext.FoodsInOrders.Load();
+		_currentContext.FoodTypes.Load();
+		_currentContext.Managers.Load();
+		_currentContext.Orders.Load();
 	}
 }

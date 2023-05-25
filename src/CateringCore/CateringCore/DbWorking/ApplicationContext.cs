@@ -20,9 +20,18 @@ namespace Catering.DbWorking
 
 		public ApplicationContext()
 		{
-			Table<Manager>.Value = Managers;
-			Table<Courier>.Value = Couriers;
 			Table<Car>.Value = Cars;
+			Table<Cook>.Value = Cooks;
+			Table<Courier>.Value = Couriers;
+			Table<Dish>.Value = Dishes;
+			Table<DishType>.Value = DishTypes;
+			Table<DishInOrder>.Value = DishesInOrders;
+			Table<Food>.Value = Foods;
+			Table<FoodCategory>.Value = FoodCategories;
+			Table<FoodInOrder>.Value = FoodsInOrders;
+			Table<FoodType>.Value = FoodTypes;
+			Table<Manager>.Value = Managers;
+			Table<Order>.Value = Orders;
 		}
 
 		public DbSet<T> GetTable<T>()
