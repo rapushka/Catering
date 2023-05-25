@@ -7,6 +7,75 @@
         mc:Ignorable="d"
         Title="ManagerMainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="192.8" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0"
+                    Margin="0,9,9.8,-5.2" Grid.Row="1">
+            <Button Content="Заказ"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Height="120"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    Style="{DynamicResource ButtonStyle}"
+                    FontWeight="Bold" />
+            <Button Content="Сотрудники"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Height="120"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    Style="{DynamicResource ButtonStyle}"
+                    FontWeight="Bold" />
+            <Button Content="Блюда"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Height="120"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    Style="{DynamicResource ButtonStyle}"
+                    FontWeight="Bold" />
+            <Button Content="Посуда"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Height="120"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    Style="{DynamicResource ButtonStyle}"
+                    FontWeight="Bold" />
+            <Button Content="Автомобиль"
+                    FontFamily="Verdana"
+                    FontSize="16"
+                    Height="120"
+                    Margin="2,2,2.2,2"
+                    HorizontalAlignment="Stretch"
+                    Style="{DynamicResource ButtonStyle}"
+                    FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+            <Image Source="../../Resources/Avatar.png"
+                   Height="31"
+                   Margin="5" />
+            <TextBlock Text="ФИО сотрудникa, Менеджер"
+                       FontFamily="Verdana" Height="39" Margin="0,0,843.8,0" />
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <!-- <Grid.Background> -->
+            <!--     <ImageBrush ImageSource="/фон-автор.jpg" TileMode="FlipXY" /> -->
+            <!-- </Grid.Background> -->
+            <Frame Name="MainF"
+                   BorderBrush="Black"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   NavigationUIVisibility="Hidden" />
+        </Grid>
+
     </Grid>
 </Window>
