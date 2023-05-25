@@ -4,7 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="ManagerMainWindow" Height="450" Width="800"
+        Title="Менеджер" Height="750" Width="1200"
+        WindowStartupLocation="CenterScreen"
         Loaded="ManagerMainWindow_OnLoaded">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -74,7 +75,7 @@
                     ImageSource="../../Resources/BackgroundAuthorization.jpg"
                     TileMode="FlipXY" />
             </Grid.Background>
-            <Frame Name="MainF"
+            <Frame Name="MainFrame"
                    BorderBrush="Black"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
