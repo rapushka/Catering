@@ -6,11 +6,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.Background>
-            <ImageBrush
-                ImageSource="/Resources/BackgroundAuthorization.jpg"
-                TileMode="None" />
-        </Grid.Background>
+        <!-- <Grid.Background> -->
+        <!--     <ImageBrush -->
+        <!--         ImageSource="/Resources/BackgroundAuthorization.jpg" -->
+        <!--         TileMode="None" /> -->
+        <!-- </Grid.Background> -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="170*" />
             <ColumnDefinition Width="441*" />

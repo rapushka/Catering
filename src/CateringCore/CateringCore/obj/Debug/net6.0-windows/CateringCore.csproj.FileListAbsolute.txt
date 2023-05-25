@@ -71,3 +71,6 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\ref\CateringCore.dll
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\AuthenticationWindow.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\AuthenticationWindow.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\App.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\ManagerMainWindow.g.cs
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\ManagerMainWindow.baml
