@@ -1,11 +1,10 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Catering.DbWorking;
+using CateringCore.Model;
 
 namespace CateringCore
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class AuthenticationWindow
 	{
 		public AuthenticationWindow()
@@ -13,5 +12,11 @@ namespace CateringCore
 			InitializeComponent();
 			DbWorker.Open();
 		}
+
+		private IEnumerable<User> Users
+			=> DbWorker.Context.Managers.AsEnumerable()
+			           .Cast<User>()
+			           .Concat(DbWorker.Context.Couriers)
+			           .Concat(DbWorker.Context.Cooks);
 	}
 }
