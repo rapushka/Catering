@@ -16,7 +16,7 @@ public static class MessageBoxUtils
 	public static bool ConfirmDeletion<T>(T of)
 		where T : Table
 	{
-		var dependentEntries = Dependencies.For<T>(of);
+		var dependentEntries = Dependencies.For(of);
 
 		if (dependentEntries.Any() == false)
 		{
