@@ -27,6 +27,6 @@ public class DataBaseConnection
 		_currentContext.Database.Migrate();
 		_currentContext.Database.EnsureCreated();
 
-		// _currentContext.Students.Load();
+		_currentContext.Managers.Load();
 	}
 }

@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CateringCore.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catering.DbWorking
 {
 	public class ApplicationContext : DbContext
 	{
-		// public DbSet<Student> Students { get; set; } = null!;
+		public DbSet<Manager> Managers { get; set; } = null!;
 
 		public ApplicationContext()
 		{
-			// Table<Student>.Value = Students;
+			Table<Manager>.Value = Managers;
 		}
 
 		public DbSet<T> GetTable<T>()
@@ -16,7 +17,7 @@ namespace Catering.DbWorking
 			=> Table<T>.Value;
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-			=> optionsBuilder.UseSqlite("Data Source = Organizer.db");
+			=> optionsBuilder.UseSqlite("Data Source = Catering.db");
 
 		private static class Table<T>
 			where T : class
