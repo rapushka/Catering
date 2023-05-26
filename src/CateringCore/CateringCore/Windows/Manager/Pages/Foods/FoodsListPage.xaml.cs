@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
