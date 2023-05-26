@@ -28,13 +28,13 @@ public partial class FoodCategoriesListPage
 
 	protected override void SetupColumns()
 	{
-		DataGrid
+		FoodCategoriesDataGrid
 			.ClearColumns()
 			.AddTextColumn("Наименование", nameof(FoodCategory.Title))
 			;
 	}
 
-	protected override bool Filter(FoodCategory item) => item.Title.Contains(SearchTitleTextBox.Text);
+	protected override bool Filter(FoodCategory item) => true;
 
 	protected override void UpdateItem(ref FoodCategory selected, FoodCategory newItem)
 		=> selected.Title = newItem.Title;

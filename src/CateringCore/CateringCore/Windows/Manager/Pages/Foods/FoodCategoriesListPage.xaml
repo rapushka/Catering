@@ -8,7 +8,8 @@
                          xmlns:model="clr-namespace:CateringCore.Model"
                          mc:Ignorable="d"
                          d:DesignHeight="666" d:DesignWidth="980"
-                         Title="FoodCategoriesListPage">
+                         Title="FoodCategoriesListPage"
+                         Loaded="Page_OnLoaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="487*" />
@@ -44,8 +45,8 @@
                     Name="SearchTitleTextBox"
                     Height="25" Width="788"
                     FontFamily="Verdana" FontSize="14"
-                    Margin="0,12,0,11" 
-                    TextChanged="OnSearchChange"/>
+                    Margin="0,12,0,11"
+                    TextChanged="OnSearchChange" />
                 <Border Background="{DynamicResource Search}"
                         Margin="5" Width="25" Height="25" />
             </StackPanel>
@@ -53,11 +54,12 @@
         <Border Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,0,0,0.8">
             <StackPanel VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch">
-                <DataGrid Name="FoodCategoriesDataGrid" 
+                <DataGrid Name="FoodCategoriesDataGrid"
                           CanUserAddRows="False"
                           AutoGenerateColumns="False"
                           IsReadOnly="True"
-                          Height="382" />
+                          Height="382"
+                          SelectedCellsChanged="OnItemSelected" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Margin="5,9.2,5,5.6" Grid.ColumnSpan="2" Grid.Column="0">
