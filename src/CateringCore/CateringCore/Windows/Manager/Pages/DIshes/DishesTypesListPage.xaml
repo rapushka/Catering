@@ -110,14 +110,16 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="327"
-                        Margin="5,4">
+                        Margin="5,4"
+                        Click="AddItemButton_OnClick">
                 </Button>
                 <Button Content="Применить изменения"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
-                        Margin="5,4" Width="311" />
+                        Margin="5,4" Width="311" 
+                        Click="ApplyItemButton_OnClick"/>
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
