@@ -65,7 +65,9 @@
                     IsReadOnly="True"
                     CanUserAddRows="False"
                     AutoGenerateColumns="False"
-                    Height="300" />
+                    Height="300" 
+                    SelectedCellsChanged="OnItemSelected"
+                    />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Margin="0,25,0,117.2" Grid.RowSpan="2"

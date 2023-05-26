@@ -44,11 +44,7 @@ public partial class DishesTypesListPage
 
 	protected override bool Filter(DishType item) => item.Title.Contains(SearchTitleTextBox.Text);
 
-	protected override void UpdateItem(ref DishType selected)
-	{
-		var newItem = Item!;
-		selected.Title = newItem.Title;
-	}
+	protected override void UpdateItem(ref DishType selected, DishType newItem) => selected.Title = newItem.Title;
 
 	private void OnSearchChange(object sender, TextChangedEventArgs e) => UpdateTableView();
 }

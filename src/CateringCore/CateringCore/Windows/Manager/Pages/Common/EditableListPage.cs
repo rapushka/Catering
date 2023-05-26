@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
@@ -30,7 +31,7 @@ public abstract class EditableListPage<T> : Page
 
 	protected abstract IEnumerable<UIElement> EditItemElements { get; }
 
-	protected void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
+	protected virtual void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		UpdateTableView();
 		SetupColumns();
@@ -47,38 +48,59 @@ public abstract class EditableListPage<T> : Page
 
 	protected void AddItem(object? sender = null, RoutedEventArgs? e = null)
 	{
-		DbWorker.Context.GetTable<T>().Add(Item!);
-		DbWorker.SaveAll();
-		ResetItem();
+		try
+		{
+			DbWorker.Context.GetTable<T>().Add(Item!);
+			DbWorker.SaveAll();
+			ResetItem();
+		}
+		catch (Exception ex)
+		{
+			MessageBoxUtils.ShowError($"Ошибка при добавелении записи!\n{ex.Message}");
+		}
 	}
 
 	protected void ApplyItem(object? sender = null, RoutedEventArgs? e = null)
 	{
-		if (EnsureSelected(out var selected))
+		try
 		{
-			UpdateItem(ref selected);
-			DbWorker.Context.Update(selected);
-			DbWorker.SaveAll();
-			UpdateTableView();
+			if (EnsureSelected(out var selected))
+			{
+				UpdateItem(ref selected, Item!);
+				DbWorker.Context.Update(selected);
+				DbWorker.SaveAll();
+				UpdateTableView();
+			}
+		}
+		catch (Exception ex)
+		{
+			MessageBoxUtils.ShowError($"Ошибка при изменении записи!\n{ex.Message}");
 		}
 	}
 
-	protected abstract void UpdateItem(ref T selected);
+	protected void RemoveItem(object? sender = null, RoutedEventArgs? e = null)
+	{
+		try
+		{
+			if (EnsureSelected(out var item)
+			    && MessageBoxUtils.ConfirmDeletion(item))
+			{
+				DbWorker.Context.GetTable<T>().Observe().Remove(item);
+				DbWorker.SaveAll();
+			}
+		}
+		catch (Exception ex)
+		{
+			MessageBoxUtils.ShowError($"Ошибка при удалении записи!\n{ex.Message}");
+		}
+	}
+
+	protected abstract void UpdateItem(ref T selected, T newItem);
 
 	protected virtual void ResetItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		Item = default;
 		UpdateTableView();
-	}
-
-	protected void RemoveItem(object? sender = null, RoutedEventArgs? e = null)
-	{
-		if (EnsureSelected(out var item)
-		    && MessageBoxUtils.ConfirmDeletion(item))
-		{
-			DbWorker.Context.GetTable<T>().Observe().Remove(item);
-			DbWorker.SaveAll();
-		}
 	}
 
 	protected bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
