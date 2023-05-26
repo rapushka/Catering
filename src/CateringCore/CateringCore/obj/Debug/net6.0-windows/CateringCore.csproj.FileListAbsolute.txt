@@ -89,3 +89,5 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodsListPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodCategoriesListPage.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodsListPage.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodTypesListPage.g.cs
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodTypesListPage.baml

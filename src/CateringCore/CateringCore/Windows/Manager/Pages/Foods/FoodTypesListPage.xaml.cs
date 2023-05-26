@@ -6,15 +6,15 @@ using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
 
-public partial class FoodCategoriesListPage
+public partial class FoodTypesListPage
 {
-	public FoodCategoriesListPage() => InitializeComponent();
+	public FoodTypesListPage() => InitializeComponent();
 
 	public override DataGrid DataGrid => FoodCategoriesDataGrid;
 
-	protected override string NameOfItemType => "Категорию блюда";
+	protected override string NameOfItemType => "вид блюда";
 
-	protected override FoodCategory? Item
+	protected override FoodType? Item
 	{
 		get => new() { Title = EditTitleTextBox.Text };
 		set
@@ -30,13 +30,13 @@ public partial class FoodCategoriesListPage
 	{
 		FoodCategoriesDataGrid
 			.ClearColumns()
-			.AddTextColumn("Наименование", nameof(FoodCategory.Title))
+			.AddTextColumn("Наименование", nameof(FoodType.Title))
 			;
 	}
 
-	protected override bool Filter(FoodCategory item) => item.Title.Contains(SearchTitleTextBox.Text);
+	protected override bool Filter(FoodType item) => item.Title.Contains(SearchTitleTextBox.Text);
 
-	protected override void UpdateItem(ref FoodCategory selected, FoodCategory newItem)
+	protected override void UpdateItem(ref FoodType selected, FoodType newItem)
 		=> selected.Title = newItem.Title;
 
 	private void OnSearchChange(object sender, TextChangedEventArgs e) => UpdateTableView();

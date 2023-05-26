@@ -41,7 +41,7 @@ public partial class FoodsListPage
 
 	private void OpenCategories(object sender, RoutedEventArgs e) => NavigateTo<FoodCategoriesListPage>();
 
-	private void OpenTypes(object sender, RoutedEventArgs e) => throw new NotImplementedException();
+	private void OpenTypes(object sender, RoutedEventArgs e) => NavigateTo<FoodTypesListPage>();
 
 	private void NavigateTo<T>() where T : Page, new() => NavigationService!.Navigate(new T());
 }
