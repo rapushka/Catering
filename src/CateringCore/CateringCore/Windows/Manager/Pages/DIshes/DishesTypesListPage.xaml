@@ -82,7 +82,8 @@
                         FontSize="16"
                         Height="71"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="320" />
+                        Width="320" 
+                        Click="RemoveButton_OnClick"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="0" Margin="5">
@@ -110,7 +111,7 @@
                         Style="{DynamicResource ButtonStyle}"
                         Width="327"
                         Margin="5,4"
-                        Click="AddItemButton_OnClick">
+                        Click="ItemAddButton_OnClick">
                 </Button>
                 <Button Content="Применить изменения"
                         FontFamily="Verdana"
@@ -118,7 +119,7 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Margin="5,4" Width="311"
-                        Click="ApplyItemButton_OnClick" />
+                        Click="ItemApplyButton_OnClick" />
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
@@ -126,7 +127,7 @@
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
                         Margin="5,4"
-                        Click="CancelButton_OnClick">
+                        Click="ItemResetButton_OnClick">
                 </Button>
             </StackPanel>
         </Border>

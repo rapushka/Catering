@@ -45,13 +45,13 @@ public partial class DishesTypesListPage
 		}
 	}
 
-	private void AddItemButton_OnClick(object sender, RoutedEventArgs e)
+	private void ItemAddButton_OnClick(object sender, RoutedEventArgs e)
 	{
 		DbWorker.Context.DishTypes.Add(Item!);
 		ResetItem();
 	}
 
-	private void ApplyItemButton_OnClick(object sender, RoutedEventArgs e)
+	private void ItemApplyButton_OnClick(object sender, RoutedEventArgs e)
 	{
 		if (EnsureSelected(out var dishType))
 		{
@@ -65,7 +65,11 @@ public partial class DishesTypesListPage
 	private bool EnsureSelected(out DishType dishType)
 		=> DishesTypesDataGrid.EnsureSelected("тип посуды", out dishType);
 
-	private void CancelButton_OnClick(object sender, RoutedEventArgs e) => ResetItem();
+	private void ItemResetButton_OnClick(object sender, RoutedEventArgs e) => ResetItem();
 
 	private void ResetItem() => Item = null;
+
+	private void RemoveButton_OnClick(object sender, RoutedEventArgs e)
+	{
+	}
 }
