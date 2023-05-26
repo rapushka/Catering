@@ -15,4 +15,9 @@ public partial class DishesListPage
 	{
 		DishesDataGrid.ItemsSource = DbWorker.Context.Dishes.Observe();
 	}
+
+	private void DishesTypesButton_OnClick(object sender, RoutedEventArgs e)
+	{
+		NavigationService!.Navigate(new DishesTypesListPage());
+	}
 }
