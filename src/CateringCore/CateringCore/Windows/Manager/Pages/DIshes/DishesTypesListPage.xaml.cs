@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
-using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
@@ -63,18 +62,8 @@ public partial class DishesTypesListPage
 		}
 	}
 
-	private bool EnsureSelected(out DishType? dishType)
-	{
-		dishType = DishesTypesDataGrid.SelectedItem as DishType;
-		var isSelected = dishType is not null;
-
-		if (isSelected == false)
-		{
-			MessageBoxUtils.AtFirstSelect("тип посуды");
-		}
-
-		return isSelected;
-	}
+	private bool EnsureSelected(out DishType dishType)
+		=> DishesTypesDataGrid.EnsureSelected("тип посуды", out dishType);
 
 	private void ResetItem() => Item = null;
 }
