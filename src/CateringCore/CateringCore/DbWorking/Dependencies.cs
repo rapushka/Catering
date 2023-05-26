@@ -1,29 +1,36 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using CateringCore.Model;
 
 namespace Catering.DbWorking;
 
 public static class Dependencies
 {
-	// private static IEnumerable<Lesson> Lessons => DbWorker.Context.Lessons.AsEnumerable();
+	private static IEnumerable<Dish>        Dishes         => DbWorker.Context.Dishes.AsEnumerable();
+	private static IEnumerable<DishInOrder> DishesInOrders => DbWorker.Context.DishesInOrders.AsEnumerable();
 
 	public static List<string> For<T>(T table)
 		where T : Table
 		=> table.Visit
 		(
-
-			// forStudent: ForStudent
+			forDishesType: ForDishesType,
+			forDish: (d) => DishesInOrders.Where((dio) => dio.Dish == d).Select(Format).ToList()
 		);
 
-	// private static List<string> ForStudent(Student student)
-	// {
-	// 	var ourIndividualCourses = IndividualCourses.Where((ic) => ic.Student == student).ToList();
-	// 	var individualCourses = ourIndividualCourses.Select(Format).ToList();
-	// 	var groupCourses = GroupCourses.Where((ic) => ic.Student == student).Select(Format).ToList();
-	// 	var schedules = ourIndividualCourses.SelectMany(For);
-	//
-	// 	return individualCourses.Concat(groupCourses).Concat(schedules).ToList();
-	// }
+	private static List<string> ForDishesType(DishType dishType)
+	{
+		var dishes = Dishes.Where((d) => d.Type == dishType).ToList();
+		var dishesNames = dishes.Select(Format);
+		var dishesInOrders = dishes.SelectMany(For);
 
-	// private static string Format(Lesson lesson) => FromTable(lesson.ToString(), "Занятия");
+		return dishesNames.Concat(dishesInOrders).ToList();
+	}
+
+	private static string Format(DishInOrder dishInOrder) => FromTable(dishInOrder.ToString(), "Посуда в заказе");
+
+	private static string Format(Dish dish) => FromTable(dish.ToString(), "Посуда");
+
+	private static string FromTable(string item, string tableName) => $"{item} из таблицы {tableName}";
 }

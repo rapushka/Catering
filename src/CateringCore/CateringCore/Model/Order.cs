@@ -17,4 +17,6 @@ public class Order : Table
 	public       decimal  AdvanceAmount  { get; set; }
 	public       string   State          { get; set; } = null!;
 	public       DateTime Date           { get; set; }
+
+	public override string ToString() => "Заказ😭";
 }
