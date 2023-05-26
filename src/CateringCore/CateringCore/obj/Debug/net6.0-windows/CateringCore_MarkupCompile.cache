@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\App.xaml
-5-1148276039
+6-203557886
 
-39-1833158919
+40751645277
 216-137388514
-Windows\AuthenticationWindow.xaml;Windows\Cook\CookMainWindow.xaml;Windows\Courier\CourierMainWindow.xaml;Windows\Manager\ManagerMainWindow.xaml;Windows\Manager\Pages\OrderPage.xaml;
+Windows\AuthenticationWindow.xaml;Windows\Cook\CookMainWindow.xaml;Windows\Courier\CourierMainWindow.xaml;Windows\Manager\ManagerMainWindow.xaml;Windows\Manager\Pages\DIshes\DishesListPage.xaml;Windows\Manager\Pages\OrderPage.xaml;
 
-False
+True
 
