@@ -15,7 +15,7 @@ public static class DataGridExtensions
 		@this.BeginEdit();
 	}
 
-	public static void Setup<T>(this DataGrid @this, FilterEventHandler filter)
+	public static void Setup<T>(this DataGrid @this, Func<T, bool> accepted)
 		where T : class
 	{
 		var viewSource = new CollectionViewSource
@@ -23,8 +23,12 @@ public static class DataGridExtensions
 			Source = DbWorker.Context.GetTable<T>().Observe(),
 		};
 
-		viewSource.Filter += filter;
+		viewSource.Filter += (s, e) =>  Filter(s, e, accepted);
 		@this.ItemsSource = viewSource.View;
 	}
 
+	private static void Filter<T>(object sender, FilterEventArgs e, Func<T, bool> accepted)
+	{
+		e.Accepted = accepted((T)e.Item);
+	}
 }

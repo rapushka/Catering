@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using CateringCore.Model;
 using OrganizerCore.Tools.Extensions;
@@ -11,11 +12,24 @@ public partial class DishesTypesListPage
 
 	private void DishesTypesListPage_OnLoaded(object sender, RoutedEventArgs e)
 	{
-		DishesTypesDataGrid.Setup<DishType>(Filter);
+		UpdateTableView();
 		SetupDishesTypes();
 	}
 
-	private void Filter(object sender, FilterEventArgs e) { }
+	private void UpdateTableView()
+	{
+		DishesTypesDataGrid.Setup<DishType>((dt) => dt.Title.Contains(SearchTitleTextBox.Text));
+	}
+
+	private void Filter(object sender, FilterEventArgs e)
+	{
+		var dishType = (DishType)e.Item;
+		var title = SearchTitleTextBox.Text;
+
+		var firsByTitle = dishType.Title == title;
+
+		e.Accepted = firsByTitle;
+	}
 
 	private void SetupDishesTypes()
 	{
@@ -25,4 +39,7 @@ public partial class DishesTypesListPage
 			.AddTextColumn("Наименование", nameof(DishType.Title))
 			;
 	}
+
+	private void SearchTitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+		=> UpdateTableView();
 }
