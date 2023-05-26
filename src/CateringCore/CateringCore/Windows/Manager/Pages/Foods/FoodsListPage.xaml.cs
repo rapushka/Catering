@@ -1,22 +1,43 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using CateringCore.Model;
+using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
 
-public partial class FoodsListPage : Page
+public partial class FoodsListPage
 {
-	public FoodsListPage()
+	public FoodsListPage() => InitializeComponent();
+
+	private void OpenCategories(object sender, RoutedEventArgs e) { }
+
+	private void OpenTypes(object sender, RoutedEventArgs e) { }
+
+	public override DataGrid DataGrid => FoodDataGrid;
+
+	protected override string NameOfItemType => "Блюдо";
+
+	protected override IEnumerable<UIElement> EditItemElements => new UIElement[] { ApplyButton };
+
+	protected override void SetupColumns()
 	{
-		InitializeComponent();
+		DataGrid
+			.ClearColumns()
+			.AddTextColumn("Наименование", nameof(Food.Title))
+			// TODO: add other
+			;
 	}
 
-	private void OpenCategories(object sender, RoutedEventArgs e)
-	{
-		
-	}
+	protected override bool Filter(Food item) => true;
 
-	private void OpenTypes(object sender, RoutedEventArgs e)
+	protected override void UpdateItem(ref Food selected, Food newItem)
 	{
-		
+		selected.Type = newItem.Type;
+		selected.Category = newItem.Category;
+		selected.Title = newItem.Title;
+		selected.Composition = newItem.Composition;
+		selected.Weight = newItem.Weight;
+		selected.Price = newItem.Price;
 	}
 }
