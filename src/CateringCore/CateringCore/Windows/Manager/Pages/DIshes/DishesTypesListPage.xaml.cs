@@ -14,11 +14,7 @@ public partial class DishesTypesListPage
 
 	protected override string NameOfItemType => "Виды посуды";
 
-	protected override IEnumerable<UIElement> EditItemElements
-		=> new UIElement[]
-		{
-			ApplyItemButton,
-		};
+	protected override IEnumerable<UIElement> EditItemElements => new UIElement[] { ApplyItemButton };
 
 	protected override DishType? Item
 	{
@@ -26,7 +22,6 @@ public partial class DishesTypesListPage
 		set
 		{
 			EditTitleTextBox.Text = value?.Title ?? string.Empty;
-
 			base.Item = value;
 		}
 	}
