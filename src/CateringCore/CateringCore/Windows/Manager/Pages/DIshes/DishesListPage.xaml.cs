@@ -41,9 +41,7 @@ public partial class DishesListPage
 	protected override IEnumerable<UIElement> EditItemElements
 		=> new UIElement[]
 		{
-			EditTypeComboBox,
-			EditTitleTextBox,
-			EditPriceTextBox,
+			ApplyItemButton,
 		};
 
 	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();

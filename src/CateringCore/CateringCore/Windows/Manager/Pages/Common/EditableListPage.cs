@@ -35,6 +35,8 @@ public abstract class EditableListPage<T> : Page
 	{
 		UpdateTableView();
 		SetupColumns();
+		DataGrid.SelectedItem = null;
+		Item = null;
 	}
 
 	protected abstract void SetupColumns();
@@ -99,8 +101,8 @@ public abstract class EditableListPage<T> : Page
 
 	protected virtual void ResetItem(object? sender = null, RoutedEventArgs? e = null)
 	{
-		Item = default;
-		UpdateTableView();
+		Item = null;
+		DataGrid.SelectedItem = null;
 	}
 
 	protected bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
