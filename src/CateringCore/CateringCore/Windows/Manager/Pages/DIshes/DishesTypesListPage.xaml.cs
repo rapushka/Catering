@@ -41,7 +41,7 @@ public partial class DishesTypesListPage
 
 	private void DishesTypesDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
 	{
-		if (EnsureSelected(out var dishType))
+		if (DishesTypesDataGrid.SelectedItem is DishType dishType)
 		{
 			Item = dishType;
 		}
