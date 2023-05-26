@@ -14,14 +14,6 @@ public abstract class EditableListPage<T> : Page
 {
 	private T? _item;
 
-	protected EditableListPage()
-	{
-		// ReSharper disable once VirtualMemberCallInConstructor
-		InitializeComponent();
-	}
-
-	protected abstract void InitializeComponent();
-
 	public abstract DataGrid DataGrid { get; }
 
 	protected virtual T? Item
@@ -38,10 +30,11 @@ public abstract class EditableListPage<T> : Page
 		}
 	}
 
-	protected abstract string                 NameOfItemType   { get; }
+	protected abstract string NameOfItemType { get; }
+
 	protected abstract IEnumerable<UIElement> EditItemElements { get; }
 
-	protected void Page_OnLoaded(object sender, RoutedEventArgs e)
+	protected void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		UpdateTableView();
 		SetupTable();
@@ -53,16 +46,17 @@ public abstract class EditableListPage<T> : Page
 
 	protected abstract bool Filter(T item);
 
-	protected void OnItemSelected(object sender, SelectedCellsChangedEventArgs e) => Item = DataGrid.SelectedItem as T;
+	protected void OnItemSelected(object? sender = null, SelectedCellsChangedEventArgs? e = null)
+		=> Item = DataGrid.SelectedItem as T;
 
-	protected void AddItem(object sender, RoutedEventArgs e)
+	protected void AddItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		DbWorker.Context.GetTable<T>().Add(Item!);
 		DbWorker.SaveAll();
 		ResetItem();
 	}
 
-	protected void ApplyItem(object sender, RoutedEventArgs e)
+	protected void ApplyItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		if (EnsureSelected(out var item))
 		{
@@ -73,13 +67,13 @@ public abstract class EditableListPage<T> : Page
 		}
 	}
 
-	protected virtual void ResetItem()
+	protected virtual void ResetItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		Item = default;
 		UpdateTableView();
 	}
 
-	protected void RemoveItem(object sender, RoutedEventArgs e)
+	protected void RemoveItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		if (EnsureSelected(out var item)
 		    && MessageBoxUtils.ConfirmDeletion(item))
@@ -89,5 +83,5 @@ public abstract class EditableListPage<T> : Page
 		}
 	}
 
-	private bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
+	protected bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
 }
