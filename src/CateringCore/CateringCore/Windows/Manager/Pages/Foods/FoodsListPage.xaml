@@ -102,15 +102,13 @@
                         Style="{DynamicResource ButtonStyle}"
                         FontFamily="Verdana" FontSize="14"
                         Height="24" Width="485"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" Margin="5,0,0,0"
+                        Margin="5,0,0,0"
                         Click="OpenCategories" />
                 <Button Content="Виды блюд"
                         Style="{DynamicResource ButtonStyle}"
                         FontFamily="Verdana" FontSize="14"
                         Height="24" Width="485"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" Margin="0,11,0,11.4"
+                        Margin="0,11,0,11.4"
                         Click="OpenTypes" />
             </StackPanel>
         </Border>
@@ -149,8 +147,7 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="327"
-                        Margin="5,4">
-                </Button>
+                        Margin="5,4" />
                 <Button Content="Применить изменения"
                         FontFamily="Verdana"
                         FontSize="16"
@@ -163,8 +160,7 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4">
-                </Button>
+                        Margin="5,4" />
             </StackPanel>
         </Border>
     </Grid>
