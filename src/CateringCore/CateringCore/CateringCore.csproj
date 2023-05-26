@@ -27,8 +27,4 @@
       <Resource Include="Resources\Background.jpg" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Windows\Manager\Pages\Foods\" />
-    </ItemGroup>
-
 </Project>
