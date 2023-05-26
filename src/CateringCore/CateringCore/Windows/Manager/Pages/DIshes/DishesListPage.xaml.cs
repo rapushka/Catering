@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
@@ -46,13 +47,16 @@ public partial class DishesListPage
 
 	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
 
+	private static IEnumerable<DishType> ItemAll => new DishType[] { new() { Title = "Все" } };
+
 	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		base.Page_OnLoaded(sender, e);
 
 		EditTypeComboBox.ItemsSource = DishTypes;
-		// EditTypeComboBox.SelectedValuePath = nameof(DishType.Id);
-		// EditTypeComboBox.DisplayMemberPath = nameof(DishType.Title);
+
+		SearchTypeComboBox.ItemsSource = ItemAll.Concat(DishTypes);
+		SearchTypeComboBox.SelectedIndex = 0;
 	}
 
 	protected override void SetupColumns()
@@ -66,11 +70,9 @@ public partial class DishesListPage
 	}
 
 	protected override bool Filter(Dish dish)
-	{
-		return true;
-		return dish.Title.Contains(SearchTitleTextBox.Text)
-		       && dish.Type == (DishType)SearchTypeComboBox.SelectedItem;
-	}
+		=> dish.Title.Contains(SearchTitleTextBox.Text)
+		   && (SearchTypeComboBox.SelectedIndex == 0
+		       || dish.Type == (DishType)SearchTypeComboBox.SelectedItem);
 
 	protected override void UpdateItem(ref Dish selected, Dish newItem)
 	{
@@ -82,9 +84,4 @@ public partial class DishesListPage
 	private void SearchTypeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateTableView();
 
 	private void SearchTitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e) => UpdateTableView();
-
-	private void DishesDataGrid_OnSelectionChanged(object sender, SelectedCellsChangedEventArgs e)
-	{
-		
-	}
 }
