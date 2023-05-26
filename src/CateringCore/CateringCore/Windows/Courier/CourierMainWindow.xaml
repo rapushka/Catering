@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:CateringCore.Windows.Courier"
         mc:Ignorable="d"
-        Title="Курьер" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="Курьер" Height="750" Width="1200" WindowStartupLocation="CenterScreen"
+        Loaded="CourierMainWindow_OnLoaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160*" />
@@ -28,8 +28,10 @@
                 <Border Background="{StaticResource Avatar}"
                         Height="31" Width="34"
                         Margin="5,0,0,0" />
-                <TextBlock Text="ФИО сотрудникa, Курьер"
-                           FontFamily="Verdana" />
+                <TextBlock
+                    Name="EmployeeFullnameTextBlock"
+                    Text="[ФИО сотрудникa], Курьер"
+                    FontFamily="Verdana" />
             </StackPanel>
         </Border>
         <Border Grid.Row="1" Grid.Column="0" Margin="0,1,0,11.4">

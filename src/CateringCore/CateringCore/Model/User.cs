@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace CateringCore.Model;
 
 public class User : Table
