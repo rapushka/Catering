@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
@@ -9,10 +11,6 @@ namespace CateringCore.Windows.Pages.Foods;
 public partial class FoodsListPage
 {
 	public FoodsListPage() => InitializeComponent();
-
-	private void OpenCategories(object sender, RoutedEventArgs e) { }
-
-	private void OpenTypes(object sender, RoutedEventArgs e) { }
 
 	public override DataGrid DataGrid => FoodDataGrid;
 
@@ -40,4 +38,10 @@ public partial class FoodsListPage
 		selected.Weight = newItem.Weight;
 		selected.Price = newItem.Price;
 	}
+
+	private void OpenCategories(object sender, RoutedEventArgs e) => NavigateTo<FoodCategoriesListPage>();
+
+	private void OpenTypes(object sender, RoutedEventArgs e) => throw new NotImplementedException();
+
+	private void NavigateTo<T>() where T : Page, new() => NavigationService!.Navigate(new T());
 }
