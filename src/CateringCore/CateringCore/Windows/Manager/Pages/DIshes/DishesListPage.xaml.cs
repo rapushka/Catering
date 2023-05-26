@@ -3,33 +3,56 @@ using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
-using CateringCore.Windows.Pages.Common;
 using OrganizerCore.DbWorking;
+using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
 
-public partial class DishesListPage : EditableListPage<Dish>
+public partial class DishesListPage
 {
 	public DishesListPage() => InitializeComponent();
 
-	private void DishesListPage_OnLoaded(object sender, RoutedEventArgs e)
-	{
-		DishesDataGrid.ItemsSource = DbWorker.Context.Dishes.Observe();
-	}
-
 	private void DishesTypesButton_OnClick(object sender, RoutedEventArgs e)
-	{
-		NavigationService!.Navigate(new DishesTypesListPage());
-	}
+		=> NavigationService!.Navigate(new DishesTypesListPage());
 
-	public override    DataGrid               DataGrid         => DishesDataGrid;
-	protected override string                 NameOfItemType   => "посуду";
-	protected override IEnumerable<UIElement> EditItemElements { get; }
-	protected override void                   SetupTable()     { }
+	public override DataGrid DataGrid => DishesDataGrid;
+
+	protected override string NameOfItemType => "посуду";
+
+	protected override IEnumerable<UIElement> EditItemElements
+		=> new UIElement[]
+		{
+			EditTypeComboBox,
+			EditTitleTextBox,
+			EditPriceTextBox,
+		};
+
+	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
+
+	protected override void SetupColumns()
+	{
+		DataGrid
+			.ClearColumns()
+			.AddTextColumn("Наименование", nameof(Dish.Title))
+			.AddComboBoxColumn("Тип", nameof(Dish.Type), DishTypes, nameof(DishType.Title), nameof(DishType.Id))
+			.AddTextColumn("Стоимость", nameof(Dish.Price))
+			;
+	}
 
 	protected override bool Filter(Dish dish)
-		=> dish.Title.Contains(SearchTitleTextBox.Text)
-		   && dish.Type == (DishType)SearchTypeComboBox.SelectedItem;
+	{
+		return true;
+		return dish.Title.Contains(SearchTitleTextBox.Text)
+		       && dish.Type == (DishType)SearchTypeComboBox.SelectedItem;
+	}
 
 	protected override void UpdateItem(ref Dish selected) { }
+
+	private void SearchTypeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateTableView();
+
+	private void SearchTitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e) => UpdateTableView();
+}
+
+public static class Constants
+{
 }

@@ -33,10 +33,10 @@ public abstract class EditableListPage<T> : Page
 	protected void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		UpdateTableView();
-		SetupTable();
+		SetupColumns();
 	}
 
-	protected abstract void SetupTable();
+	protected abstract void SetupColumns();
 
 	protected void UpdateTableView() => DataGrid.Setup<T>(Filter);
 

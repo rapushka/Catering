@@ -34,7 +34,7 @@ public partial class DishesTypesListPage
 		}
 	}
 
-	protected override void SetupTable()
+	protected override void SetupColumns()
 	{
 		DishesTypesDataGrid
 			.ClearColumns()
