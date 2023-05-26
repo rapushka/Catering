@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Data;
 using CateringCore.Model;
 using OrganizerCore.Tools.Extensions;
@@ -20,12 +19,10 @@ public partial class DishesTypesListPage
 
 	private void SetupDishesTypes()
 	{
-		DishesTypesDataGrid.SetColumns
-		(
-			new Dictionary<string, string>
-			{
-				["Наименование"] = nameof(DishType.Title),
-			}
-		);
+		DishesTypesDataGrid.Columns.Clear();
+
+		DishesTypesDataGrid
+			.AddTextColumn("Наименование", nameof(DishType.Title))
+			;
 	}
 }
