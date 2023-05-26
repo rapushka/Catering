@@ -29,4 +29,12 @@ public partial class DishesTypesListPage
 
 	private void SearchTitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
 		=> UpdateTableView();
+
+	private void DishesTypesDataGrid_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+	{
+		if (DishesTypesDataGrid.SelectedItem is DishType dishType)
+		{
+			EditTitleTextBox.Text = dishType.Title;
+		}
+	}
 }
