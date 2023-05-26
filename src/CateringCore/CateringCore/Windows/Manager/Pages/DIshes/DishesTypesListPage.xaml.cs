@@ -15,7 +15,11 @@ public partial class DishesTypesListPage
 	private DishType? Item
 	{
 		get => new() { Title = EditTitleTextBox.Text };
-		set => EditTitleTextBox.Text = value?.Title ?? string.Empty;
+		set
+		{
+			EditTitleTextBox.Text = value?.Title ?? string.Empty;
+			EditTitleTextBox.IsEnabled = value is not null;
+		}
 	}
 
 	private void DishesTypesListPage_OnLoaded(object sender, RoutedEventArgs e)
