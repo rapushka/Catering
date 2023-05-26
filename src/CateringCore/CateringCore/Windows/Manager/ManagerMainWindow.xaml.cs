@@ -26,7 +26,7 @@ public partial class ManagerMainWindow
 
 	private void FoodButton_OnClick(object sender, RoutedEventArgs e) { }
 
-	private void DishesButton_OnClick(object sender, RoutedEventArgs e) { }
+	private void DishesButton_OnClick(object sender, RoutedEventArgs e) => Open<DishesListPage>();
 
 	private void CarsButton_OnClick(object sender, RoutedEventArgs e) { }
 

@@ -2,7 +2,7 @@
 
 namespace CateringCore.Windows.Pages;
 
-public partial class DishesListPage : Page
+public partial class DishesListPage
 {
 	public DishesListPage()
 	{
