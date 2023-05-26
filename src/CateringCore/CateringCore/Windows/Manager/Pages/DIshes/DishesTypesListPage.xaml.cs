@@ -17,10 +17,7 @@ public partial class DishesTypesListPage
 	protected override IEnumerable<UIElement> EditItemElements
 		=> new UIElement[]
 		{
-			EditTitleTextBox,
-			AddItemButton,
 			ApplyItemButton,
-			ResetItemButton,
 		};
 
 	protected override DishType? Item
