@@ -69,10 +69,10 @@
             <StackPanel VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch">
                 <DataGrid
+                    Name="FoodDataGrid"
                     IsReadOnly="True"
                     AutoGenerateColumns="False"
                     CanUserAddRows="False"
-                    Name="FoodDataGrid"
                     Height="328" />
             </StackPanel>
         </Border>
@@ -84,7 +84,8 @@
                     Height="40"
                     Margin="25, 0"
                     Style="{DynamicResource ButtonStyle}"
-                    Width="320" />
+                    Width="320"
+                    Click="RemoveItem" />
         </Border>
         <Border Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">
             <StackPanel Orientation="Horizontal"
@@ -138,7 +139,8 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="327"
-                        Margin="5,4" />
+                        Margin="5,4"
+                        Click="AddItem" />
                 <Button
                     Name="ApplyButton"
                     Content="Применить изменения"
@@ -146,14 +148,16 @@
                     FontSize="16"
                     Height="40"
                     Style="{DynamicResource ButtonStyle}"
-                    Margin="5,4" Width="311" />
+                    Margin="5,4" Width="311"
+                    Click="ApplyItem" />
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4" />
+                        Margin="5,4"
+                        Click="ResetItem" />
             </StackPanel>
         </Border>
     </Grid>
