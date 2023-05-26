@@ -62,6 +62,7 @@ public partial class DishesTypesListPage
 			dishType.Title = item.Title;
 			DbWorker.Context.Update(dishType);
 			DbWorker.SaveAll();
+			UpdateTableView();
 		}
 	}
 
