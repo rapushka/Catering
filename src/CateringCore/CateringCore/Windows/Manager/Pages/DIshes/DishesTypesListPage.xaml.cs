@@ -56,7 +56,7 @@ public partial class DishesTypesListPage
 		if (EnsureSelected(out var dishType))
 		{
 			var item = Item!;
-			dishType!.Title = item.Title;
+			dishType.Title = item.Title;
 			DbWorker.Context.Update(dishType);
 			DbWorker.SaveAll();
 		}
@@ -64,6 +64,8 @@ public partial class DishesTypesListPage
 
 	private bool EnsureSelected(out DishType dishType)
 		=> DishesTypesDataGrid.EnsureSelected("тип посуды", out dishType);
+
+	private void CancelButton_OnClick(object sender, RoutedEventArgs e) => ResetItem();
 
 	private void ResetItem() => Item = null;
 }

@@ -126,7 +126,10 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4">
+                        Margin="5,4"
+                        Click="ventArgs e)
+	{
+		thr">
                 </Button>
             </StackPanel>
         </Border>
