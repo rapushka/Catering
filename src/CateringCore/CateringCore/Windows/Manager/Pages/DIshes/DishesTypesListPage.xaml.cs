@@ -22,11 +22,12 @@ public partial class DishesTypesListPage
 
 	protected override DishType? Item
 	{
-		get => base.Item;
+		get => new() { Title = EditTitleTextBox.Text };
 		set
 		{
-			base.Item = value;
 			EditTitleTextBox.Text = value?.Title ?? string.Empty;
+
+			base.Item = value;
 		}
 	}
 
@@ -39,6 +40,12 @@ public partial class DishesTypesListPage
 	}
 
 	protected override bool Filter(DishType item) => item.Title.Contains(SearchTitleTextBox.Text);
+
+	protected override void UpdateItem(ref DishType selected)
+	{
+		var newItem = Item!;
+		selected.Title = newItem.Title;
+	}
 
 	private void OnSearchChange(object sender, TextChangedEventArgs e) => UpdateTableView();
 }

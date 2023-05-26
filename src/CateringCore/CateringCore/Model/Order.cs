@@ -5,7 +5,6 @@ namespace CateringCore.Model;
 
 public class Order : Table
 {
-	[Key] public int      Id             { get; set; }
 	public       Manager  Manager        { get; set; } = null!;
 	public       Courier? Courier        { get; set; }
 	public       Car?     Car            { get; set; }

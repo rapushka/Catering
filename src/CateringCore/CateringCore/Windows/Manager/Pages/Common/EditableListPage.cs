@@ -10,22 +10,18 @@ using OrganizerCore.Tools.Extensions;
 namespace CateringCore.Windows.Pages.Common;
 
 public abstract class EditableListPage<T> : Page
-	where T : Table
+	where T : Table, new()
 {
-	private T? _item;
-
 	public abstract DataGrid DataGrid { get; }
 
 	protected virtual T? Item
 	{
-		get => _item;
+		get => new();
 		set
 		{
-			_item = value;
-
 			foreach (var element in EditItemElements)
 			{
-				element.IsEnabled = _item is not null;
+				element.IsEnabled = value is not null;
 			}
 		}
 	}
@@ -58,14 +54,16 @@ public abstract class EditableListPage<T> : Page
 
 	protected void ApplyItem(object? sender = null, RoutedEventArgs? e = null)
 	{
-		if (EnsureSelected(out var item))
+		if (EnsureSelected(out var selected))
 		{
-			item = Item!;
-			DbWorker.Context.Update(item);
+			UpdateItem(ref selected);
+			DbWorker.Context.Update(selected);
 			DbWorker.SaveAll();
 			UpdateTableView();
 		}
 	}
+
+	protected abstract void UpdateItem(ref T selected);
 
 	protected virtual void ResetItem(object? sender = null, RoutedEventArgs? e = null)
 	{

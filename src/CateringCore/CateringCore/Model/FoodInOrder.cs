@@ -4,7 +4,6 @@ namespace CateringCore.Model;
 
 public class FoodInOrder : Table
 {
-	[Key] public int     Id     { get; set; }
 	public       Food    Food   { get; set; } = null!;
 	public       Order   Order  { get; set; } = null!;
 	public       Cook?   Cook   { get; set; }

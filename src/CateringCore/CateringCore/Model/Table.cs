@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CateringCore.Model;
 
 public class Table
 {
+	[Key] public int Id { get; set; }
+
 	public T Visit<T>
 	(
 		Func<DishType, T> forDishesType,
