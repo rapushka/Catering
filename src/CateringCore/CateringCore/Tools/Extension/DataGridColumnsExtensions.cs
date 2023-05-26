@@ -9,6 +9,12 @@ public static class DataGridColumnsExtensions
 {
 	private const string Empty = "";
 
+	public static DataGrid ClearColumns(this DataGrid @this)
+	{
+		@this.Columns.Clear();
+		return @this;
+	}
+
 	public static DataGrid AddTextColumn
 	(
 		this DataGrid @this,

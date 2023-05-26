@@ -23,12 +23,10 @@ public static class DataGridExtensions
 			Source = DbWorker.Context.GetTable<T>().Observe(),
 		};
 
-		viewSource.Filter += (s, e) =>  Filter(s, e, accepted);
+		viewSource.Filter += (_, e) =>  Filter(e, accepted);
 		@this.ItemsSource = viewSource.View;
 	}
 
-	private static void Filter<T>(object sender, FilterEventArgs e, Func<T, bool> accepted)
-	{
-		e.Accepted = accepted((T)e.Item);
-	}
+	private static void Filter<T>(FilterEventArgs e, Func<T, bool> accepted) 
+		=> e.Accepted = accepted((T)e.Item);
 }
