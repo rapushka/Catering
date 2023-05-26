@@ -8,4 +8,6 @@ public class FoodInOrder : Table
 	public       int     Amount { get; set; }
 	public       decimal Cost   { get; set; }
 	public       string  State  { get; set; } = null!;
+
+	public override string ToString() => $"Блюдо {Food} в заказе {Order}";
 }

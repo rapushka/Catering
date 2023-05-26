@@ -8,4 +8,6 @@ public class Food : Table
 	public       string       Composition { get; set; } = null!;
 	public       double       Weight      { get; set; }
 	public       decimal      Price       { get; set; }
+
+	public override string ToString() => Title;
 }
