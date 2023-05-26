@@ -55,9 +55,8 @@
                     IsReadOnly="True"
                     CanUserAddRows="False"
                     AutoGenerateColumns="False"
-                    Height="382" 
-                    SelectedCellsChanged="DishesTypesDataGrid_OnSelectedCellsChanged"
-                    />
+                    Height="382"
+                    SelectedCellsChanged="DishesTypesDataGrid_OnSelectedCellsChanged" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Margin="5,9.2,5,5.6" Grid.ColumnSpan="2" Grid.Column="0">
@@ -118,8 +117,8 @@
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
-                        Margin="5,4" Width="311" 
-                        Click="ApplyItemButton_OnClick"/>
+                        Margin="5,4" Width="311"
+                        Click="ApplyItemButton_OnClick" />
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
@@ -127,9 +126,7 @@
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
                         Margin="5,4"
-                        Click="ventArgs e)
-	{
-		thr">
+                        Click="CancelButton_OnClick">
                 </Button>
             </StackPanel>
         </Border>
