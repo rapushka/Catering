@@ -2,6 +2,8 @@
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
+using OrganizerCore.DbWorking;
+using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
@@ -48,6 +50,7 @@ public partial class DishesTypesListPage
 	private void ItemAddButton_OnClick(object sender, RoutedEventArgs e)
 	{
 		DbWorker.Context.DishTypes.Add(Item!);
+		DbWorker.SaveAll();
 		ResetItem();
 	}
 
@@ -69,7 +72,21 @@ public partial class DishesTypesListPage
 
 	private void ResetItem() => Item = null;
 
+#region CRUD
+
+	private void AddButton_OnClick(object sender, RoutedEventArgs e) { }
+
+	private void EditButton_OnClick(object sender, RoutedEventArgs e) { }
+
 	private void RemoveButton_OnClick(object sender, RoutedEventArgs e)
 	{
+		if (EnsureSelected(out var dishType)
+		    && MessageBoxUtils.ConfirmDeletion(dishType))
+		{
+			DbWorker.Context.DishTypes.Observe().Remove(dishType);
+			DbWorker.SaveAll();
+		}
 	}
+
+#endregion
 }

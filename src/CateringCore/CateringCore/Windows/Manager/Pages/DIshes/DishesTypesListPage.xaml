@@ -70,13 +70,15 @@
                         FontSize="16"
                         Height="71"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="338" />
+                        Width="338"
+                        Click="AddButton_OnClick"/>
                 <Button Content="Редактировать"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="71"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="320" />
+                        Width="320" 
+                        Click="EditButton_OnClick"/>
                 <Button Content="Удалить"
                         FontFamily="Verdana"
                         FontSize="16"
