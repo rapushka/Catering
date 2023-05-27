@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
+using CateringCore.Tools.Extension;
 using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
 
@@ -44,7 +45,7 @@ public partial class DishesListPage
 
 	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
 
-	private static IEnumerable<DishType> ItemAll => new DishType[] { new() { Title = "Все" } };
+	private static IEnumerable<DishType> ItemAll => new DishType { Title = "Все" }.AsArray();
 
 	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
