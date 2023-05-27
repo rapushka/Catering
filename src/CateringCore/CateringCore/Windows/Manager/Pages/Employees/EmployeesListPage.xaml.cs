@@ -57,7 +57,9 @@ public partial class EmployeesListPage
 			.AddTextColumn("Фамилия", nameof(User.LastName))
 			.AddTextColumn("Отчество", nameof(User.MiddleName))
 			.AddTextColumn("Номер телефона", nameof(User.PhoneNumber))
-			// TODO: position
+			.AddTextColumn("Логин", nameof(User.Login))
+			.AddTextColumn("Пароль", nameof(User.Password))
+			.AddTextColumn("Должность", nameof(User.Position))
 			;
 	}
 
