@@ -12,19 +12,12 @@ public partial class DishesTypesListPage
 
 	public override DataGrid DataGrid => DishesTypesDataGrid;
 
+	protected override DishType ReadItemFromControls()              => new() { Title = EditTitleTextBox.Text };
+	protected override void     WriteItemToControls(DishType? item) => EditTitleTextBox.Text = item?.Title;
+
 	protected override string NameOfItemType => "Виды посуды";
 
 	protected override IEnumerable<UIElement> EditItemElements => new UIElement[] { ApplyItemButton };
-
-	protected override DishType? Item
-	{
-		get => new() { Title = EditTitleTextBox.Text };
-		set
-		{
-			EditTitleTextBox.Text = value?.Title ?? string.Empty;
-			base.Item = value;
-		}
-	}
 
 	protected override void SetupColumns()
 	{

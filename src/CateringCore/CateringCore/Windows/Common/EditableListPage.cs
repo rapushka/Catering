@@ -15,17 +15,21 @@ public abstract class EditableListPage<T> : Page
 {
 	public abstract DataGrid DataGrid { get; }
 
-	protected virtual T? Item
+	protected T? Item
 	{
-		get => new();
+		get => ReadItemFromControls();
 		set
 		{
+			WriteItemToControls(value);
 			foreach (var element in EditItemElements)
 			{
 				element.IsEnabled = value is not null;
 			}
 		}
 	}
+
+	protected abstract void WriteItemToControls(T? item);
+	protected abstract T    ReadItemFromControls();
 
 	protected abstract string NameOfItemType { get; }
 

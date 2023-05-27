@@ -14,15 +14,8 @@ public partial class FoodCategoriesListPage
 
 	protected override string NameOfItemType => "Категорию блюда";
 
-	protected override FoodCategory? Item
-	{
-		get => new() { Title = EditTitleTextBox.Text };
-		set
-		{
-			EditTitleTextBox.Text = value?.Title ?? string.Empty;
-			base.Item = value;
-		}
-	}
+	protected override FoodCategory ReadItemFromControls()                  => new() { Title = EditTitleTextBox.Text };
+	protected override void         WriteItemToControls(FoodCategory? item) => EditTitleTextBox.Text = item?.Title;
 
 	protected override IEnumerable<UIElement> EditItemElements => new[] { ApplyButton };
 

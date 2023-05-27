@@ -17,22 +17,19 @@ public partial class DishesListPage
 	private void DishesTypesButton_OnClick(object sender, RoutedEventArgs e)
 		=> NavigationService!.Navigate(new DishesTypesListPage());
 
-	protected override Dish? Item
-	{
-		get => new()
+	protected override Dish ReadItemFromControls()
+		=> new()
 		{
 			Title = EditTitleTextBox.Text,
 			Type = (DishType)EditTypeComboBox.SelectedItem,
 			Price = decimal.Parse(EditPriceTextBox.Text),
 		};
-		set
-		{
-			EditTitleTextBox.Text = value?.Title ?? string.Empty;
-			EditPriceTextBox.Text = value?.Price.ToString(CultureInfo.InvariantCulture);
-			EditTypeComboBox.SelectedItem = value?.Type;
 
-			base.Item = value;
-		}
+	protected override void WriteItemToControls(Dish? item)
+	{
+		EditTitleTextBox.Text = item?.Title;
+		EditPriceTextBox.Text = item?.Price.ToString(CultureInfo.InvariantCulture);
+		EditTypeComboBox.SelectedItem = item?.Type;
 	}
 
 	public override DataGrid DataGrid => DishesDataGrid;
