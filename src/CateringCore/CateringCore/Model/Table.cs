@@ -22,6 +22,6 @@ public class Table
 			Food food => forFood(food),
 			FoodCategory foodCategory => forFoodCategory(foodCategory),
 			FoodType foodType => forFoodType(foodType),
-			_ => throw new InvalidOperationException($"Unknown {nameof(Table)} type. Is {GetType().Name}"),
+			_ => throw new InvalidOperationException($"Не найдена реализация для таблицы {GetType().Name}"),
 		};
 }

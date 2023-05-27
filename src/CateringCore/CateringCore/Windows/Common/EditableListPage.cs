@@ -56,9 +56,10 @@ public abstract class EditableListPage<T> : Page
 	{
 		try
 		{
-			DbWorker.Context.GetTable<T>().Add(Item!);
+			DbWorker.Context.Add(Item!);
 			DbWorker.SaveAll();
 			ResetItem();
+			UpdateTableView();
 		}
 		catch (Exception ex)
 		{

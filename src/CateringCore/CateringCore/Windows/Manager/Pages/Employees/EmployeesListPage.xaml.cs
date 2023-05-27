@@ -7,6 +7,7 @@ using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
 using OrganizerCore.Windows.Pages.StudentsTab;
+using static CateringCore.Model.User;
 
 namespace CateringCore.Windows.Pages.Employees;
 
@@ -24,8 +25,8 @@ public partial class EmployeesListPage
 	{
 		base.Page_OnLoaded(sender, e);
 
-		SearchPositionComboBox.SetupSearch(User.PositionName.All);
-		EditPositionComboBox.SetupEdit(User.PositionName.All);
+		SearchPositionComboBox.SetupSearch(PositionName.All);
+		EditPositionComboBox.SetupEdit(PositionName.All);
 	}
 
 	protected override void UpdateTableView() => DataGrid.Setup<User>(Filter, DbWorker.Users);
@@ -38,10 +39,10 @@ public partial class EmployeesListPage
 	{
 		User user = EditPositionComboBox.SelectedItem switch
 		{
-			Manager       => new Manager(),
-			Model.Courier => new Model.Courier(),
-			Model.Cook    => new Model.Cook(),
-			_             => throw new ArgumentOutOfRangeException(),
+			PositionName.Manager => new Manager(),
+			PositionName.Courier => new Model.Courier(),
+			PositionName.Cook    => new Model.Cook(),
+			_                    => throw new Exception("Выбрана неизвестная должность"),
 		};
 		return SetupUser(user);
 	}
