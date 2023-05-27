@@ -41,7 +41,8 @@
                            VerticalAlignment="Center"
                            Margin="0,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <TextBox Height="25" Width="184"
+                <TextBox Name="SearchTitleTextBox"
+                         Height="25" Width="184"
                          FontFamily="Verdana" FontSize="14"
                          Margin="0,11,0,10.4" />
                 <TextBlock Text="Категория:"
@@ -49,7 +50,8 @@
                            VerticalAlignment="Center"
                            Margin="15,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <ComboBox Height="25" Width="216"
+                <ComboBox Name="SearchCategoryComboBox"
+                          Height="25" Width="216"
                           FontFamily="Verdana" FontSize="14"
                           Margin="0,11,0,10.4" />
                 <TextBlock Text="Вид:"
@@ -57,7 +59,8 @@
                            VerticalAlignment="Center"
                            Margin="15,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <ComboBox Height="25" Width="237"
+                <ComboBox Name="SearchTypeComboBox"
+                          Height="25" Width="237"
                           FontFamily="Verdana" FontSize="14"
                           Margin="0,11,0,10.4" />
                 <Border Background="{DynamicResource Search}"
@@ -108,26 +111,32 @@
             <StackPanel>
                 <TextBlock Text="Наименование:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditTitleTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Состав:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditCompositionTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Вес:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditWeightTextBox"
+                         FontFamily="Verdana" FontSize="14" />
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Margin="4.8,6,5,1.6" Grid.Column="1">
             <StackPanel>
                 <TextBlock Text="Цена:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditPriceTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Категория:"
                            FontFamily="Verdana" FontSize="14" />
-                <ComboBox FontFamily="Verdana" FontSize="14" />
+                <ComboBox Name="EditCategoryComboBox"
+                          FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Вид:"
                            FontFamily="Verdana" FontSize="14" />
-                <ComboBox FontFamily="Verdana" FontSize="14" />
+                <ComboBox Name="EditTypeComboBox"
+                          FontFamily="Verdana" FontSize="14" />
             </StackPanel>
         </Border>
         <Border Grid.Column="0" Grid.Row="6"
@@ -150,7 +159,7 @@
                     Style="{DynamicResource ButtonStyle}"
                     Margin="5,4" Width="311"
                     Click="ApplyItem" />
-                <Button Content="Отменить"
+                <Button Content="Сбросить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"

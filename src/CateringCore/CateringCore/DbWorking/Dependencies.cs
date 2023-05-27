@@ -67,9 +67,11 @@ public static class Dependencies
 
 	private static string Format(DishInOrder dishInOrder) => FromTable(dishInOrder.ToString(), "Посуда в заказе");
 
-	private static string Format(Dish dish)               => FromTable(dish.ToString(), "Посуда");
+	private static string Format(Dish dish) => FromTable(dish.ToString(), "Посуда");
+
 	private static string Format(FoodInOrder foodInOrder) => FromTable(foodInOrder.ToString(), "Блюда в заказе");
-	private static string Format(Food food)               => FromTable(food.ToString(), "Блюда");
+
+	private static string Format(Food food) => FromTable(food.ToString(), "Блюда");
 
 	private static string FromTable(string item, string tableName) => $"{item} из таблицы {tableName}";
 }
