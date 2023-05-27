@@ -42,8 +42,8 @@ public partial class DishesListPage
 	{
 		base.Page_OnLoaded(sender, e);
 
-		EditTypeComboBox.ItemsSource = DishTypes;
-		SearchTypeComboBox.SetupSearch(itemSource: DishTypes);
+		EditTypeComboBox.SetupEdit<DishType>();
+		SearchTypeComboBox.SetupSearch<DishType>();
 	}
 
 	protected override void SetupColumns()

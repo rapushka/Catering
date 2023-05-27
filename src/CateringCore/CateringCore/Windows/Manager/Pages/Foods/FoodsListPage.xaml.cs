@@ -28,11 +28,10 @@ public partial class FoodsListPage
 	{
 		base.Page_OnLoaded(sender, e);
 
-		EditCategoryComboBox.ItemsSource = FoodCategories;
-		EditTypeComboBox.ItemsSource = FoodTypes;
-
-		SearchCategoryComboBox.SetupSearch(FoodCategories);
-		SearchTypeComboBox.SetupSearch(FoodTypes);
+		EditCategoryComboBox.SetupEdit<FoodCategory>();
+		SearchCategoryComboBox.SetupSearch<FoodCategory>();
+		EditTypeComboBox.SetupEdit<FoodType>();
+		SearchTypeComboBox.SetupSearch<FoodType>();
 	}
 
 	protected override void WriteItemToControls(Food? item)
