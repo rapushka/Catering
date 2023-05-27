@@ -33,7 +33,7 @@ public partial class DishesListPage
 		EditTypeComboBox.SelectedItem = item?.Type;
 	}
 
-	public override DataGrid DataGrid => DishesDataGrid;
+	protected override DataGrid DataGrid => DishesDataGrid;
 
 	protected override string NameOfItemType => "посуду";
 

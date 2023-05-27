@@ -12,7 +12,7 @@ public partial class FoodsListPage
 {
 	public FoodsListPage() => InitializeComponent();
 
-	public override DataGrid DataGrid => FoodDataGrid;
+	protected override DataGrid DataGrid => FoodDataGrid;
 
 	protected override void WriteItemToControls(Food? item)
 	{

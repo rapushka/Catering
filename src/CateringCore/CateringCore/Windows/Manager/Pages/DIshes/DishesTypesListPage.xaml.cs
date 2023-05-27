@@ -11,7 +11,7 @@ public partial class DishesTypesListPage
 {
 	public DishesTypesListPage() => InitializeComponent();
 
-	public override DataGrid DataGrid => DishesTypesDataGrid;
+	protected override DataGrid DataGrid => DishesTypesDataGrid;
 
 	protected override DishType ReadItemFromControls()              => new() { Title = EditTitleTextBox.Text };
 	protected override void     WriteItemToControls(DishType? item) => EditTitleTextBox.Text = item?.Title;

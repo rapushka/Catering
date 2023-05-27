@@ -13,9 +13,9 @@ namespace CateringCore.Windows.Pages.Common;
 public abstract class EditableListPage<T> : Page
 	where T : Table, new()
 {
-	public abstract DataGrid DataGrid { get; }
+	protected abstract DataGrid DataGrid { get; }
 
-	protected T? Item
+	private T? Item
 	{
 		get => ReadItemFromControls();
 		set
@@ -109,5 +109,5 @@ public abstract class EditableListPage<T> : Page
 		DataGrid.SelectedItem = null;
 	}
 
-	protected bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
+	private bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
 }

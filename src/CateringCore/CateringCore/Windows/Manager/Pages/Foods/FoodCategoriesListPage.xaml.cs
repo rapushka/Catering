@@ -11,7 +11,7 @@ public partial class FoodCategoriesListPage
 {
 	public FoodCategoriesListPage() => InitializeComponent();
 
-	public override DataGrid DataGrid => FoodCategoriesDataGrid;
+	protected override DataGrid DataGrid => FoodCategoriesDataGrid;
 
 	protected override string NameOfItemType => "Категорию блюда";
 
