@@ -19,8 +19,37 @@ public static class Dependencies
 			forDish: ForDish,
 			forFood: ForFood,
 			forFoodCategory: ForFoodCategory,
-			forFoodType: ForFoodType
+			forFoodType: ForFoodType,
+			forManager: ForManager,
+			forCourier: ForCourier,
+			forCook: ForCook,
+			forOrder: ForOrder,
+			forCar: ForCar
 		);
+
+	private static List<string> ForCar(Car car) => new();
+
+	private static List<string> ForOrder(Order order)
+	{
+		var foodInOrders = FoodsInOrders.Where((f) => f.Order == order).ToList();
+		var dishInOrders = DishesInOrders.Where((d) => d.Order == order).ToList();
+		var foodNames = foodInOrders.Select(Format);
+		var dishNames = dishInOrders.Select(Format);
+
+		return foodNames.Concat(dishNames).ToList();
+	}
+
+	private static List<string> ForManager(Manager manager)
+	{
+		var orders = Table<Order>().Where((o) => o.Manager == manager);
+		var dishesInOrdersNames = orders.Select(Format);
+
+		return dishesInOrdersNames.ToList();
+	}
+
+	private static List<string> ForCourier(Courier courier) => new();
+
+	private static List<string> ForCook(Cook cook) => new();
 
 	private static List<string> ForDishesType(DishType dishType)
 	{
@@ -73,5 +102,9 @@ public static class Dependencies
 
 	private static string Format(Food food) => FromTable(food.ToString(), "Блюда");
 
+	private static string Format(Order order) => FromTable(order.ToString(), "Заказ");
+
 	private static string FromTable(string item, string tableName) => $"{item} из таблицы {tableName}";
+
+	private static IEnumerable<T> Table<T>() where T : class => DbWorker.Context.GetTable<T>().AsEnumerable();
 }
