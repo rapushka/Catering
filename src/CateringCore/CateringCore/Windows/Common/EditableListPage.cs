@@ -45,7 +45,7 @@ public abstract class EditableListPage<T> : Page
 
 	protected abstract void SetupColumns();
 
-	protected void UpdateTableView() => DataGrid.Setup<T>(Filter);
+	protected virtual void UpdateTableView() => DataGrid.Setup<T>(Filter);
 
 	protected abstract bool Filter(T item);
 

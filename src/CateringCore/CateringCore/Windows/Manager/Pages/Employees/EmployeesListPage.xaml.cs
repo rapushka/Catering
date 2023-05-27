@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
@@ -23,6 +24,8 @@ public partial class EmployeesListPage
 
 		// TODO: init comboboxes
 	}
+
+	protected override void UpdateTableView() => DataGrid.Setup<User>(Filter, DbWorker.Users);
 
 	protected override bool Filter(User item) => true;
 
