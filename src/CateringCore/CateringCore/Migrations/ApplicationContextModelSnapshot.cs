@@ -123,11 +123,12 @@ namespace CateringCore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
 
                     b.ToTable("Dishes");
                 });
@@ -363,6 +364,17 @@ namespace CateringCore.Migrations
                     b.HasIndex("ManagerId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("CateringCore.Model.Dish", b =>
+                {
+                    b.HasOne("CateringCore.Model.DishType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Type");
                 });
 
             modelBuilder.Entity("CateringCore.Model.DishInOrder", b =>

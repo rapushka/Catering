@@ -9,7 +9,13 @@ public static class DataGridColumnsExtensions
 {
 	private const string Empty = "";
 
-	public static void AddTextColumn
+	public static DataGrid ClearColumns(this DataGrid @this)
+	{
+		@this.Columns.Clear();
+		return @this;
+	}
+
+	public static DataGrid AddTextColumn
 	(
 		this DataGrid @this,
 		string header,
@@ -17,7 +23,8 @@ public static class DataGridColumnsExtensions
 		Visibility visibility = Visibility.Visible,
 		bool isReadonly = false
 	)
-		=> @this.Columns.Add
+	{
+		@this.Columns.Add
 		(
 			new DataGridTextColumn
 			{
@@ -27,8 +34,10 @@ public static class DataGridColumnsExtensions
 				IsReadOnly = isReadonly,
 			}
 		);
+		return @this;
+	}
 
-	public static void AddComboBoxColumn<TProperty>
+	public static DataGrid AddComboBoxColumn<TProperty>
 	(
 		this DataGrid @this,
 		string header,
@@ -38,7 +47,8 @@ public static class DataGridColumnsExtensions
 		string selectedValuePath = Empty,
 		Visibility visibility = Visibility.Visible
 	)
-		=> @this.Columns.Add
+	{
+		@this.Columns.Add
 		(
 			new DataGridComboBoxColumn
 			{
@@ -50,4 +60,6 @@ public static class DataGridColumnsExtensions
 				Visibility = visibility,
 			}
 		);
+		return @this;
+	}
 }

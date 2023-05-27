@@ -1,11 +1,9 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace CateringCore.Model;
 
 public class Order : Table
 {
-	[Key] public int      Id             { get; set; }
 	public       Manager  Manager        { get; set; } = null!;
 	public       Courier? Courier        { get; set; }
 	public       Car?     Car            { get; set; }
@@ -17,4 +15,6 @@ public class Order : Table
 	public       decimal  AdvanceAmount  { get; set; }
 	public       string   State          { get; set; } = null!;
 	public       DateTime Date           { get; set; }
+
+	public override string ToString() => "Заказ😭";
 }

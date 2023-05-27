@@ -1,9 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace CateringCore.Model;
 
-public class FoodType : Table
+public class FoodType : Table, ITitledTable
 {
-	[Key] public int    Id    { get; set; }
-	public       string Title { get; set; } = null!;
+	public string Title { get; set; } = null!;
+
+	public override string ToString() => Title;
 }
