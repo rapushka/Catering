@@ -2,10 +2,8 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
-using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
 using OrganizerCore.Windows.Pages.StudentsTab;
 
@@ -35,8 +33,6 @@ public partial class DishesListPage
 	protected override string NameOfItemType => "посуду";
 
 	protected override IEnumerable<UIElement> EditItemElements => ApplyItemButton.AsArray();
-
-	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
 
 	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{

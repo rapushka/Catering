@@ -2,10 +2,8 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
-using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
 using OrganizerCore.Windows.Pages.StudentsTab;
 
@@ -16,9 +14,6 @@ public partial class FoodsListPage
 	public FoodsListPage() => InitializeComponent();
 
 	protected override DataGrid DataGrid => FoodDataGrid;
-
-	private static IEnumerable<FoodType>     FoodTypes      => DbWorker.Context.FoodTypes.Observe();
-	private static IEnumerable<FoodCategory> FoodCategories => DbWorker.Context.FoodCategories.Observe();
 
 	protected override string NameOfItemType => "блюдо";
 
