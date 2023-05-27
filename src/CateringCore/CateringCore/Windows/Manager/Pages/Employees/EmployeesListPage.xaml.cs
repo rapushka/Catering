@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
-using CateringCore.Windows.Pages.Common;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Employees;
