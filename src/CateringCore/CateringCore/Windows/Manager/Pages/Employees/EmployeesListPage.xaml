@@ -8,7 +8,7 @@
                          xmlns:model="clr-namespace:CateringCore.Model"
                          mc:Ignorable="d"
                          d:DesignHeight="666" d:DesignWidth="980"
-                         Title="Виды блюд"
+                         Title="Работники"
                          Loaded="Page_OnLoaded">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -64,7 +64,8 @@
                           Margin="5,0,15,0"
                           FontFamily="Verdana" FontSize="14"
                           Height="25"
-                          VerticalAlignment="Center" />
+                          VerticalAlignment="Center"
+                          SelectionChanged="UpdateSearch" />
 
                 <Border Background="{DynamicResource Search}" Height="25"
                         Margin="5" Width="25" />
@@ -75,65 +76,63 @@
                         HorizontalAlignment="Stretch">
                 <DataGrid
                     Name="EmployeesDataGrid"
-                    Height="263" Margin="0,0,0.4,0" />
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    Height="263" Margin="0,0,0.4,0"
+                    SelectedCellsChanged="OnItemSelected" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Margin="0,1.8,0,5" Grid.ColumnSpan="2" Grid.Column="0">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Top"
-                        HorizontalAlignment="Center"
-                        Margin="2,0,1,0">
-                <Button Content="Добавить"
-                        FontFamily="Verdana"
-                        FontSize="16"
-                        Height="71"
-                        Style="{DynamicResource ButtonStyle}"
-                        Width="338" />
-                <Button Content="Редактировать"
-                        FontFamily="Verdana"
-                        FontSize="16"
-                        Height="71"
-                        Style="{DynamicResource ButtonStyle}"
-                        Width="320" />
+                        HorizontalAlignment="Right"
+                        Margin="5,0">
                 <Button Content="Удалить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="71"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="320" />
+                        Width="320"
+                        Click="RemoveItem" />
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="0" Margin="5,5,5,4">
             <StackPanel>
                 <TextBlock Text="Должность:"
                            FontFamily="Verdana" FontSize="14" />
-                <ComboBox FontFamily="Verdana" FontSize="14" />
+                <ComboBox Name="EditPositionComboBox"
+                          FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Фамилия:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditLastNameTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Имя:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditFirstNameTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Отчество:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditMiddleNameTextBox"
+                         FontFamily="Verdana" FontSize="14" />
 
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="1" Margin="5,9,5,5">
-            <StackPanel>
-                <TextBlock Text=""
-                           FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" Width="0" />
+            <StackPanel
+                VerticalAlignment="Bottom">
                 <TextBlock Text="Телефон:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditPhoneTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Логин:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditLoginTextBox"
+                         FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Пароль:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="EditPasswordTextBox"
+                         FontFamily="Verdana" FontSize="14" />
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Margin="0,1,0,0.2" Grid.ColumnSpan="2" Grid.Column="0">
@@ -144,7 +143,8 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="327"
-                        Margin="5,4">
+                        Margin="5,4"
+                        Click="AddItem">
                 </Button>
                 <Button Name="ApplyButton"
                         Content="Применить изменения"
@@ -152,15 +152,16 @@
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
-                        Margin="5,4" Width="311" />
+                        Margin="5,4" Width="311"
+                        Click="ApplyItem" />
                 <Button Content="Сбросить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4">
-                </Button>
+                        Margin="5,4"
+                        Click="ResetItem" />
             </StackPanel>
         </Border>
     </Grid>
