@@ -16,4 +16,7 @@ public static class ComboBoxExtensions
 		@this.ItemsSource = new T { Title = "Все" }.Concat(itemSource);
 		@this.SelectedIndex = 0;
 	}
+
+	public static bool IsMatchSearch<T>(this ComboBox @this, T entry)
+		=> @this.SelectedIndex == 0 || Equals(entry, (T)@this.SelectedItem);
 }

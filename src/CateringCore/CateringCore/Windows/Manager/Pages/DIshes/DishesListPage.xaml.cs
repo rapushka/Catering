@@ -48,7 +48,6 @@ public partial class DishesListPage
 		base.Page_OnLoaded(sender, e);
 
 		EditTypeComboBox.ItemsSource = DishTypes;
-
 		SearchTypeComboBox.SetupSearch(itemSource: DishTypes);
 	}
 
@@ -64,8 +63,7 @@ public partial class DishesListPage
 
 	protected override bool Filter(Dish dish)
 		=> dish.Title.Contains(SearchTitleTextBox.Text)
-		   && (SearchTypeComboBox.SelectedIndex == 0
-		       || dish.Type == (DishType)SearchTypeComboBox.SelectedItem);
+		   && SearchTypeComboBox.IsMatchSearch(dish.Type);
 
 	protected override void UpdateItem(ref Dish selected, Dish newItem)
 	{

@@ -7,6 +7,7 @@ using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
+using OrganizerCore.Windows.Pages.StudentsTab;
 
 namespace CateringCore.Windows.Pages.Foods;
 
@@ -16,15 +17,22 @@ public partial class FoodsListPage
 
 	protected override DataGrid DataGrid => FoodDataGrid;
 
+	private static IEnumerable<FoodType>     FoodTypes      => DbWorker.Context.FoodTypes.Observe();
+	private static IEnumerable<FoodCategory> FoodCategories => DbWorker.Context.FoodCategories.Observe();
+
+	protected override string NameOfItemType => "Блюдо";
+
+	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
+
 	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		base.Page_OnLoaded(sender, e);
 
-		EditCategoryComboBox.ItemsSource = DbWorker.Context.FoodCategories.Observe();
-		EditTypeComboBox.ItemsSource = DbWorker.Context.FoodTypes.Observe();
+		EditCategoryComboBox.ItemsSource = FoodCategories;
+		EditTypeComboBox.ItemsSource = FoodTypes;
 
-		EditCategoryComboBox.ItemsSource = DbWorker.Context.FoodCategories.Observe();
-		EditTypeComboBox.ItemsSource = DbWorker.Context.FoodTypes.Observe();
+		EditCategoryComboBox.SetupSearch(FoodCategories);
+		EditTypeComboBox.SetupSearch(FoodTypes);
 	}
 
 	protected override void WriteItemToControls(Food? item)
@@ -47,10 +55,6 @@ public partial class FoodsListPage
 			Weight = double.Parse(EditWeightTextBox.Text),
 			Price = decimal.Parse(EditPriceTextBox.Text),
 		};
-
-	protected override string NameOfItemType => "Блюдо";
-
-	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
 	protected override void SetupColumns()
 	{
