@@ -41,7 +41,7 @@
                     Height="25" Width="341"
                     FontFamily="Verdana" FontSize="14"
                     Margin="0,11,0,10.4"
-                    TextChanged="SearchTitleTextBox_OnTextChanged" />
+                    TextChanged="UpdateSearch" />
                 <TextBlock Text="Вид:"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
@@ -52,7 +52,7 @@
                     Height="25" Width="397"
                     FontFamily="Verdana" FontSize="14"
                     Margin="0,11,0,10.4"
-                    SelectionChanged="SearchTypeComboBox_OnSelectionChanged" />
+                    SelectionChanged="UpdateSearch" />
                 <Border Background="{DynamicResource Search}"
                         Margin="5" Width="25" Height="25" />
             </StackPanel>

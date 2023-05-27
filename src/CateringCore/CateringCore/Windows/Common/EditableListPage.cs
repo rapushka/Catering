@@ -109,5 +109,9 @@ public abstract class EditableListPage<T> : Page
 		DataGrid.SelectedItem = null;
 	}
 
-	private bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
+	private   bool EnsureSelected(out T item) => DataGrid.EnsureSelected(NameOfItemType, out item);
+	protected void UpdateSearch(object sender, SelectionChangedEventArgs e) => UpdateTableView();
+	protected void UpdateSearch(object sender, TextChangedEventArgs e) => UpdateTableView();
+
+	protected void NavigateTo<TPage>() where TPage : Page, new() => NavigationService!.Navigate(new TPage());
 }

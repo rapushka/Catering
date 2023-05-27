@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
@@ -16,9 +14,6 @@ namespace CateringCore.Windows.Pages;
 public partial class DishesListPage
 {
 	public DishesListPage() => InitializeComponent();
-
-	private void DishesTypesButton_OnClick(object sender, RoutedEventArgs e)
-		=> NavigationService!.Navigate(new DishesTypesListPage());
 
 	protected override Dish ReadItemFromControls()
 		=> new()
@@ -72,7 +67,5 @@ public partial class DishesListPage
 		selected.Type = newItem.Type;
 	}
 
-	private void SearchTypeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateTableView();
-
-	private void SearchTitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e) => UpdateTableView();
+	private void DishesTypesButton_OnClick(object sender, RoutedEventArgs e) => NavigateTo<DishesTypesListPage>();
 }

@@ -20,7 +20,7 @@ public partial class FoodsListPage
 	private static IEnumerable<FoodType>     FoodTypes      => DbWorker.Context.FoodTypes.Observe();
 	private static IEnumerable<FoodCategory> FoodCategories => DbWorker.Context.FoodCategories.Observe();
 
-	protected override string NameOfItemType => "Блюдо";
+	protected override string NameOfItemType => "блюдо";
 
 	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
@@ -31,8 +31,8 @@ public partial class FoodsListPage
 		EditCategoryComboBox.ItemsSource = FoodCategories;
 		EditTypeComboBox.ItemsSource = FoodTypes;
 
-		EditCategoryComboBox.SetupSearch(FoodCategories);
-		EditTypeComboBox.SetupSearch(FoodTypes);
+		SearchCategoryComboBox.SetupSearch(FoodCategories);
+		SearchTypeComboBox.SetupSearch(FoodTypes);
 	}
 
 	protected override void WriteItemToControls(Food? item)
@@ -69,7 +69,10 @@ public partial class FoodsListPage
 			;
 	}
 
-	protected override bool Filter(Food item) => true;
+	protected override bool Filter(Food food)
+		=> food.Title.Contains(SearchTitleTextBox.Text)
+		   && SearchCategoryComboBox.IsMatchSearch(food.Category)
+		   && SearchTypeComboBox.IsMatchSearch(food.Type);
 
 	protected override void UpdateItem(ref Food selected, Food newItem)
 	{
@@ -84,6 +87,4 @@ public partial class FoodsListPage
 	private void OpenCategories(object sender, RoutedEventArgs e) => NavigateTo<FoodCategoriesListPage>();
 
 	private void OpenTypes(object sender, RoutedEventArgs e) => NavigateTo<FoodTypesListPage>();
-
-	private void NavigateTo<T>() where T : Page, new() => NavigationService!.Navigate(new T());
 }
