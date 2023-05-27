@@ -13,6 +13,8 @@ namespace CateringCore.Windows.Pages.Employees;
 
 public partial class EmployeesListPage
 {
+	private const string UnableToChangePositionMessage = "Чтобы перевести сотрудника на другую должность "
+	                                                     + "— удалите его и добавьте заново";
 	public EmployeesListPage() => InitializeComponent();
 
 	protected override DataGrid DataGrid => EmployeesDataGrid;
@@ -85,6 +87,11 @@ public partial class EmployeesListPage
 
 	protected override void UpdateItem(ref User selected, User newItem)
 	{
+		if (selected.Position != newItem.Position)
+		{
+			throw new InvalidOperationException(UnableToChangePositionMessage);
+		}
+
 		selected.FirstName = newItem.FirstName;
 		selected.LastName = newItem.LastName;
 		selected.MiddleName = newItem.MiddleName;
