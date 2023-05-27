@@ -92,8 +92,9 @@ public abstract class EditableListPage<T> : Page
 			if (EnsureSelected(out var item)
 			    && MessageBoxUtils.ConfirmDeletion(item))
 			{
-				DbWorker.Context.GetTable<T>().Observe().Remove(item);
+				DbWorker.Context.Remove(item);
 				DbWorker.SaveAll();
+				UpdateTableView();
 			}
 		}
 		catch (Exception ex)
