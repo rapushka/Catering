@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
+using OrganizerCore.Windows.Pages.StudentsTab;
 
 namespace CateringCore.Windows.Pages.Employees;
 
@@ -22,7 +24,8 @@ public partial class EmployeesListPage
 	{
 		base.Page_OnLoaded(sender, e);
 
-		// TODO: init comboboxes
+		SearchPositionComboBox.SetupSearch(User.PositionName.All);
+		EditPositionComboBox.SetupEdit(User.PositionName.All);
 	}
 
 	protected override void UpdateTableView() => DataGrid.Setup<User>(Filter, DbWorker.Users);
@@ -32,15 +35,27 @@ public partial class EmployeesListPage
 #region Repeating fields 4 (5) times
 
 	protected override User ReadItemFromControls()
-		=> new()
+	{
+		User user = EditPositionComboBox.SelectedItem switch
 		{
-			FirstName = EditFirstNameTextBox.Text,
-			LastName = EditLastNameTextBox.Text,
-			MiddleName = EditMiddleNameTextBox.Text,
-			Login = EditLoginTextBox.Text,
-			Password = EditPasswordTextBox.Text,
-			PhoneNumber = EditPhoneNumberTextBox.Text,
+			Manager       => new Manager(),
+			Model.Courier => new Model.Courier(),
+			Model.Cook    => new Model.Cook(),
+			_             => throw new ArgumentOutOfRangeException(),
 		};
+		return SetupUser(user);
+	}
+
+	private User SetupUser(User user)
+	{
+		user.FirstName = EditFirstNameTextBox.Text;
+		user.LastName = EditLastNameTextBox.Text;
+		user.MiddleName = EditMiddleNameTextBox.Text;
+		user.Login = EditLoginTextBox.Text;
+		user.Password = EditPasswordTextBox.Text;
+		user.PhoneNumber = EditPhoneNumberTextBox.Text;
+		return user;
+	}
 
 	protected override void WriteItemToControls(User? item)
 	{
@@ -50,6 +65,7 @@ public partial class EmployeesListPage
 		EditLoginTextBox.Text = item?.Login;
 		EditPasswordTextBox.Text = item?.Password;
 		EditPhoneNumberTextBox.Text = item?.PhoneNumber;
+		EditPositionComboBox.SelectedItem = item?.Position;
 	}
 
 	protected override void SetupColumns()

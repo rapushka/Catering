@@ -16,12 +16,21 @@ public class User : Table
 	public string Position
 		=> this switch
 		{
-			Manager => "Менеджер",
-			Courier => "Курьер",
-			Cook    => "Повар",
+			Manager => PositionName.Manager,
+			Courier => PositionName.Courier,
+			Cook    => PositionName.Cook,
 			_       => throw new ArgumentException("Неизвестная должность")
 		};
 
 	public bool Authorize(string login, string password)
 		=> Login == login && Password == password;
+
+	public static class PositionName
+	{
+		public const string Manager = "Менеджер";
+		public const string Courier = "Курьер";
+		public const string Cook = "Повар";
+
+		public static string[] All => new[] { Manager, Courier, Cook };
+	}
 }
