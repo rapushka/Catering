@@ -64,7 +64,7 @@ public partial class DishesListPage
 		DataGrid
 			.ClearColumns()
 			.AddTextColumn("Наименование", nameof(Dish.Title))
-			.AddComboBoxColumn("Тип", nameof(Dish.Type), DishTypes, nameof(DishType.Title), nameof(DishType.Id))
+			.AddTextColumn("Тип", nameof(Dish.Type))
 			.AddTextColumn("Стоимость", nameof(Dish.Price))
 			;
 	}
