@@ -1,6 +1,6 @@
 namespace CateringCore.Model;
 
-public class Dish : Table
+public class Dish : Table, ITitledTable
 {
 	public       string   Title { get; set; } = null!;
 	public       DishType Type  { get; set; } = null!;

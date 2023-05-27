@@ -2,8 +2,10 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
+using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
@@ -13,6 +15,17 @@ public partial class FoodsListPage
 	public FoodsListPage() => InitializeComponent();
 
 	protected override DataGrid DataGrid => FoodDataGrid;
+
+	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
+	{
+		base.Page_OnLoaded(sender, e);
+
+		EditCategoryComboBox.ItemsSource = DbWorker.Context.FoodCategories.Observe();
+		EditTypeComboBox.ItemsSource = DbWorker.Context.FoodTypes.Observe();
+
+		EditCategoryComboBox.ItemsSource = DbWorker.Context.FoodCategories.Observe();
+		EditTypeComboBox.ItemsSource = DbWorker.Context.FoodTypes.Observe();
+	}
 
 	protected override void WriteItemToControls(Food? item)
 	{

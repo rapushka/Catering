@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -8,6 +9,7 @@ using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.DbWorking;
 using OrganizerCore.Tools.Extensions;
+using OrganizerCore.Windows.Pages.StudentsTab;
 
 namespace CateringCore.Windows.Pages;
 
@@ -41,16 +43,13 @@ public partial class DishesListPage
 
 	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
 
-	private static IEnumerable<DishType> ItemAll => new DishType { Title = "Все" }.AsArray();
-
 	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
 	{
 		base.Page_OnLoaded(sender, e);
 
 		EditTypeComboBox.ItemsSource = DishTypes;
 
-		SearchTypeComboBox.ItemsSource = ItemAll.Concat(DishTypes);
-		SearchTypeComboBox.SelectedIndex = 0;
+		SearchTypeComboBox.SetupSearch(itemSource: DishTypes);
 	}
 
 	protected override void SetupColumns()

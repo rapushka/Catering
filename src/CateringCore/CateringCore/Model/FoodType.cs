@@ -1,6 +1,6 @@
 namespace CateringCore.Model;
 
-public class FoodType : Table
+public class FoodType : Table, ITitledTable
 {
 	public string Title { get; set; } = null!;
 
