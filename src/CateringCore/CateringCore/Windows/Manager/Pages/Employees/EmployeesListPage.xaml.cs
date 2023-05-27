@@ -40,6 +40,4 @@ public partial class EmployeesListPage
 
 	protected override void UpdateItem(ref User selected, User newItem)
 		=> throw new NotImplementedException();
-
-	private void OnSearchChange(object sender, TextChangedEventArgs e) => UpdateTableView();
 }
