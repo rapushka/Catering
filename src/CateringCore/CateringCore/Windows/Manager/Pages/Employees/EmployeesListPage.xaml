@@ -123,7 +123,7 @@
                 VerticalAlignment="Bottom">
                 <TextBlock Text="Телефон:"
                            FontFamily="Verdana" FontSize="14" />
-                <TextBox Name="EditPhoneTextBox"
+                <TextBox Name="EditPhoneNumberTextBox"
                          FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Логин:"
                            FontFamily="Verdana" FontSize="14" />

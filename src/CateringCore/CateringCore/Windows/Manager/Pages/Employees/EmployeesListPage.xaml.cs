@@ -14,30 +14,63 @@ public partial class EmployeesListPage
 
 	protected override DataGrid DataGrid => EmployeesDataGrid;
 
-	protected override string NameOfItemType => "вид блюда";
+	protected override string NameOfItemType => "сотрудника";
+
+	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
+
+	protected override void Page_OnLoaded(object? sender = null, RoutedEventArgs? e = null)
+	{
+		base.Page_OnLoaded(sender, e);
+
+		// TODO: init comboboxes
+	}
+
+	protected override bool Filter(User item) => true;
+
+#region Repeating fields 4 (5) times
 
 	protected override User ReadItemFromControls()
-	{
-		throw new NotImplementedException();
-	}
+		=> new()
+		{
+			FirstName = EditFirstNameTextBox.Text,
+			LastName = EditLastNameTextBox.Text,
+			MiddleName = EditMiddleNameTextBox.Text,
+			Login = EditLoginTextBox.Text,
+			Password = EditPasswordTextBox.Text,
+			PhoneNumber = EditPhoneNumberTextBox.Text,
+		};
 
 	protected override void WriteItemToControls(User? item)
 	{
-		throw new NotImplementedException();
+		EditFirstNameTextBox.Text = item?.FirstName;
+		EditLastNameTextBox.Text = item?.LastName;
+		EditMiddleNameTextBox.Text = item?.MiddleName;
+		EditLoginTextBox.Text = item?.Login;
+		EditPasswordTextBox.Text = item?.Password;
+		EditPhoneNumberTextBox.Text = item?.PhoneNumber;
 	}
-
-	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
 	protected override void SetupColumns()
 	{
 		DataGrid
 			.ClearColumns()
-			.AddTextColumn("Наименование", nameof(FoodType.Title))
+			.AddTextColumn("Имя", nameof(User.FirstName))
+			.AddTextColumn("Фамилия", nameof(User.LastName))
+			.AddTextColumn("Отчество", nameof(User.MiddleName))
+			.AddTextColumn("Номер телефона", nameof(User.PhoneNumber))
+			// TODO: position
 			;
 	}
 
-	protected override bool Filter(User item) => true;
-
 	protected override void UpdateItem(ref User selected, User newItem)
-		=> throw new NotImplementedException();
+	{
+		selected.FirstName = newItem.FirstName;
+		selected.LastName = newItem.LastName;
+		selected.MiddleName = newItem.MiddleName;
+		selected.Login = newItem.Login;
+		selected.Password = newItem.Password;
+		selected.PhoneNumber = newItem.PhoneNumber;
+	}
+
+#endregion
 }
