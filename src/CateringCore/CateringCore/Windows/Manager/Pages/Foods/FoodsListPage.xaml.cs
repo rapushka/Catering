@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
+using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
@@ -36,7 +37,7 @@ public partial class FoodsListPage
 
 	protected override string NameOfItemType => "Блюдо";
 
-	protected override IEnumerable<UIElement> EditItemElements => new UIElement[] { ApplyButton };
+	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
 	protected override void SetupColumns()
 	{

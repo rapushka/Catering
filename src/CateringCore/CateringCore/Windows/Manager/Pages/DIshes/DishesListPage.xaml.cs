@@ -37,11 +37,7 @@ public partial class DishesListPage
 
 	protected override string NameOfItemType => "посуду";
 
-	protected override IEnumerable<UIElement> EditItemElements
-		=> new UIElement[]
-		{
-			ApplyItemButton,
-		};
+	protected override IEnumerable<UIElement> EditItemElements => ApplyItemButton.AsArray();
 
 	private static IEnumerable<DishType> DishTypes => DbWorker.Context.DishTypes.Observe();
 

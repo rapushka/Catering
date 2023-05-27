@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
+using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages.Foods;
@@ -17,7 +18,7 @@ public partial class FoodTypesListPage
 	protected override FoodType ReadItemFromControls()              => new() { Title = EditTitleTextBox.Text };
 	protected override void     WriteItemToControls(FoodType? item) => EditTitleTextBox.Text = item?.Title;
 
-	protected override IEnumerable<UIElement> EditItemElements => new[] { ApplyButton };
+	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
 	protected override void SetupColumns()
 	{

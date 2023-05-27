@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
+using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
@@ -17,7 +18,7 @@ public partial class DishesTypesListPage
 
 	protected override string NameOfItemType => "Виды посуды";
 
-	protected override IEnumerable<UIElement> EditItemElements => new UIElement[] { ApplyItemButton };
+	protected override IEnumerable<UIElement> EditItemElements => ApplyItemButton.AsArray();
 
 	protected override void SetupColumns()
 	{
