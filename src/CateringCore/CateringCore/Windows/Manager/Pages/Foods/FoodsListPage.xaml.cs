@@ -20,8 +20,12 @@ public partial class FoodsListPage
 	{
 		DataGrid
 			.ClearColumns()
+			.AddTextColumn("Тип", nameof(Food.Type))
+			.AddTextColumn("Категория", nameof(Food.Category))
 			.AddTextColumn("Наименование", nameof(Food.Title))
-			// TODO: add other
+			.AddTextColumn("Состав", nameof(Food.Composition))
+			.AddTextColumn("Вес", nameof(Food.Weight))
+			.AddTextColumn("Цена", nameof(Food.Price))
 			;
 	}
 
