@@ -9,7 +9,7 @@ using OrganizerCore.Tools.Extensions;
 using OrganizerCore.Windows.Pages.StudentsTab;
 using static CateringCore.Model.User;
 
-namespace CateringCore.Windows.Pages.Employees;
+namespace CateringCore.Windows.Pages.Cars;
 
 public partial class CarsListPage
 {
