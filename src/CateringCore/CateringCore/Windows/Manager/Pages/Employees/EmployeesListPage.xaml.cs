@@ -34,7 +34,7 @@ public partial class EmployeesListPage
 	protected override void UpdateTableView() => DataGrid.Setup<User>(Filter, DbWorker.Users);
 
 	protected override bool Filter(User item)
-		=> item.Position == SearchPositionComboBox.GetSelectedText()
+		=> SearchPositionComboBox.IsMatchSearch(item.Position)
 		   && item.LastName.Contains(SearchLastNameTextBox.Text)
 		   && item.PhoneNumber.Contains(SearchPhoneNumberTextBox.Text);
 

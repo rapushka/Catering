@@ -27,21 +27,26 @@ public partial class CarsListPage
 		EditTypeComboBox.SetupEdit(Car.TypeName.All);
 	}
 
-	protected override bool Filter(Car item) 
+	protected override bool Filter(Car item)
 		=> item.Number.Contains(SearchNumberTextBox.Text)
-		&& item.Mark.Contains(SearchMarkTextBox.Text)
-		&& item.Type == SearchTypeComboBox.GetSelectedText();
+		   && item.Mark.Contains(SearchMarkTextBox.Text)
+		   && SearchTypeComboBox.IsMatchSearch(item.Type);
 
 #region Repeating fields 4 (5) times
 
 	protected override Car ReadItemFromControls()
-	{
-		throw new NotImplementedException();
-	}
+		=> new()
+		{
+			Mark = EditMarkTextBox.Text,
+			Type = EditTypeComboBox.GetSelectedText(),
+			Number = EditNumberTextBox.Text,
+		};
 
 	protected override void WriteItemToControls(Car? item)
 	{
-		throw new NotImplementedException();
+		EditMarkTextBox.Text = item?.Mark;
+		EditTypeComboBox.SelectedItem = item?.Type;
+		EditNumberTextBox.Text = item?.Number;
 	}
 
 	protected override void SetupColumns()
@@ -57,7 +62,9 @@ public partial class CarsListPage
 
 	protected override void UpdateItem(ref Car selected, Car newItem)
 	{
-		throw new NotImplementedException();
+		selected.Mark = newItem.Mark;
+		selected.Type = newItem.Type;
+		selected.Number = newItem.Number;
 	}
 
 #endregion
