@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
+using OrganizerCore.Windows.Pages.StudentsTab;
 
 namespace CateringCore.Windows.Pages.Cars;
 
@@ -25,7 +26,10 @@ public partial class CarsListPage
 		// TODO: Comboboxes
 	}
 
-	protected override bool Filter(Car item) => true;
+	protected override bool Filter(Car item) 
+		=> item.Number.Contains(SearchNumberTextBox.Text)
+		&& item.Mark.Contains(SearchMarkTextBox.Text)
+		&& item.Type == SearchTypeComboBox.GetSelectedText();
 
 #region Repeating fields 4 (5) times
 
