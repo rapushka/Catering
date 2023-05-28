@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
+using CateringCore.Tools;
 using CateringCore.Windows;
 using CateringCore.Windows.Cook;
 using CateringCore.Windows.Courier;
@@ -39,6 +40,7 @@ public partial class AuthenticationWindow
 			_               => throw new ArgumentException("Unknown role!"),
 		};
 
+		Session.ActiveUser = user;
 		Hide();
 		userWindow.ShowDialog();
 		Close();
