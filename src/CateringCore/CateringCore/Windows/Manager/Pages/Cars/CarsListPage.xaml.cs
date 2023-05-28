@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using CateringCore.Model;
@@ -44,7 +46,7 @@ public partial class CarsListPage
 	protected override void WriteItemToControls(Car? item)
 	{
 		EditMarkTextBox.Text = item?.Mark;
-		EditTypeComboBox.Text = item?.Type;
+		EditTypeComboBox.SelectedItem = item?.Type;
 		EditNumberTextBox.Text = item?.Number;
 	}
 
