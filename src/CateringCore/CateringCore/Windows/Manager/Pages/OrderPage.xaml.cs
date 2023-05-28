@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using CateringCore.Model;
-using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
 
@@ -14,9 +13,9 @@ public partial class OrdersListPage
 
 	private void Page_Load(object sender, RoutedEventArgs e)
 	{
-		OrdersDataGrid.Setup<Order>(Filter);
-		FoodsInOrderDataGrid.Setup<FoodInOrder>(Filter);
-		DishesInOrderDataGrid.Setup<DishInOrder>(Filter);
+		OrdersDataGrid.SetupWithColumns<Order>(Filter);
+		FoodsInOrderDataGrid.SetupWithColumns<FoodInOrder>(Filter);
+		DishesInOrderDataGrid.SetupWithColumns<DishInOrder>(Filter);
 	}
 
 	private bool Filter(Order order)             => true;

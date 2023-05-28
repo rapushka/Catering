@@ -6,7 +6,7 @@
       mc:Ignorable="d"
       d:DesignHeight="666" d:DesignWidth="980"
       Title="Заказы"
-      Loaded="lementedE">
+      Loaded="Page_Load">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="303*" />
