@@ -6,7 +6,8 @@
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
       Title="EditOrderFirstPage"
-      d:DesignHeight="666" d:DesignWidth="980">
+      d:DesignHeight="666" d:DesignWidth="980"
+      Loaded="Page_Load">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />

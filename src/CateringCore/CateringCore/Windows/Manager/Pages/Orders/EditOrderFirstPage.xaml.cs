@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
+using OrganizerCore.Tools;
 
 namespace CateringCore.Windows.Pages.Orders;
 
@@ -15,6 +15,37 @@ public partial class EditOrderFirstPage
 	{
 		_order = order;
 		InitializeComponent();
+	}
+
+	private void Page_Load(object sender, RoutedEventArgs e) => Load();
+
+	private void NextButton_Click(object sender, RoutedEventArgs e)
+	{
+		try
+		{
+			Save();
+			DbWorker.SaveAll();
+			// TODO: open next page
+		}
+		catch (Exception ex)
+		{
+			var inner = ex.InnerException is not null
+				? $"Внутреннее исключение: {ex.InnerException?.Message}"
+				: string.Empty;
+
+			MessageBoxUtils.ShowError
+			(
+				$"Ошибка при сохранении изменений\n"
+				+ $"Текст ошибки: {ex.Message}\n\n"
+				+ inner
+			);
+		}
+	}
+
+	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+	{
+		DbWorker.ResetAll();
+		NavigationService!.GoBack();
 	}
 
 	private void Load()
@@ -37,17 +68,5 @@ public partial class EditOrderFirstPage
 		_order.Email = EmailTextBox.Text;
 		_order.NumberOfPeople = int.Parse(NumberOfPeopleTextBox.Text);
 		_order.AdvanceAmount = decimal.Parse(AdvanceAmountTextBox.Text);
-	}
-
-	private void NextButton_Click(object sender, RoutedEventArgs e)
-	{
-		DbWorker.SaveAll();
-		// TODO: open next page
-	}
-
-	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
-	{
-		DbWorker.ResetAll();
-		NavigationService!.GoBack();
 	}
 }

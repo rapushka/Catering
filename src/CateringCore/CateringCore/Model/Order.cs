@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static Catering.DbWorking.DbWorker;
 
@@ -21,8 +22,20 @@ public class Order : Table
 
 	public decimal Cost => FoodsInThisOrder.Sum((fio) => fio.Cost) + DishesInThisOrder.Sum((dio) => dio.Cost);
 
-	private IQueryable<FoodInOrder> FoodsInThisOrder  => Context.FoodsInOrders.Where((fio) => fio.Order == this);
-	private IQueryable<DishInOrder> DishesInThisOrder => Context.DishesInOrders.Where((dio) => dio.Order == this);
+	private IEnumerable<FoodInOrder> FoodsInThisOrder
+		=> Context.FoodsInOrders.AsEnumerable().Where((fio) => fio.Order == this);
+	private IEnumerable<DishInOrder> DishesInThisOrder
+		=> Context.DishesInOrders.AsEnumerable().Where((dio) => dio.Order == this);
 
 	public override string ToString() => $"заказ номер {Id} клиента {Fullname}";
+
+	public static class StateName
+	{
+		public const string Processing = "В обработке";
+		public const string Processed = "Обработан";
+		public const string ReadyForDelivery = "Готов к доставке";
+		public const string Delivered = "Доставлен";
+
+		public static string[] All => new[] { Processing, Processed, ReadyForDelivery, Delivered };
+	}
 }

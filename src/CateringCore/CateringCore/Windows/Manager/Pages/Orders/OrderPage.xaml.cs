@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
@@ -34,6 +35,7 @@ public partial class OrdersListPage
 		{
 			Manager = (Manager)Session.ActiveUser,
 			OrderDate = DateTime.Now,
+			State = Order.StateName.All.First(),
 		};
 		DbWorker.Context.Orders.Add(newOrder);
 		EditOrder(newOrder);

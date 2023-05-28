@@ -66,6 +66,9 @@
                 <TextBlock Text="Заказ"
                            FontFamily="Verdana" FontSize="14" />
                 <DataGrid Name="OrdersDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           Height="420" Margin="0,0,0.4,0" />
             </StackPanel>
         </Border>
@@ -74,10 +77,16 @@
                 <TextBlock Text="Блюда"
                            FontFamily="Verdana" FontSize="14" />
                 <DataGrid Name="FoodsInOrderDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           Height="257" Margin="0,0,0.4,0" />
                 <TextBlock Text="Посуда"
                            FontFamily="Verdana" FontSize="14" />
                 <DataGrid Name="DishesInOrderDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           Height="144" Margin="0,0,0.4,0">
                 </DataGrid>
             </StackPanel>

@@ -3,7 +3,6 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Cook\CookMainWindow.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Courier\CourierMainWindow.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\ManagerMainWindow.baml
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\OrderPage.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\App.baml
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\AuthenticationWindow.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Cook\CookMainWindow.g.cs
@@ -15,7 +14,6 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodCategoriesListPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodsListPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Foods\FoodTypesListPage.g.cs
-C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\OrderPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\App.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore_MarkupCompile.cache
@@ -95,3 +93,7 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\ref\CateringCore.dll
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Cars\CarsListPage.g.cs
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Cars\CarsListPage.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Orders\OrderPage.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Orders\OrderPage.g.cs
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Orders\EditOrderFirstPage.baml
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Orders\EditOrderFirstPage.g.cs
