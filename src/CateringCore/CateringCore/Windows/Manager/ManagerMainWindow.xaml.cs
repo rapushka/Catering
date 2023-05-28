@@ -23,7 +23,7 @@ public partial class ManagerMainWindow
 	private void ManagerMainWindow_OnLoaded(object sender, RoutedEventArgs e)
 		=> EmployeeFullnameTextBlock.Text = _manager.Fullname + ManagerSuffix;
 
-	private void OrderButton_OnClick(object sender, RoutedEventArgs e) => Open<OrderPage>();
+	private void OrderButton_OnClick(object sender, RoutedEventArgs e) => Open<OrdersListPage>();
 
 	private void EmployeesButton_OnClick(object sender, RoutedEventArgs e) => Open<EmployeesListPage>();
 
