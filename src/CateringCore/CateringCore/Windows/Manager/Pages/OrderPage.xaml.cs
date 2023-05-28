@@ -8,7 +8,7 @@ public partial class OrdersListPage
 {
 	public OrdersListPage() => InitializeComponent();
 
-#pragma warning disable CA1822 - fuck you
+#pragma warning disable CA1822
 	private Order? SelectedOrder => OrdersDataGrid.SelectedItem as Order;
 #pragma warning restore CA1822
 
