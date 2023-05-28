@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
-using OrganizerCore.DbWorking;
 using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
 

@@ -24,7 +24,7 @@ public partial class ManagerMainWindow
 
 	private void OrderButton_OnClick(object sender, RoutedEventArgs e) => Open<OrderPage>();
 
-	private void EmployeesButton_OnClick(object sender, RoutedEventArgs e) => Open<CarsListPage>();
+	private void EmployeesButton_OnClick(object sender, RoutedEventArgs e) => Open<EmployeesListPage>();
 
 	private void FoodButton_OnClick(object sender, RoutedEventArgs e) => Open<FoodsListPage>();
 

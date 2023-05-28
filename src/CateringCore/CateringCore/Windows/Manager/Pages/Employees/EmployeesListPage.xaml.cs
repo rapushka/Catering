@@ -11,11 +11,11 @@ using static CateringCore.Model.User;
 
 namespace CateringCore.Windows.Pages.Employees;
 
-public partial class CarsListPage
+public partial class EmployeesListPage
 {
 	private const string UnableToChangePositionMessage = "Чтобы перевести сотрудника на другую должность "
 	                                                     + "— удалите его и добавьте заново";
-	public CarsListPage() => InitializeComponent();
+	public EmployeesListPage() => InitializeComponent();
 
 	protected override DataGrid DataGrid => EmployeesDataGrid;
 
