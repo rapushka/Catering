@@ -33,8 +33,8 @@
                 <TextBlock Text="Адрес:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
                 <TextBox Name="AddressTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
                          Width="402" />
-                <TextBlock Text="Дата:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <xctk:DateTimePicker Name="DatePicker" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                <TextBlock Text="Дата и время:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <xctk:DateTimePicker Name="DateTimePicker" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
                                      Width="402" />
                 <TextBlock Text="Электронная почта:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
                 <TextBox Name="EmailTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"

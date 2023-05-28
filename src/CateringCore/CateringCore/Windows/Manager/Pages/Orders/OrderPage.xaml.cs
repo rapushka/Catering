@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
@@ -32,6 +33,7 @@ public partial class OrdersListPage
 		var newOrder = new Order
 		{
 			Manager = (Manager)Session.ActiveUser,
+			OrderDate = DateTime.Now,
 		};
 		DbWorker.Context.Orders.Add(newOrder);
 		EditOrder(newOrder);
@@ -41,6 +43,7 @@ public partial class OrdersListPage
 	{
 		if (OrdersDataGrid.EnsureSelected("заказ", out Order order))
 		{
+			order.OrderDate = DateTime.Now;
 			EditOrder(order);
 		}
 	}
