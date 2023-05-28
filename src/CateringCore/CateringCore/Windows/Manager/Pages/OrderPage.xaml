@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       d:DesignHeight="666" d:DesignWidth="980"
-      Title="Заказы">
+      Title="Заказы"
+      Loaded="lementedE">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="303*" />

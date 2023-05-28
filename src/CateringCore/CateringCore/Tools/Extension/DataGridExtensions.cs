@@ -35,7 +35,7 @@ public static class DataGridExtensions
 	public static bool EnsureSelected<T>(this DataGrid @this, string itemName, out T item)
 		where T : class
 	{
-#pragma warning disable CS8601
+#pragma warning disable CS8601 - that is how out works here
 		item = @this.SelectedItem as T;
 #pragma warning restore CS8601
 		var isSelected = item is not null;
