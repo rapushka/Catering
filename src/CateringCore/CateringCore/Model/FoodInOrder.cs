@@ -2,12 +2,13 @@ namespace CateringCore.Model;
 
 public class FoodInOrder : Table
 {
-	public       Food    Food   { get; set; } = null!;
-	public       Order   Order  { get; set; } = null!;
-	public       Cook?   Cook   { get; set; }
-	public       int     Amount { get; set; }
-	public       decimal Cost   { get; set; }
-	public       string  State  { get; set; } = null!;
+	public Food   Food   { get; set; } = null!;
+	public Order  Order  { get; set; } = null!;
+	public Cook?  Cook   { get; set; }
+	public int    Amount { get; set; }
+	public string State  { get; set; } = null!;
 
-	public override string ToString() => $"Блюдо {Food} в заказе {Order}";
+	public decimal Cost => Food.Price * Amount;
+
+	public override string ToString() => $"{Food} из {Order}";
 }

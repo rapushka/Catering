@@ -25,5 +25,5 @@ public class Order : Table
 	private IQueryable<FoodInOrder> FoodsInThisOrder  => Context.FoodsInOrders.Where((fio) => fio.Order == this);
 	private IQueryable<DishInOrder> DishesInThisOrder => Context.DishesInOrders.Where((dio) => dio.Order == this);
 
-	public override string ToString() => $"Заказ номер {Id} клиента {Fullname}";
+	public override string ToString() => $"заказ номер {Id} клиента {Fullname}";
 }
