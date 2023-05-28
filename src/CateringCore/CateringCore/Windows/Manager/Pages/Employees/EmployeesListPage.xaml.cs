@@ -33,7 +33,10 @@ public partial class EmployeesListPage
 
 	protected override void UpdateTableView() => DataGrid.Setup<User>(Filter, DbWorker.Users);
 
-	protected override bool Filter(User item) => true;
+	protected override bool Filter(User item)
+		=> SearchPositionComboBox.IsMatchSearch(item.Position)
+		   && item.LastName.Contains(SearchLastNameTextBox.Text)
+		   && item.PhoneNumber.Contains(SearchPhoneNumberTextBox.Text);
 
 #region Repeating fields 4 (5) times
 

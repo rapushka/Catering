@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using CateringCore.Model;
 using CateringCore.Windows.Pages;
+using CateringCore.Windows.Pages.Cars;
 using CateringCore.Windows.Pages.Foods;
 using CateringCore.Windows.Pages.Employees;
 
@@ -30,7 +31,7 @@ public partial class ManagerMainWindow
 
 	private void DishesButton_OnClick(object sender, RoutedEventArgs e) => Open<DishesListPage>();
 
-	private void CarsButton_OnClick(object sender, RoutedEventArgs e) { }
+	private void CarsButton_OnClick(object sender, RoutedEventArgs e) => Open<CarsListPage>();
 
 	private void Open<T>()
 		where T : Page, new()

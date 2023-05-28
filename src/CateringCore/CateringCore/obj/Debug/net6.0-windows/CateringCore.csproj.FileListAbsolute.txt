@@ -93,3 +93,5 @@ C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-wind
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.pdb
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\CateringCore.genruntimeconfig.cache
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\ref\CateringCore.dll
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Cars\CarsListPage.g.cs
+C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\obj\Debug\net6.0-windows\Windows\Manager\Pages\Cars\CarsListPage.baml
