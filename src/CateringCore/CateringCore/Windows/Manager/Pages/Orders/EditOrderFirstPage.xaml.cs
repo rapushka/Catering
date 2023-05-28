@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
-using CateringCore.Tools;
 using OrganizerCore.Tools;
 
 namespace CateringCore.Windows.Pages.Orders;
