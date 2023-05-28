@@ -57,7 +57,6 @@ public partial class CarsListPage
 			.AddTextColumn("Номер", nameof(Car.Number))
 			.AddTextColumn("Тип", nameof(Car.Type))
 			;
-		throw new NotImplementedException();
 	}
 
 	protected override void UpdateItem(ref Car selected, Car newItem)
