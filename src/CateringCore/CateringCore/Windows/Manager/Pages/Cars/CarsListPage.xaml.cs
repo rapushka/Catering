@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Tools.Extension;
 using OrganizerCore.Tools.Extensions;
@@ -11,13 +10,11 @@ namespace CateringCore.Windows.Pages.Cars;
 
 public partial class CarsListPage
 {
-	private const string UnableToChangePositionMessage = "Чтобы перевести сотрудника на другую должность "
-	                                                     + "— удалите его и добавьте заново";
 	public CarsListPage() => InitializeComponent();
 
 	protected override DataGrid DataGrid => CarsDataGrid;
 
-	protected override string NameOfItemType => "сотрудника";
+	protected override string NameOfItemType => "машину";
 
 	protected override IEnumerable<UIElement> EditItemElements => ApplyButton.AsArray();
 
