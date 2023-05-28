@@ -77,7 +77,7 @@
                           SelectedCellsChanged="OnItemSelected" />
             </StackPanel>
         </Border>
-        <StackPanel Grid.Row="3" Grid.Column="" Grid.ColumnSpan="5"
+        <StackPanel Grid.Row="3" Grid.Column="0"
                     Orientation="Horizontal"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Right"
