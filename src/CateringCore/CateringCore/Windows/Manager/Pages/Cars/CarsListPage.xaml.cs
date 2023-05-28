@@ -23,7 +23,8 @@ public partial class CarsListPage
 	{
 		base.Page_OnLoaded(sender, e);
 
-		// TODO: Comboboxes
+		SearchTypeComboBox.SetupSearch(Car.TypeName.All);
+		EditTypeComboBox.SetupEdit(Car.TypeName.All);
 	}
 
 	protected override bool Filter(Car item) 
@@ -48,7 +49,8 @@ public partial class CarsListPage
 		DataGrid
 			.ClearColumns()
 			.AddTextColumn("Марка", nameof(Car.Mark))
-			// TODO: other
+			.AddTextColumn("Номер", nameof(Car.Number))
+			.AddTextColumn("Тип", nameof(Car.Type))
 			;
 		throw new NotImplementedException();
 	}
