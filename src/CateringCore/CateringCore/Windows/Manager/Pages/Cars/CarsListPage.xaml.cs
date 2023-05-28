@@ -37,14 +37,14 @@ public partial class CarsListPage
 		=> new()
 		{
 			Mark = EditMarkTextBox.Text,
-			Type = EditTypeComboBox.GetSelectedText(),
+			Type = EditTypeComboBox.Text,
 			Number = EditNumberTextBox.Text,
 		};
 
 	protected override void WriteItemToControls(Car? item)
 	{
 		EditMarkTextBox.Text = item?.Mark;
-		EditTypeComboBox.SelectedItem = item?.Type;
+		EditTypeComboBox.Text = item?.Type;
 		EditNumberTextBox.Text = item?.Number;
 	}
 

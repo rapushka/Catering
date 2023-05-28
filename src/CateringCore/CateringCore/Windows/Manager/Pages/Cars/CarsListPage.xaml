@@ -78,8 +78,8 @@
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="3" Grid.Column="0"
-                    Orientation="Horizontal"
                     VerticalAlignment="Top"
+                    Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="5,0">
             <Button Content="Удалить"
