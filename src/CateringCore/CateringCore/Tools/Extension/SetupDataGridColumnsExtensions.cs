@@ -37,15 +37,15 @@ public static class SetupDataGridColumnsExtensions
 			.AddTextColumn("ФИО заказчика", nameof(Order.Fullname))
 			.AddTextColumn("Номер телефона", nameof(Order.PhoneNumber))
 			.AddTextColumn("Адрес", nameof(Order.Address))
-			.AddTextColumn("Дата", nameof(Order.Date))
+			.AddTextColumn("Дата", nameof(Order.FulfillmentDate))
 			.AddTextColumn("Email", nameof(Order.Email))
 			.AddTextColumn("Количество человек", nameof(Order.NumberOfPeople))
 			.AddTextColumn("Сумма аванса", nameof(Order.AdvanceAmount))
-			// TODO: Cost
+			.AddTextColumn("Стоимость", nameof(Order.Cost))
 			.AddTextColumn("Курьер", nameof(Order.Courier))
 			.AddTextColumn("Авто", nameof(Order.Car))
 			.AddTextColumn("Состояние", nameof(Order.State))
-			// TODO: Order date (Дата оформления)
+			.AddTextColumn("Дата оформления", nameof(Order.OrderDate))
 			;
 	}
 
