@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
       Title="EditOrderFirstPage"
       d:DesignHeight="666" d:DesignWidth="980">
@@ -24,21 +25,26 @@
                         VerticalAlignment="Top"
                         Orientation="Vertical">
                 <TextBlock Text="ФИО:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="FullNameTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Номер телефона:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="PhoneNumberTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Адрес:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="AddressTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Дата:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
-                <TextBlock Text="Время:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <xctk:DateTimePicker Name="DatePicker" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                                     Width="402" />
                 <TextBlock Text="Электронная почта:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="EmailTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Количество человек:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="NumberOfPeopleTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Сумма аванса:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="AdvanceAmountTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
             </StackPanel>
         </Border>
         <Border Grid.Row="2">
@@ -49,7 +55,8 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="649"
-                        Margin="5,26" Click="NextButton_Click">
+                        Margin="5,26"
+                        Click="NextButton_Click">
                 </Button>
                 <Button Content="Отменить"
                         FontFamily="Verdana"
@@ -57,7 +64,8 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4">
+                        Margin="5,4"
+                        Click="CancelButton_OnClick">
                 </Button>
             </StackPanel>
         </Border>

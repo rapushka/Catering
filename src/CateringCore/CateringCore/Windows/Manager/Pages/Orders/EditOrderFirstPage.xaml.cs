@@ -1,10 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Catering.DbWorking;
 using CateringCore.Model;
 
 namespace CateringCore.Windows.Pages.Orders;
 
-public partial class EditOrderFirstPage : Page
+public partial class EditOrderFirstPage
 {
 	private Order _order;
 
@@ -14,5 +15,15 @@ public partial class EditOrderFirstPage : Page
 		InitializeComponent();
 	}
 
-	private void NextButton_Click(object sender, RoutedEventArgs e) { }
+	private void NextButton_Click(object sender, RoutedEventArgs e)
+	{
+		DbWorker.SaveAll();
+		// TODO: open next page
+	}
+
+	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+	{
+		DbWorker.ResetAll();
+		NavigationService!.GoBack();
+	}
 }
