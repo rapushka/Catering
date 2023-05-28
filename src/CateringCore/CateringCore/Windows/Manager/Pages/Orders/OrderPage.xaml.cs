@@ -33,7 +33,6 @@ public partial class OrdersListPage
 	{
 		var newOrder = new Order
 		{
-			Manager = (Manager)Session.ActiveUser,
 			OrderDate = DateTime.Now,
 			State = Order.StateName.All.First(),
 		};

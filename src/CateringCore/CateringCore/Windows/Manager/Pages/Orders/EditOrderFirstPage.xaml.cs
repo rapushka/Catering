@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
+using CateringCore.Tools;
 using OrganizerCore.Tools;
 
 namespace CateringCore.Windows.Pages.Orders;
@@ -68,5 +69,6 @@ public partial class EditOrderFirstPage
 		_order.Email = EmailTextBox.Text;
 		_order.NumberOfPeople = int.Parse(NumberOfPeopleTextBox.Text);
 		_order.AdvanceAmount = decimal.Parse(AdvanceAmountTextBox.Text);
+		_order.Manager = (Manager)Session.ActiveUser;
 	}
 }
