@@ -69,6 +69,5 @@ public partial class EditOrderFirstPage
 		_order.Email = EmailTextBox.Text;
 		_order.NumberOfPeople = int.Parse(NumberOfPeopleTextBox.Text);
 		_order.AdvanceAmount = decimal.Parse(AdvanceAmountTextBox.Text);
-		_order.Manager = (Manager)Session.ActiveUser;
 	}
 }

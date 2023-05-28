@@ -35,6 +35,7 @@ public partial class OrdersListPage
 		{
 			OrderDate = DateTime.Now,
 			State = Order.StateName.All.First(),
+			Manager = DbWorker.ActiveManager,
 		};
 		DbWorker.Context.Orders.Add(newOrder);
 		EditOrder(newOrder);
