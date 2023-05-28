@@ -45,7 +45,7 @@ public abstract class EditableListPage<T> : Page
 
 	protected abstract void SetupColumns();
 
-	protected void UpdateTableView() => DataGrid.Setup<T>(Filter);
+	protected virtual void UpdateTableView() => DataGrid.Setup<T>(Filter);
 
 	protected abstract bool Filter(T item);
 
@@ -56,9 +56,10 @@ public abstract class EditableListPage<T> : Page
 	{
 		try
 		{
-			DbWorker.Context.GetTable<T>().Add(Item!);
+			DbWorker.Context.Add(Item!);
 			DbWorker.SaveAll();
 			ResetItem();
+			UpdateTableView();
 		}
 		catch (Exception ex)
 		{
@@ -91,8 +92,9 @@ public abstract class EditableListPage<T> : Page
 			if (EnsureSelected(out var item)
 			    && MessageBoxUtils.ConfirmDeletion(item))
 			{
-				DbWorker.Context.GetTable<T>().Observe().Remove(item);
+				DbWorker.Context.Remove(item);
 				DbWorker.SaveAll();
+				UpdateTableView();
 			}
 		}
 		catch (Exception ex)

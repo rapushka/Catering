@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Projects\Diploms\Catering\src\CateringCore\CateringCore\App.xaml
-10406507133
+11-355408304
 
-49-2134907488
+50526828186
 216-137388514
-Windows\AuthenticationWindow.xaml;Windows\Cook\CookMainWindow.xaml;Windows\Courier\CourierMainWindow.xaml;Windows\Manager\ManagerMainWindow.xaml;Windows\Manager\Pages\DIshes\DishesListPage.xaml;Windows\Manager\Pages\DIshes\DishesTypesListPage.xaml;Windows\Manager\Pages\Foods\FoodCategoriesListPage.xaml;Windows\Manager\Pages\Foods\FoodsListPage.xaml;Windows\Manager\Pages\Foods\FoodTypesListPage.xaml;Windows\Manager\Pages\OrderPage.xaml;
+Windows\AuthenticationWindow.xaml;Windows\Cook\CookMainWindow.xaml;Windows\Courier\CourierMainWindow.xaml;Windows\Manager\ManagerMainWindow.xaml;Windows\Manager\Pages\DIshes\DishesListPage.xaml;Windows\Manager\Pages\DIshes\DishesTypesListPage.xaml;Windows\Manager\Pages\Employees\EmployeesListPage.xaml;Windows\Manager\Pages\Foods\FoodCategoriesListPage.xaml;Windows\Manager\Pages\Foods\FoodsListPage.xaml;Windows\Manager\Pages\Foods\FoodTypesListPage.xaml;Windows\Manager\Pages\OrderPage.xaml;
 
 False
 

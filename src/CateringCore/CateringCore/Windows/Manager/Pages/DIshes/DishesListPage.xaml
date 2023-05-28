@@ -77,7 +77,8 @@
                     FontSize="16"
                     Height="40"
                     Style="{DynamicResource ButtonStyle}"
-                    Margin="5,4" Width="311" />
+                    Margin="5,4" Width="311"
+                    Click="RemoveItem" />
         </Border>
         <Border Grid.Row="4" Margin="5,4,5,5.2">
             <StackPanel>
