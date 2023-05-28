@@ -29,16 +29,11 @@ public partial class EditOrderFirstPage
 		}
 		catch (Exception ex)
 		{
-			var inner = ex.InnerException is not null
-				? $"Внутреннее исключение: {ex.InnerException?.Message}"
-				: string.Empty;
+			var errorText = ex.InnerException is not null
+				? ex.InnerException?.Message
+				: ex.Message;
 
-			MessageBoxUtils.ShowError
-			(
-				$"Ошибка при сохранении изменений\n"
-				+ $"Текст ошибки: {ex.Message}\n\n"
-				+ inner
-			);
+			MessageBoxUtils.ShowError($"Ошибка при сохранении изменений\nТекст ошибки: {errorText}");
 		}
 	}
 
