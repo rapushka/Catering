@@ -33,7 +33,7 @@ public partial class EditOrderSecondPage
 		{
 			_order.State = Order.StateName.Processed;
 			DbWorker.SaveAll();
-			NavigationService!.Navigate(new EditOrderSecondPage(_order));
+			GoBackToList();
 		}
 		catch (Exception ex)
 		{
@@ -44,7 +44,7 @@ public partial class EditOrderSecondPage
 	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
 	{
 		DbWorker.ResetAll();
-		NavigationService!.Navigate(new OrdersListPage());
+		GoBackToList();
 	}
 
 	private void Load()
@@ -54,4 +54,6 @@ public partial class EditOrderSecondPage
 		AllFoodsDataGrid.Setup<Dish>(Filter);
 		PickedDishesDataGrid.Setup<DishInOrder>(Filter);
 	}
+
+	private void GoBackToList() => NavigationService!.Navigate(new OrdersListPage());
 }
