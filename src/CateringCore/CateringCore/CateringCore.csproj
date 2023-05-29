@@ -25,6 +25,8 @@
       <Resource Include="Resources\Search.png" />
       <None Remove="Resources\Background.jpg" />
       <Resource Include="Resources\Background.jpg" />
+      <None Remove="Resources\ArrowToRight.png" />
+      <Resource Include="Resources\ArrowToRight.png" />
     </ItemGroup>
 
 </Project>
