@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       Title="EditOrderSecondPage"
-      d:DesignHeight="666" d:DesignWidth="980">
+      d:DesignHeight="666" d:DesignWidth="980"
+      Loaded="Page_Load">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="138*" />
@@ -29,22 +30,13 @@
             </StackPanel>
         </Border>
         <Border Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="ФИО:"
-                           FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
-                </TextBlock>
-                <TextBox Name="EditFullnameTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
-                         Width="402" />
-                <TextBlock Text="Количество человек:"
-                           FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
-                </TextBlock>
-                <TextBox Name="EditNumberOfPeopleTextBox" FontFamily="Verdana" FontSize="14" Height="26"
-                         Margin="5,8,0,7.6" Width="105" />
-                <TextBlock Text="Сумма аванса:"
-                           FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
-                </TextBlock>
-                <TextBox Name="EditAdwanceAmountTextBox" FontFamily="Verdana" FontSize="14" Height="26"
-                         Margin="5,8,0,7.6" Width="122" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Общая сумма заказа:"
+                           FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBlock Name="TotalPriceTextBlock"
+                           FontFamily="Verdana" FontSize="16" Height="24" Margin="5,5,5,0"
+                           Text="000" />
+
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
@@ -163,17 +155,26 @@
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="611"
                         Margin="5,19,5,19.4"
+                        Width="380"
                         Click="SaveButton_OnClick" />
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
-                        Width="312"
                         Margin="5,4"
+                        Width="270"
                         Click="CancelButton_OnClick" />
+                <Button Content="Назад"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        Height="40"
+                        Style="{DynamicResource ButtonStyle}"
+                        Margin="5,19,5,19.4"
+                        Width="300"
+                        Click="SaveButton_OnClick" />
+
             </StackPanel>
         </Border>
     </Grid>

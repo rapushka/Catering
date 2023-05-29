@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using Catering.DbWorking;
 using CateringCore.Model;
@@ -59,4 +60,13 @@ public static class MessageBoxUtils
 			button: OK,
 			icon: Information
 		);
+
+	public static void ShowOnSaveException(Exception ex)
+	{
+		var errorText = ex.InnerException is not null
+			? ex.InnerException?.Message
+			: ex.Message;
+
+		ShowError($"Ошибка при сохранении изменений\nТекст ошибки: {errorText}");
+	}
 }
