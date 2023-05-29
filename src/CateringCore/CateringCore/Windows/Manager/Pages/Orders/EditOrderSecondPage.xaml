@@ -33,15 +33,18 @@
                 <TextBlock Text="ФИО:"
                            FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
                 </TextBlock>
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0" Width="402" />
+                <TextBox Name="EditFullnameTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
                 <TextBlock Text="Количество человек:"
                            FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
                 </TextBlock>
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,8,0,7.6" Width="105" />
+                <TextBox Name="EditNumberOfPeopleTextBox" FontFamily="Verdana" FontSize="14" Height="26"
+                         Margin="5,8,0,7.6" Width="105" />
                 <TextBlock Text="Сумма аванса:"
                            FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0">
                 </TextBlock>
-                <TextBox FontFamily="Verdana" FontSize="14" Height="26" Margin="5,8,0,7.6" Width="122" />
+                <TextBox Name="EditAdwanceAmountTextBox" FontFamily="Verdana" FontSize="14" Height="26"
+                         Margin="5,8,0,7.6" Width="122" />
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
@@ -54,7 +57,8 @@
                            FontFamily="Verdana"
                            FontSize="14" Height="26"
                            Margin="5" />
-                <TextBox FontFamily="Verdana" FontSize="18"
+                <TextBox Name="SearchFoodTitleTextBox"
+                         FontFamily="Verdana" FontSize="18"
                          Width="446" />
             </StackPanel>
         </Border>
@@ -63,7 +67,11 @@
                 <TextBlock Text="Блюда"
                            FontFamily="Verdana"
                            FontSize="14" />
-                <DataGrid Height="192" />
+                <DataGrid Name="AllFoodsDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          Height="192" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="1">
@@ -78,7 +86,11 @@
                 <TextBlock Text="Заказ/Блюда"
                            FontFamily="Verdana"
                            FontSize="14" />
-                <DataGrid Height="192" />
+                <DataGrid Name="PickedFoodsDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          Height="192" />
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="0">
@@ -92,7 +104,8 @@
                            FontFamily="Verdana"
                            FontSize="14" Height="26"
                            Margin="5" />
-                <TextBox FontFamily="Verdana" FontSize="18"
+                <TextBox Name="SearchDishTitleTextBox"
+                         FontFamily="Verdana" FontSize="18"
                          Width="436" />
             </StackPanel>
         </Border>
@@ -101,7 +114,11 @@
                 <TextBlock Text="Посуда"
                            FontFamily="Verdana"
                            FontSize="14" />
-                <DataGrid Height="192" />
+                <DataGrid Name="AllDishesDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          Height="192" />
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Grid.Column="1">
@@ -116,19 +133,25 @@
                 <TextBlock Text="Заказ/Посуда"
                            FontFamily="Verdana"
                            FontSize="14" />
-                <DataGrid Height="192" />
+                <DataGrid Name="PickedDishesDataGrid"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          Height="192" />
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Grid.Column="2">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Сумма заказа (блюдо):"
+                <TextBlock Name="TotalCostOfFoodTextBlock"
+                           Text="Сумма заказа (блюдо):"
                            FontFamily="Verdana"
                            FontSize="14" />
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="2">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Сумма заказа (посуда):"
+                <TextBlock Name="TotalCostOfDishesTextBlock"
+                           Text="Сумма заказа (посуда):"
                            FontFamily="Verdana"
                            FontSize="14" />
             </StackPanel>
@@ -141,18 +164,17 @@
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="611"
-                        Margin="5,19,5,19.4">
-                </Button>
+                        Margin="5,19,5,19.4"
+                        Click="SaveButton_OnClick" />
                 <Button Content="Отменить"
                         FontFamily="Verdana"
                         FontSize="16"
                         Height="40"
                         Style="{DynamicResource ButtonStyle}"
                         Width="312"
-                        Margin="5,4">
-                </Button>
+                        Margin="5,4"
+                        Click="CancelButton_OnClick" />
             </StackPanel>
         </Border>
-
     </Grid>
 </Page>
