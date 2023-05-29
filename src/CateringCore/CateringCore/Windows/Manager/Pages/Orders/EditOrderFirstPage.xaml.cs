@@ -25,7 +25,6 @@ public partial class EditOrderFirstPage
 		{
 			Save();
 			DbWorker.SaveAll();
-			NavigationService!.GoBack();
 			NavigationService!.Navigate(new EditOrderSecondPage(_order));
 		}
 		catch (Exception ex)

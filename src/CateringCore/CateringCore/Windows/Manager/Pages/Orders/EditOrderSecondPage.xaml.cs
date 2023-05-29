@@ -19,6 +19,6 @@ public partial class EditOrderSecondPage
 	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
 	{
 		DbWorker.ResetAll();
-		NavigationService!.GoBack();
+		NavigationService!.Navigate(new OrdersListPage());
 	}
 }
