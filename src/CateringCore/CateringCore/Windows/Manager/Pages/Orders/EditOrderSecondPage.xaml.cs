@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using Catering.DbWorking;
 using CateringCore.Model;
 using OrganizerCore.Tools;
@@ -56,4 +57,9 @@ public partial class EditOrderSecondPage
 	}
 
 	private void GoBackToList() => NavigationService!.Navigate(new OrdersListPage());
+
+	private void Mouse_OnMouseDown(object sender, MouseButtonEventArgs e)
+	{
+		MessageBox.Show("Test");
+	}
 }
