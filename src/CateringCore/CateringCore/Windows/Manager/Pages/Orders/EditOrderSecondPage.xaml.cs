@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +22,7 @@ public partial class EditOrderSecondPage
 		InitializeComponent();
 	}
 
-	private void Page_Load(object sender, RoutedEventArgs e) => UpdateTableView();
+	private void Page_Load(object sender, RoutedEventArgs e) => UpdateView();
 
 #region Filters
 
@@ -56,12 +58,14 @@ public partial class EditOrderSecondPage
 		GoBackToList();
 	}
 
-	private void UpdateTableView()
+	private void UpdateView()
 	{
 		AllFoodsDataGrid.SetupWithColumns<Food>(Filter);
 		PickedFoodsDataGrid.SetupWithColumns<FoodInOrder>(Filter);
 		AllDishesDataGrid.SetupWithColumns<Dish>(Filter);
 		PickedDishesDataGrid.SetupWithColumns<DishInOrder>(Filter);
+
+		UpdateSums();
 	}
 
 #endregion
@@ -100,7 +104,7 @@ public partial class EditOrderSecondPage
 		}
 
 		SaveAll();
-		UpdateTableView();
+		UpdateView();
 
 		bool AlreadyAdded(FoodInOrder fio) => fio.Order == _order && fio.Food == selectedFood;
 	}
@@ -117,7 +121,7 @@ public partial class EditOrderSecondPage
 			}
 		}
 
-		UpdateTableView();
+		UpdateView();
 	}
 
 	private void AddDish(object sender, MouseButtonEventArgs e)
@@ -146,7 +150,7 @@ public partial class EditOrderSecondPage
 		}
 
 		SaveAll();
-		UpdateTableView();
+		UpdateView();
 
 		bool AlreadyAdded(DishInOrder dio) => dio.Order == _order && dio.Dish == selectedDish;
 	}
@@ -163,15 +167,30 @@ public partial class EditOrderSecondPage
 			}
 		}
 
-		UpdateTableView();
+		UpdateView();
 	}
 
 #endregion
 
 	public void UpdateSums()
 	{
-		
+		const string foodsPrefix = "Сумма заказа (блюдо): ";
+		const string dishesPrefix = "Сумма заказа (посуда): ";
+
+		var foodsSum = FoodsInCurrentOrder.Sum((fio) => fio.Cost);
+		var dishesSum = DishesInCurrentOrder.Sum((dio) => dio.Cost);
+		var totalSum = foodsSum + dishesSum;
+
+		SumOfFoodTextBlock.Text = foodsPrefix + foodsSum.ToString(CultureInfo.InvariantCulture);
+		SumOfDishesTextBlock.Text = dishesPrefix + dishesSum.ToString(CultureInfo.InvariantCulture);
+		TotalSumTextBlock.Text = totalSum.ToString(CultureInfo.InvariantCulture);
 	}
 
-	private void UpdateSearch(object sender, TextChangedEventArgs e) => UpdateTableView();
+	private IEnumerable<DishInOrder> DishesInCurrentOrder
+		=> Context.DishesInOrders.AsEnumerable().Where((dio) => dio.Order == _order);
+
+	private IEnumerable<FoodInOrder> FoodsInCurrentOrder
+		=> Context.FoodsInOrders.AsEnumerable().Where((fio) => fio.Order == _order);
+
+	private void UpdateSearch(object sender, TextChangedEventArgs e) => UpdateView();
 }
