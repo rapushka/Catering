@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Windows.Pages;
 using OrganizerCore.Tools.Extensions;
@@ -46,10 +49,21 @@ public partial class CookMainWindow
 	{
 		if (FoodsInOrderDataGrid.EnsureSelected<FoodInOrder>("блюдо в заказе", out var foodInOrder))
 		{
-			foodInOrder.State = FoodInOrder.StateName.Ready;
+			const string isReady = FoodInOrder.StateName.Ready;
+			foodInOrder.State = isReady;
+			var order = foodInOrder.Order;
+
+			if (CollectFoodOfCurrentOrder(order).Any((fio) => fio.State != isReady))
+			{
+				order.State = Order.StateName.ReadyForDelivery;
+			}
+
 			UpdateView();
 		}
 	}
+
+	private static IEnumerable<FoodInOrder> CollectFoodOfCurrentOrder(Order order)
+		=> DbWorker.Context.FoodsInOrders.AsEnumerable().Where((fio) => fio.Order == order);
 
 	private void UpdateView()
 	{
