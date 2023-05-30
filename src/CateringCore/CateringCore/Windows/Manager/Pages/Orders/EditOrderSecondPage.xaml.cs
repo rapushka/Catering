@@ -73,7 +73,7 @@ public partial class EditOrderSecondPage
 	private void GoBackToList() => NavigationService!.Navigate(new OrdersListPage());
 
 	private void BackButton_OnClick(object sender, RoutedEventArgs e)
-		=> NavigationService!.Navigate(new EditOrderFirstPage(_order));
+		=> NavigationService!.GoBack();
 
 #region +- Foods and Dishes to Order
 
