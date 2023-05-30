@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace CateringCore.Windows.Cook;
 
@@ -16,4 +17,8 @@ public partial class CookMainWindow
 
 	private void CookMainWindow_OnLoaded(object sender, RoutedEventArgs e)
 		=> EmployeeFullnameTextBlock.Text = _cook.Fullname + CookSuffix;
+
+	private void UpdateFilters(object sender, TextChangedEventArgs e) { }
+
+	private void UpdateFilters(object sender, SelectionChangedEventArgs e) { }
 }
