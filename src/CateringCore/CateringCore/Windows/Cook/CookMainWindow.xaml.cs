@@ -37,9 +37,14 @@ public partial class CookMainWindow
 
 	private void UpdateFilters(object sender, TextChangedEventArgs e) => UpdateView();
 
+	private void OnOrderReselected(object sender, SelectedCellsChangedEventArgs e)
+	{
+		FoodsInOrderDataGrid.Setup<FoodInOrder>(Filter);
+	}
+
 	private void MarkAsCooked(object sender, RoutedEventArgs e)
 	{
-		if (OrdersDataGrid.EnsureSelected<FoodInOrder>("Блюдо в заказе", out var foodInOrder))
+		if (FoodsInOrderDataGrid.EnsureSelected<FoodInOrder>("блюдо в заказе", out var foodInOrder))
 		{
 			foodInOrder.State = FoodInOrder.StateName.Ready;
 			UpdateView();
@@ -65,7 +70,7 @@ public partial class CookMainWindow
 
 	private void SetupFoodColumns()
 	{
-		OrdersDataGrid
+		FoodsInOrderDataGrid
 			.ClearColumns()
 			.AddTextColumn("Название", nameof(FoodInOrder.Food))
 			.AddTextColumn("Количество", nameof(FoodInOrder.Amount))
