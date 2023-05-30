@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore.Infrastructure;
+
 namespace CateringCore.Model;
 
 public class Car : Table
@@ -5,6 +7,8 @@ public class Car : Table
 	public string Mark   { get; set; } = null!;
 	public string Type   { get; set; } = null!;
 	public string Number { get; set; } = null!;
+
+	public override string ToString() => $"{Type} {Mark} [{Number}]";
 
 	public static class TypeName
 	{

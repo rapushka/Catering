@@ -6,7 +6,8 @@
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
       Title="AppointToOrderPage"
-      d:DesignHeight="360" d:DesignWidth="980">
+      d:DesignHeight="360" d:DesignWidth="980"
+      Loaded="Page_Load">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -33,17 +34,22 @@
                 <TextBlock Text="Номер:"
                            Margin="5,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <TextBox Name="IdTextBox" Height="25"
-                         FontFamily="Verdana" FontSize="14" />
+                <TextBox Name="IdView"
+                         Height="25"
+                         FontFamily="Verdana" FontSize="14"
+                         IsReadOnly="True" />
                 <TextBlock Text="ФИО:"
                            Margin="5,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <TextBox Name="FullnameTextBox" Height="25"
+                <TextBox Name="FullnameView" Height="25"
+                         IsReadOnly="True"
                          FontFamily="Verdana" FontSize="14" />
                 <TextBlock Text="Адрес:"
                            Margin="5,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <TextBox Name="AddressTextBox" Height="25"
+                <TextBox Name="AddressView"
+                         IsReadOnly="True"
+                         Height="25"
                          FontFamily="Verdana" FontSize="14" />
 
             </StackPanel>
@@ -53,11 +59,12 @@
                 <TextBlock Text="Дата:"
                            Margin="5,0,5,0"
                            FontSize="14" FontFamily="Verdana" />
-                <xctk:DateTimePicker Name="DateTimePicker"
+                <xctk:DateTimePicker Name="DateTimeView"
                                      Height="25"
                                      FontFamily="Verdana"
                                      FontSize="14"
-                                     Margin="5" />
+                                     Margin="5"
+                                     IsReadOnly="True" />
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="5"
@@ -90,8 +97,8 @@
                 Style="{DynamicResource ButtonStyle}"
                 HorizontalAlignment="Stretch"
                 Margin="5"
-                Content="Назначить" 
-                Click="Apply"/>
+                Content="Назначить"
+                Click="Apply" />
 
         <Button Grid.Row="3" Grid.Column="2"
                 Content="Отменить"
@@ -100,8 +107,8 @@
                 Height="45"
                 HorizontalAlignment="Stretch"
                 Margin="5"
-                Style="{DynamicResource ButtonStyle}" 
-                Click="Cancel"/>
+                Style="{DynamicResource ButtonStyle}"
+                Click="Cancel" />
 
     </Grid>
 </Page>

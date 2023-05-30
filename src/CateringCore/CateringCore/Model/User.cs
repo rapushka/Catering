@@ -25,6 +25,8 @@ public class User : Table
 	public bool Authorize(string login, string password)
 		=> Login == login && Password == password;
 
+	public override string ToString() => $"{Position} {Fullname}";
+
 	public static class PositionName
 	{
 		public const string Manager = "Менеджер";
