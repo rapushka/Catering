@@ -51,6 +51,10 @@
                     ImageSource="pack://application:,,,/CateringCore;component/Resources/Avatar.png" />
         <ImageBrush x:Key="Search"
                     ImageSource="pack://application:,,,/CateringCore;component/Resources/Search.png" />
+        <ImageBrush x:Key="ArrowToRight"
+                    ImageSource="pack://application:,,,/CateringCore;component/Resources/ArrowToRight.png" />
+        <ImageBrush x:Key="ArrowToLeft"
+                    ImageSource="pack://application:,,,/CateringCore;component/Resources/ArrowToLeft.png" />
 
     </Application.Resources>
 </Application>

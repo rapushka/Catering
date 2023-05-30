@@ -139,9 +139,6 @@ namespace CateringCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("DishId")
                         .HasColumnType("INTEGER");
 
@@ -237,9 +234,6 @@ namespace CateringCore.Migrations
                     b.Property<int?>("CookId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("FoodId")
                         .HasColumnType("INTEGER");
 
@@ -330,11 +324,11 @@ namespace CateringCore.Migrations
                     b.Property<int?>("CourierId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FulfillmentDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Fullname")
@@ -346,6 +340,9 @@ namespace CateringCore.Migrations
 
                     b.Property<int>("NumberOfPeople")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()

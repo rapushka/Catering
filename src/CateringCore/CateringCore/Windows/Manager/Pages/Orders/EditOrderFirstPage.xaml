@@ -1,0 +1,75 @@
+﻿<Page x:Class="CateringCore.Windows.Pages.Orders.EditOrderFirstPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d"
+      Title="EditOrderFirstPage"
+      d:DesignHeight="666" d:DesignWidth="980"
+      Loaded="Page_Load">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="532" />
+            <RowDefinition Height="91.2" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Margin="0,0,0,13.8">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Данные заказчика"
+                           FontFamily="Verdana" FontSize="18" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1">
+            <StackPanel HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
+                <TextBlock Text="ФИО:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="FullNameTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+                <TextBlock Text="Номер телефона:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="PhoneNumberTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+                <TextBlock Text="Адрес:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="AddressTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+                <TextBlock Text="Дата и время:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <xctk:DateTimePicker Name="DateTimePicker" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                                     Width="402" />
+                <TextBlock Text="Электронная почта:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="EmailTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+                <TextBlock Text="Количество человек:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="NumberOfPeopleTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+                <TextBlock Text="Сумма аванса:" FontFamily="Verdana" FontSize="14" Height="24" Margin="5,5,5,0" />
+                <TextBox Name="AdvanceAmountTextBox" FontFamily="Verdana" FontSize="14" Height="26" Margin="5,0,0,0"
+                         Width="402" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Заполнить заказ"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        Height="40"
+                        Style="{DynamicResource ButtonStyle}"
+                        Width="649"
+                        Margin="5,26"
+                        Click="NextButton_Click">
+                </Button>
+                <Button Content="Отменить"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        Height="40"
+                        Style="{DynamicResource ButtonStyle}"
+                        Width="312"
+                        Margin="5,4"
+                        Click="CancelButton_OnClick">
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>

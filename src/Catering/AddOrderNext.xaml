@@ -106,7 +106,11 @@
         <Border Grid.Row="3" Grid.Column="1">
             <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Image Source="arrow_arrows_back_direction_left_navigation_right_icon_123236.png" Stretch="Fill" Height="57" Width="43"/>
+                <Image 
+                    Source="arrow_arrows_back_direction_left_navigation_right_icon_123236.png" 
+                    Stretch="Fill" 
+                    Height="57" 
+                    Width="43"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="2" Margin="5">

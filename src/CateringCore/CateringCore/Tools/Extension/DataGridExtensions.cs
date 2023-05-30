@@ -16,17 +16,18 @@ public static class DataGridExtensions
 		@this.BeginEdit();
 	}
 
-	public static void Setup<T>(this DataGrid @this, Func<T, bool> accepted)
+	public static DataGrid Setup<T>(this DataGrid @this, Func<T, bool> accepted)
 		where T : class
 		=> @this.Setup(accepted, DbWorker.Context.GetTable<T>().Observe());
 
-	public static void Setup<T>(this DataGrid @this, Func<T, bool> accepted, IEnumerable collection)
+	public static DataGrid Setup<T>(this DataGrid @this, Func<T, bool> accepted, IEnumerable collection)
 		where T : class
 	{
 		var viewSource = new CollectionViewSource { Source = collection, };
 
 		viewSource.Filter += (_, e) => Filter(e, accepted);
 		@this.ItemsSource = viewSource.View;
+		return @this;
 	}
 
 	private static void Filter<T>(FilterEventArgs e, Func<T, bool> accepted)
@@ -35,7 +36,7 @@ public static class DataGridExtensions
 	public static bool EnsureSelected<T>(this DataGrid @this, string itemName, out T item)
 		where T : class
 	{
-#pragma warning disable CS8601
+#pragma warning disable CS8601 - that is how out works here
 		item = @this.SelectedItem as T;
 #pragma warning restore CS8601
 		var isSelected = item is not null;
