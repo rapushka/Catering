@@ -37,7 +37,7 @@ public static class SetupDataGridColumnsExtensions
 		}
 		else
 		{
-			throw new Exception($"Не найдет коструктор столбцовв для типа {t.Name}");
+			throw new Exception($"Не найден коструктор столбцов для типа {t.Name}");
 		}
 
 		return @this;
