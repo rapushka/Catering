@@ -52,7 +52,7 @@ public abstract class EditableListPage<T> : Page
 		=> Item = DataGrid.SelectedItem as T;
 
 	protected abstract bool IsAllFieldsFilled { get; }
-	
+
 	protected void AddItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		try
@@ -61,15 +61,18 @@ public abstract class EditableListPage<T> : Page
 			{
 				throw new Exception("Не все поля заполнены!");
 			}
-			
+
 			DbWorker.Context.Add(Item!);
 			DbWorker.SaveAll();
 			ResetItem();
-			UpdateTableView();
 		}
 		catch (Exception ex)
 		{
 			MessageBoxUtils.ShowError($"Ошибка при добавелении записи!\n{ex.Message}");
+		}
+		finally
+		{
+			UpdateTableView();
 		}
 	}
 
