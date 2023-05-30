@@ -24,6 +24,11 @@ public partial class CourierMainWindow
 	{
 		EmployeeFullnameTextBlock.Text = _courier.Fullname + CourierSuffix;
 
+		UpdateView();
+	}
+
+	private void UpdateView()
+	{
 		OrdersDataGrid.Setup<Order>(Filter);
 		SetupOrderColumns();
 	}
@@ -35,9 +40,19 @@ public partial class CourierMainWindow
 		   && order.Courier == DbWorker.ActiveCourier
 		   && order.FulfillmentDate.IsToday();
 
-	private void UpdateFilters(object sender, TextChangedEventArgs e) { }
+	private void UpdateFilters(object sender, TextChangedEventArgs e) => UpdateView();
 
-	private void ApproveDelivery(object sender, RoutedEventArgs e) { }
+	private void ApproveDelivery(object sender, RoutedEventArgs e)
+	{
+		if (OrdersDataGrid.EnsureSelected<Order>("заказ", out var order))
+		{
+			const string isDelivered = Order.StateName.Delivered;
+			order.State = isDelivered;
+
+			DbWorker.SaveAll();
+			UpdateView();
+		}
+	}
 
 	private void SetupOrderColumns()
 	{

@@ -70,7 +70,10 @@
         <Border Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,1.6,-0.4,4.6">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Заказ" FontFamily="Verdana" FontSize="14" Margin="5,0,-0.4,0" />
-                <DataGrid Name="OrdersDataGrid" Height="486" Margin="11,0,9.6,0" />
+                <DataGrid Name="OrdersDataGrid" Height="486" Margin="11,0,9.6,0" 
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          AutoGenerateColumns="False"/>
             </StackPanel>
         </Border>
         <Border Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,2.6,-0.4,0">
