@@ -29,6 +29,8 @@ public partial class DishesTypesListPage
 	}
 
 	protected override bool Filter(DishType item) => item.Title.Contains(SearchTitleTextBox.Text);
+	protected override bool IsAllFieldsFilled
+		=> EditTitleTextBox.IsNotEmpty();
 
 	protected override void UpdateItem(ref DishType selected, DishType newItem) => selected.Title = newItem.Title;
 

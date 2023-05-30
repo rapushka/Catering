@@ -68,6 +68,14 @@ public partial class FoodsListPage
 		   && SearchCategoryComboBox.IsMatchSearch(food.Category)
 		   && SearchTypeComboBox.IsMatchSearch(food.Type);
 
+	protected override bool IsAllFieldsFilled
+		=> EditTitleTextBox.IsNotEmpty()
+		   && EditCompositionTextBox.IsNotEmpty()
+		   && EditWeightTextBox.IsNotEmpty()
+		   && EditPriceTextBox.IsNotEmpty()
+		   && EditCategoryComboBox.IsNotEmpty()
+		   && EditTypeComboBox.IsNotEmpty();
+
 	protected override void UpdateItem(ref Food selected, Food newItem)
 	{
 		selected.Type = newItem.Type;

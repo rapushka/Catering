@@ -23,6 +23,11 @@ public partial class EditOrderFirstPage
 	{
 		try
 		{
+			if (IsAllFieldsFilled == false)
+			{
+				throw new Exception("Не все поля заполнены!");
+			}
+
 			Save();
 			DbWorker.SaveAll();
 			NavigationService!.Navigate(new EditOrderSecondPage(_order));
@@ -32,6 +37,15 @@ public partial class EditOrderFirstPage
 			MessageBoxUtils.ShowOnSaveException(ex);
 		}
 	}
+
+	private bool IsAllFieldsFilled
+		=> FullNameTextBox.IsNotEmpty()
+		   && PhoneNumberTextBox.IsNotEmpty()
+		   && AddressTextBox.IsNotEmpty()
+		   && DateTimePicker.Value is not null
+		   && EmailTextBox.IsNotEmpty()
+		   && NumberOfPeopleTextBox.IsNotEmpty()
+		   && AdvanceAmountTextBox.IsNotEmpty();
 
 	private void CancelButton_OnClick(object sender, RoutedEventArgs e)
 	{

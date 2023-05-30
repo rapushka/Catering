@@ -56,6 +56,11 @@ public partial class DishesListPage
 		=> dish.Title.Contains(SearchTitleTextBox.Text)
 		   && SearchTypeComboBox.IsMatchSearch(dish.Type);
 
+	protected override bool IsAllFieldsFilled
+		=> EditPriceTextBox.IsNotEmpty()
+		   && EditTypeComboBox.IsNotEmpty()
+		   && EditTitleTextBox.IsNotEmpty();
+
 	protected override void UpdateItem(ref Dish selected, Dish newItem)
 	{
 		selected.Title = newItem.Title;

@@ -31,6 +31,11 @@ public partial class CarsListPage
 		   && item.Mark.Contains(SearchMarkTextBox.Text)
 		   && SearchTypeComboBox.IsMatchSearch(item.Type);
 
+	protected override bool IsAllFieldsFilled
+		=> EditMarkTextBox.IsNotEmpty()
+		   && EditNumberTextBox.IsNotEmpty()
+		   && EditTypeComboBox.IsNotEmpty();
+
 #region Repeating fields 4 (5) times
 
 	protected override Car ReadItemFromControls()
