@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
-using CateringCore.Tools;
 using CateringCore.Windows.Pages;
 using OrganizerCore.Tools.Extensions;
 using OrganizerCore.Windows.Pages.ScheduleTab;
