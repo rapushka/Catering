@@ -51,7 +51,8 @@
                            Margin="5" />
                 <TextBox Name="SearchFoodTitleTextBox"
                          FontFamily="Verdana" FontSize="18"
-                         Width="446" />
+                         Width="446"
+                         TextChanged="UpdateSearch"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="0" Margin="5">
@@ -103,7 +104,8 @@
                            Margin="5" />
                 <TextBox Name="SearchDishTitleTextBox"
                          FontFamily="Verdana" FontSize="18"
-                         Width="436" />
+                         Width="436" 
+                         TextChanged="UpdateSearch"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Grid.Column="0">
@@ -182,7 +184,7 @@
                         Style="{DynamicResource ButtonStyle}"
                         Margin="5,19,5,19.4"
                         Width="300"
-                        Click="SaveButton_OnClick" />
+                        Click="BackButton_OnClick" />
 
             </StackPanel>
         </Border>

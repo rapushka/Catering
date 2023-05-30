@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using CateringCore.Model;
 using OrganizerCore.Tools;
@@ -66,6 +67,11 @@ public partial class EditOrderSecondPage
 #endregion
 
 	private void GoBackToList() => NavigationService!.Navigate(new OrdersListPage());
+
+	private void BackButton_OnClick(object sender, RoutedEventArgs e)
+		=> NavigationService!.Navigate(new EditOrderFirstPage(_order));
+
+#region +- Foods and Dishes to Order
 
 	private void AddFood(object sender, MouseButtonEventArgs e)
 	{
@@ -159,4 +165,13 @@ public partial class EditOrderSecondPage
 
 		UpdateTableView();
 	}
+
+#endregion
+
+	public void UpdateSums()
+	{
+		
+	}
+
+	private void UpdateSearch(object sender, TextChangedEventArgs e) => UpdateTableView();
 }
