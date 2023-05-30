@@ -51,10 +51,17 @@ public abstract class EditableListPage<T> : Page
 	protected void OnItemSelected(object? sender = null, SelectedCellsChangedEventArgs? e = null)
 		=> Item = DataGrid.SelectedItem as T;
 
+	protected abstract bool IsAllFieldsFilled { get; }
+	
 	protected void AddItem(object? sender = null, RoutedEventArgs? e = null)
 	{
 		try
 		{
+			if (IsAllFieldsFilled == false)
+			{
+				throw new Exception("Не все поля заполнены!");
+			}
+			
 			DbWorker.Context.Add(Item!);
 			DbWorker.SaveAll();
 			ResetItem();

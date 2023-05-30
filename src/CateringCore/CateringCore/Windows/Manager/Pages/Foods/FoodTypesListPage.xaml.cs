@@ -29,6 +29,7 @@ public partial class FoodTypesListPage
 	}
 
 	protected override bool Filter(FoodType item) => item.Title.Contains(SearchTitleTextBox.Text);
+	protected override bool IsAllFieldsFilled     => EditTitleTextBox.IsNotEmpty();
 
 	protected override void UpdateItem(ref FoodType selected, FoodType newItem)
 		=> selected.Title = newItem.Title;

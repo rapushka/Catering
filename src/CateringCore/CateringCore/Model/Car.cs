@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore.Infrastructure;
-
 namespace CateringCore.Model;
 
 public class Car : Table

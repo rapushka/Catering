@@ -38,6 +38,15 @@ public partial class EmployeesListPage
 		   && item.LastName.Contains(SearchLastNameTextBox.Text)
 		   && item.PhoneNumber.Contains(SearchPhoneNumberTextBox.Text);
 
+	protected override bool IsAllFieldsFilled
+		=> EditLoginTextBox.IsNotEmpty()
+		   && EditFirstNameTextBox.IsNotEmpty()
+		   && EditLastNameTextBox.IsNotEmpty()
+		   && EditMiddleNameTextBox.IsNotEmpty()
+		   && EditPasswordTextBox.IsNotEmpty()
+		   && EditPhoneNumberTextBox.IsNotEmpty()
+		   && EditPositionComboBox.IsNotEmpty();
+
 #region Repeating fields 4 (5) times
 
 	protected override User ReadItemFromControls()
