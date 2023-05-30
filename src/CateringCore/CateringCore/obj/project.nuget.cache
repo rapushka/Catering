@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OSH6JpSlE37NSF08se/QOZgawlsvHreHnKSBpoDH6AYPSAixN5ynHPVOVM0wRTUDHaF4NjysK4VIJaD/RBt4/w==",
+  "dgSpecHash": "B4a+0n1rq0ge07H/ZE0OMCvrZmko9jJPOU2+hVhfjmugBoRqOTP18Na2+rMddRQ9F85HsQKW5nKdKfkuFKbuvA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\Rapuska\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Rapuska\\.nuget\\packages\\microsoft.office.interop.word\\15.0.4797.1004\\microsoft.office.interop.word.15.0.4797.1004.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\propertytools\\3.0.0\\propertytools.3.0.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\propertytools.wpf\\3.0.0\\propertytools.wpf.3.0.0.nupkg.sha512",

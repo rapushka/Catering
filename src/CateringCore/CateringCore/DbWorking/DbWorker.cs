@@ -2,6 +2,7 @@
 using System.Linq;
 using CateringCore.Model;
 using CateringCore.Tools;
+using CateringCore.Tools.Extension;
 
 namespace Catering.DbWorking;
 
@@ -18,6 +19,8 @@ public static class DbWorker
 	public static void ResetAll() => Connection.ResetAll();
 
 #region Tooling
+
+	public static IEnumerable<User> LoginUsers => Manager.Construct(login: "admin", password: "admin").Concat(Users);
 
 	public static IEnumerable<User> Users
 		=> Context.Managers.AsEnumerable()

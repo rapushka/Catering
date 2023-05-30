@@ -14,6 +14,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
       <PackageReference Include="PropertyTools.Wpf.Extended.Toolkit" Version="3.0.0" />
     </ItemGroup>
 
@@ -29,6 +30,12 @@
       <Resource Include="Resources\ArrowToRight.png" />
       <None Remove="Resources\ArrowToLeft.png" />
       <Resource Include="Resources\ArrowToLeft.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Office.Interop.Word">
+        <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Word\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Word.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

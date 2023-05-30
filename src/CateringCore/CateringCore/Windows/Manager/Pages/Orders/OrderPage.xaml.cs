@@ -7,6 +7,7 @@ using CateringCore.Model;
 using CateringCore.Windows.Pages.Orders;
 using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
+using Page = System.Windows.Controls.Page;
 
 namespace CateringCore.Windows.Pages;
 
@@ -78,4 +79,25 @@ public partial class OrdersListPage
 	private void Open(Page page) => NavigationService!.Navigate(page);
 
 	private bool EnsureSelectedOrder(out Order order) => OrdersDataGrid.EnsureSelected("заказ", out order);
+
+	private void UpdateView(object sender, SelectedCellsChangedEventArgs e)
+	{
+		FoodsInOrderDataGrid.SetupWithColumns<FoodInOrder>(Filter);
+		DishesInOrderDataGrid.SetupWithColumns<DishInOrder>(Filter);
+	}
+
+	private void ReceiptButton_OnClick(object sender, RoutedEventArgs e)
+	{
+		try
+		{
+			if (EnsureSelectedOrder(out var order))
+			{
+				ReportFactory.CreateReceipt(order);
+			}
+		}
+		catch (Exception)
+		{
+			MessageBoxUtils.ShowError(ReportFactory.OfficeExceptionMessage);
+		}
+	}
 }

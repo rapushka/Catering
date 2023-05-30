@@ -24,7 +24,7 @@ public partial class AuthenticationWindow
 		var login = LoginTextBox.Text;
 		var password = PasswordTextBox.Text;
 
-		var user = DbWorker.Users.FirstOrDefault((u) => u.Authorize(login, password));
+		var user = DbWorker.LoginUsers.FirstOrDefault((u) => u.Authorize(login, password));
 
 		if (user is null)
 		{
