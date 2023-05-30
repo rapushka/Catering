@@ -30,14 +30,6 @@ public partial class CookMainWindow
 		UpdateView();
 	}
 
-	private bool Filter(Order order)
-		=> order.State == Order.StateName.Processed
-		   && SearchOrderIdTextBox.NumberEqualsTo(order.Id);
-
-	private bool Filter(FoodInOrder foodInOrder)
-		=> foodInOrder.Order == SelectedOrder
-		   && foodInOrder.State == FoodInOrder.StateName.NotReady;
-
 	private void UpdateFilters(object sender, TextChangedEventArgs e) => UpdateView();
 
 	private void OnOrderReselected(object sender, SelectedCellsChangedEventArgs e)
@@ -53,11 +45,12 @@ public partial class CookMainWindow
 			foodInOrder.State = isReady;
 			var order = foodInOrder.Order;
 
-			if (CollectFoodOfCurrentOrder(order).Any((fio) => fio.State != isReady))
+			if (CollectFoodOfCurrentOrder(order).Any((fio) => fio.State != isReady) == false)
 			{
 				order.State = Order.StateName.ReadyForDelivery;
 			}
 
+			DbWorker.SaveAll();
 			UpdateView();
 		}
 	}
@@ -90,4 +83,12 @@ public partial class CookMainWindow
 			.AddTextColumn("Количество", nameof(FoodInOrder.Amount))
 			;
 	}
+
+	private bool Filter(Order order)
+		=> order.State == Order.StateName.Processed
+		   && SearchOrderIdTextBox.NumberEqualsTo(order.Id);
+
+	private bool Filter(FoodInOrder foodInOrder)
+		=> foodInOrder.Order == SelectedOrder
+		   && foodInOrder.State == FoodInOrder.StateName.NotReady;
 }
