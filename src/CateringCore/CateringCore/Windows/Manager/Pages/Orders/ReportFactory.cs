@@ -41,7 +41,7 @@ public class ReportFactory
 		doc.Content.Find.Execute("<менеджер>", Replace: WdReplace.wdReplaceAll, ReplaceWith: managerName);
 		doc.Content.Find.Execute("<курьер>", Replace: WdReplace.wdReplaceAll, ReplaceWith: courierName);
 
-		var foodsTable = doc.Tables[1]; // Assumes that the first table in the document is the table of dishes.
+		var foodsTable = doc.Tables[1];
 		foreach (var food in CollectFoodsInOrder(order))
 		{
 			var newRow = foodsTable.Rows.Add();
@@ -50,7 +50,7 @@ public class ReportFactory
 			newRow.Cells[3].Range.Text = food.Cost.ToString("C");
 		}
 
-		var dishesTable = doc.Tables[2]; // Assumes that the second table in the document is the table of utensils.
+		var dishesTable = doc.Tables[2];
 		foreach (var dishInOrder in CollectDishesInOrder(order))
 		{
 			var newRow = dishesTable.Rows.Add();
@@ -59,11 +59,9 @@ public class ReportFactory
 			newRow.Cells[3].Range.Text = dishInOrder.Cost.ToString("C");
 		}
 
-		// Save the document.
 		const string savePath = @"./Report.docx";
 		doc.SaveAs2(savePath);
 
-		// Close the document and release the resources.
 		doc.Close();
 		wordApp.Quit();
 		System.Runtime.InteropServices.Marshal.ReleaseComObject(wordApp);
