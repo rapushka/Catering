@@ -67,9 +67,9 @@ public static class SetupDataGridColumnsExtensions
 	{
 		@this
 			.ClearColumns()
-			.AddTextColumn("Блюдо", nameof(FoodInOrder.Food))
-			.AddTextColumn("Количество", nameof(FoodInOrder.Amount))
-			.AddTextColumn("Стоимость", nameof(FoodInOrder.Cost))
+			.AddTextColumn("Блюдо", nameof(FoodInOrder.Food), isReadonly: true)
+			.AddTextColumn("Количество", nameof(FoodInOrder.Amount), isReadonly: false)
+			.AddTextColumn("Стоимость", nameof(FoodInOrder.Cost), isReadonly: true)
 			;
 	}
 
@@ -77,9 +77,9 @@ public static class SetupDataGridColumnsExtensions
 	{
 		@this
 			.ClearColumns()
-			.AddTextColumn("Посуда", nameof(DishInOrder.Dish))
-			.AddTextColumn("Количество", nameof(DishInOrder.Quantity))
-			.AddTextColumn("Стоимость", nameof(DishInOrder.Cost))
+			.AddTextColumn("Посуда", nameof(DishInOrder.Dish), isReadonly: true)
+			.AddTextColumn("Количество", nameof(DishInOrder.Quantity), isReadonly: false)
+			.AddTextColumn("Стоимость", nameof(DishInOrder.Cost), isReadonly: true)
 			;
 	}
 

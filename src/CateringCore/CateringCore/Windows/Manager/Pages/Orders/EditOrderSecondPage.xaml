@@ -52,7 +52,7 @@
                 <TextBox Name="SearchFoodTitleTextBox"
                          FontFamily="Verdana" FontSize="18"
                          Width="446"
-                         TextChanged="UpdateSearch"/>
+                         TextChanged="UpdateSearch" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="0" Margin="5">
@@ -85,7 +85,7 @@
                            FontFamily="Verdana"
                            FontSize="14" />
                 <DataGrid Name="PickedFoodsDataGrid"
-                          IsReadOnly="True"
+                          IsReadOnly="False"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           Height="192" />
@@ -104,8 +104,8 @@
                            Margin="5" />
                 <TextBox Name="SearchDishTitleTextBox"
                          FontFamily="Verdana" FontSize="18"
-                         Width="436" 
-                         TextChanged="UpdateSearch"/>
+                         Width="436"
+                         TextChanged="UpdateSearch" />
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Grid.Column="0">
@@ -137,7 +137,7 @@
                            FontFamily="Verdana"
                            FontSize="14" />
                 <DataGrid Name="PickedDishesDataGrid"
-                          IsReadOnly="True"
+                          IsReadOnly="False"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           Height="192" />
