@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[15.0.4797.1004, )"
+            },
             "PropertyTools.Wpf.Extended.Toolkit": {
               "target": "Package",
               "version": "[3.0.0, )"

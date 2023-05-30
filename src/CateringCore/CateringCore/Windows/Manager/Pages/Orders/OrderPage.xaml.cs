@@ -7,6 +7,8 @@ using CateringCore.Model;
 using CateringCore.Windows.Pages.Orders;
 using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
+using Microsoft.Office.Interop.Word;
+using Page = System.Windows.Controls.Page;
 
 namespace CateringCore.Windows.Pages;
 
@@ -89,4 +91,6 @@ public partial class OrdersListPage
 	{
 		
 	}
+	
+	
 }
