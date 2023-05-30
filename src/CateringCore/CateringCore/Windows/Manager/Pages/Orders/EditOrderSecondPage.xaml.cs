@@ -59,7 +59,7 @@ public partial class EditOrderSecondPage
 	{
 		AllFoodsDataGrid.SetupWithColumns<Food>(Filter);
 		PickedFoodsDataGrid.SetupWithColumns<FoodInOrder>(Filter);
-		AllFoodsDataGrid.SetupWithColumns<Dish>(Filter);
+		AllDishesDataGrid.SetupWithColumns<Dish>(Filter);
 		PickedDishesDataGrid.SetupWithColumns<DishInOrder>(Filter);
 	}
 
@@ -93,6 +93,7 @@ public partial class EditOrderSecondPage
 			Context.FoodsInOrders.Add(@new);
 		}
 
+		SaveAll();
 		UpdateTableView();
 
 		bool AlreadyAdded(FoodInOrder fio) => fio.Order == _order && fio.Food == selectedFood;
