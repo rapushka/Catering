@@ -13,23 +13,37 @@ public static class SetupDataGridColumnsExtensions
 
 	public static DataGrid WithColumns<T>(this DataGrid @this)
 	{
-		if (typeof(T) == typeof(Order))
+		var t = typeof(T);
+
+		if (t.Is<Order>())
 		{
-			@this.WithColumnsForOrder();
+			@this.ForOrder();
 		}
-		else if (typeof(T) == typeof(FoodInOrder))
+		else if (t.Is<FoodInOrder>())
 		{
-			@this.WithColumnsForFoodInOrder();
+			@this.ForFoodInOrder();
 		}
-		else if (typeof(T) == typeof(DishInOrder))
+		else if (t.Is<DishInOrder>())
 		{
-			@this.WithColumnsForDishInOrder();
+			@this.ForDishInOrder();
+		}
+		else if (t.Is<Food>())
+		{
+			@this.ForFood();
+		}
+		else if (t.Is<Dish>())
+		{
+			@this.ForDishes();
+		}
+		else
+		{
+			throw new Exception($"Не найдет коструктор столбцовв для типа {t.Name}");
 		}
 
 		return @this;
 	}
 
-	private static void WithColumnsForOrder(this DataGrid @this)
+	private static void ForOrder(this DataGrid @this)
 	{
 		@this
 			.ClearColumns()
@@ -49,27 +63,43 @@ public static class SetupDataGridColumnsExtensions
 			;
 	}
 
-	private static void WithColumnsForFoodInOrder(this DataGrid @this)
+	private static void ForFoodInOrder(this DataGrid @this)
 	{
 		@this
 			.ClearColumns()
 			.AddTextColumn("Блюдо", nameof(FoodInOrder.Food))
-			.AddTextColumn("Заказ", nameof(FoodInOrder.Order))
-			.AddTextColumn("Повар", nameof(FoodInOrder.Cook))
 			.AddTextColumn("Количество", nameof(FoodInOrder.Amount))
 			.AddTextColumn("Стоимость", nameof(FoodInOrder.Cost))
-			.AddTextColumn("Состояние заказа", nameof(FoodInOrder.State))
 			;
 	}
 
-	private static void WithColumnsForDishInOrder(this DataGrid @this)
+	private static void ForDishInOrder(this DataGrid @this)
 	{
 		@this
 			.ClearColumns()
 			.AddTextColumn("Посуда", nameof(DishInOrder.Dish))
-			.AddTextColumn("Заказ", nameof(DishInOrder.Order))
 			.AddTextColumn("Количество", nameof(DishInOrder.Quantity))
 			.AddTextColumn("Стоимость", nameof(DishInOrder.Cost))
+			;
+	}
+
+	private static void ForFood(this DataGrid @this)
+	{
+		@this
+			.ClearColumns()
+			.AddTextColumn("Наименование", nameof(Food.Title))
+			.AddTextColumn("Состав", nameof(Food.Composition))
+			.AddTextColumn("Вес", nameof(Food.Weight))
+			.AddTextColumn("Цена", nameof(Food.Price))
+			;
+	}
+
+	private static void ForDishes(this DataGrid @this)
+	{
+		@this
+			.ClearColumns()
+			.AddTextColumn("Наименование", nameof(Dish.Title))
+			.AddTextColumn("Цена", nameof(Dish.Price))
 			;
 	}
 }

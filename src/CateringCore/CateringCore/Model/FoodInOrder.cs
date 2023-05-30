@@ -11,4 +11,12 @@ public class FoodInOrder : Table
 	public decimal Cost => Food.Price * Amount;
 
 	public override string ToString() => $"{Food} из {Order}";
+
+	public static class StateName
+	{
+		public const string NotReady = "Не готов";
+		public const string Ready = "Готов";
+
+		public static string[] All => new[] { NotReady, Ready };
+	}
 }

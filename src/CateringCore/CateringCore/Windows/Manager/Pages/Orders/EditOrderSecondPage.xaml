@@ -71,11 +71,11 @@
                         VerticalAlignment="Center">
                 <Border Background="{DynamicResource ArrowToRight}"
                         Height="45" Width="40"
-                        Margin="0,10" 
-                        Mouse.MouseDown="Mouse_OnMouseDown"/>
+                        Margin="0,10"
+                        Mouse.MouseDown="AddFood" />
                 <Border Background="{DynamicResource ArrowToLeft}"
                         Height="45" Width="40"
-                        Margin="0,10" />
+                        Margin="0,10" Mouse.MouseDown="RemoveFood" />
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="2" Margin="5">
@@ -122,9 +122,11 @@
             <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <Border Background="{DynamicResource ArrowToRight}"
-                        Height="45" Width="40" Margin="0,10" />
+                        Height="45" Width="40" Margin="0,10"
+                        Mouse.MouseDown="AddDish" />
                 <Border Background="{DynamicResource ArrowToLeft}"
-                        Height="45" Width="40" Margin="0,10" />
+                        Height="45" Width="40" Margin="0,10"
+                        Mouse.MouseDown="RemoveDish" />
             </StackPanel>
         </Border>
         <Border Grid.Row="5" Grid.Column="2" Margin="5">
