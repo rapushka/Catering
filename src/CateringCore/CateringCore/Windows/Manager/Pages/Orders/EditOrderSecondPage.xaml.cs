@@ -114,7 +114,49 @@ public partial class EditOrderSecondPage
 		UpdateTableView();
 	}
 
-	private void AddDish(object sender, MouseButtonEventArgs e) { }
+	private void AddDish(object sender, MouseButtonEventArgs e)
+	{
+		if (AllDishesDataGrid.EnsureSelected<Dish>("посуду", out var selectedDish) == false)
+		{
+			return;
+		}
 
-	private void RemoveDish(object sender, MouseButtonEventArgs e) { }
+		var desired = Context.DishesInOrders.SingleOrDefault(AlreadyAdded);
+
+		if (desired is not null)
+		{
+			desired.Quantity++;
+		}
+		else
+		{
+			var @new = new DishInOrder
+			{
+				Order = _order,
+				Dish = selectedDish,
+				Quantity = 1,
+			};
+
+			Context.DishesInOrders.Add(@new);
+		}
+
+		SaveAll();
+		UpdateTableView();
+
+		bool AlreadyAdded(DishInOrder dio) => dio.Order == _order && dio.Dish == selectedDish;
+	}
+
+	private void RemoveDish(object sender, MouseButtonEventArgs e)
+	{
+		if (PickedDishesDataGrid.EnsureSelected<DishInOrder>("посуду в заказе", out var selectedDishInOrder))
+		{
+			selectedDishInOrder.Quantity--;
+
+			if (selectedDishInOrder.Quantity == 0)
+			{
+				Context.DishesInOrders.Remove(selectedDishInOrder);
+			}
+		}
+
+		UpdateTableView();
+	}
 }
