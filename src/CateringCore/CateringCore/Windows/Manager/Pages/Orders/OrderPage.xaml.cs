@@ -84,4 +84,9 @@ public partial class OrdersListPage
 		FoodsInOrderDataGrid.SetupWithColumns<FoodInOrder>(Filter);
 		DishesInOrderDataGrid.SetupWithColumns<DishInOrder>(Filter);
 	}
+
+	private void ReceiptButton_OnClick(object sender, RoutedEventArgs e)
+	{
+		
+	}
 }

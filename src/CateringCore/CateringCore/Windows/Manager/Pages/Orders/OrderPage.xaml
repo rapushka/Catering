@@ -9,8 +9,8 @@
       Loaded="Page_Load">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="303*" />
-            <ColumnDefinition Width="187*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -63,8 +63,8 @@
                           IsReadOnly="True"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
-                          Height="420" Margin="0,0,0.4,0" 
-                          SelectedCellsChanged="UpdateView"/>
+                          Height="420" Margin="0,0,0.4,0"
+                          SelectedCellsChanged="UpdateView" />
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Margin="2">
@@ -115,11 +115,21 @@
             </StackPanel>
         </Border>
         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-            <StackPanel>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Button Content="Квитанция"
+                        Height="38"
+                        Style="{DynamicResource ButtonStyle}"
+                        Margin="5"
+                        FontFamily="Verdana"
+                        Width="250"
+                        FontSize="14" Click="ReceiptButton_OnClick" />
                 <Button Content="Назначить курьера/автомобиль"
                         Height="38"
                         Style="{DynamicResource ButtonStyle}"
-                        Margin="2" Width="976"
+                        Width="550"
+                        Margin="5"
                         FontFamily="Verdana"
                         FontSize="14" Click="AssignButton_Click" />
             </StackPanel>
