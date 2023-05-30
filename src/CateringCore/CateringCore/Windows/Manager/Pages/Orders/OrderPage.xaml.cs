@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
+using System.Reflection.Metadata.Ecma335;
 using System.Windows;
 using System.Windows.Controls;
 using Catering.DbWorking;
 using CateringCore.Model;
 using CateringCore.Windows.Pages.Orders;
+using OrganizerCore.Tools;
 using OrganizerCore.Tools.Extensions;
 
 namespace CateringCore.Windows.Pages;
@@ -17,14 +20,18 @@ public partial class OrdersListPage
 	private Order? SelectedOrder => OrdersDataGrid.SelectedItem as Order;
 #pragma warning restore CA1822
 
-	private void Page_Load(object sender, RoutedEventArgs e)
+	private void Page_Load(object sender, RoutedEventArgs e) => UpdateView();
+
+	private void UpdateView()
 	{
 		OrdersDataGrid.SetupWithColumns<Order>(Filter);
 		FoodsInOrderDataGrid.SetupWithColumns<FoodInOrder>(Filter);
 		DishesInOrderDataGrid.SetupWithColumns<DishInOrder>(Filter);
 	}
 
-	private bool Filter(Order order)             => true;
+	private bool Filter(Order order) => SearchOrderIdTextBox.NumberEqualsTo(order.Id)
+	                                    && order.Fullname.Contains(SearchFullNameTextBox.Text);
+
 	private bool Filter(FoodInOrder foodInOrder) => foodInOrder.Order == SelectedOrder;
 	private bool Filter(DishInOrder dishInOrder) => dishInOrder.Order == SelectedOrder;
 
@@ -42,17 +49,35 @@ public partial class OrdersListPage
 
 	private void EditButton_Click(object sender, RoutedEventArgs e)
 	{
-		if (OrdersDataGrid.EnsureSelected("заказ", out Order order))
+		if (EnsureSelectedOrder(out var order))
 		{
 			order.OrderDate = DateTime.Now;
 			EditOrder(order);
 		}
 	}
 
-	private void AssignButton_Click(object sender, RoutedEventArgs e) { }
+	private void AssignButton_Click(object sender, RoutedEventArgs e)
+	{
+		if (EnsureSelectedOrder(out var order))
+		{
+			NavigationService!.Navigate(new AppointToOrderPage(order));
+		}
+	}
 
-	private void RemoveButton_Click(object sender, RoutedEventArgs e) { }
+	private void RemoveButton_Click(object sender, RoutedEventArgs e)
+	{
+		if (EnsureSelectedOrder(out var order)
+		    && MessageBoxUtils.ConfirmDeletion(order))
+		{
+			DbWorker.Context.Orders.Remove(order);
+			DbWorker.SaveAll();
+			UpdateView();
+		}
+	}
 
 	private void EditOrder(Order order) => Open(new EditOrderFirstPage(order));
-	private void Open(Page page)        => NavigationService!.Navigate(page);
+
+	private void Open(Page page) => NavigationService!.Navigate(page);
+
+	private bool EnsureSelectedOrder(out Order order) => OrdersDataGrid.EnsureSelected("заказ", out order);
 }
