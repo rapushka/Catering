@@ -78,4 +78,10 @@ public partial class OrdersListPage
 	private void Open(Page page) => NavigationService!.Navigate(page);
 
 	private bool EnsureSelectedOrder(out Order order) => OrdersDataGrid.EnsureSelected("заказ", out order);
+
+	private void UpdateView(object sender, SelectedCellsChangedEventArgs e)
+	{
+		FoodsInOrderDataGrid.SetupWithColumns<FoodInOrder>(Filter);
+		DishesInOrderDataGrid.SetupWithColumns<DishInOrder>(Filter);
+	}
 }

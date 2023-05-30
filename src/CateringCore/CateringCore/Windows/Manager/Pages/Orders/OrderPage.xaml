@@ -63,7 +63,8 @@
                           IsReadOnly="True"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
-                          Height="420" Margin="0,0,0.4,0" />
+                          Height="420" Margin="0,0,0.4,0" 
+                          SelectedCellsChanged="UpdateView"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Margin="2">
