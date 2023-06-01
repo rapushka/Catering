@@ -1,79 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Catering.DbWorking;
-using CateringCore.Model;
-using Microsoft.Office.Interop.Word;
+﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Order = CateringCore.Model.Order;
+using Paragraph = DocumentFormat.OpenXml.Wordprocessing.Paragraph;
 
 namespace CateringCore.Windows.Pages;
 
 public class ReportFactory
 {
-	public const string OfficeExceptionMessage = "Ошибка при создании квитанции, "
-	                                             + "убедитесь, что у вас установлена официальная версия "
-	                                             + "Microsoft Office 2016";
-
 	public static void CreateReceipt(Order order)
 	{
-		var wordApp = new Application
-		{
-			Visible = true,
-		};
+		var fileName = $"Receipt_Order_{order.Id}.docx";
 
-		const string templatePath = @"./ReportTemplate.docx";
-		var doc = wordApp.Documents.Add(templatePath);
+		using var document = WordprocessingDocument.Create(fileName, WordprocessingDocumentType.Document);
+		var mainPart = document.AddMainDocumentPart();
+		mainPart.Document = new Document();
+		var body = mainPart.Document.AppendChild(new Body());
 
-		var orderDate = DateTime.Today.ToShortDateString();
-		var customerName = order.Fullname;
-		var customerAddress = order.Address;
-		var customerPhoneNumber = order.PhoneNumber;
-		var advancePayment = order.AdvanceAmount.ToString("C");
-		var totalCost = order.Cost;
-		var managerName = order.Manager.Fullname;
-		var courierName = order.Courier?.Fullname ?? "Нет информации";
+		CreateTitle(body);
 
-		doc.Content.Find.Execute("<дата>", Replace: WdReplace.wdReplaceAll, ReplaceWith: orderDate);
-		doc.Content.Find.Execute("<фио>", Replace: WdReplace.wdReplaceAll, ReplaceWith: customerName);
-		doc.Content.Find.Execute("<адрес>", Replace: WdReplace.wdReplaceAll, ReplaceWith: customerAddress);
-		doc.Content.Find.Execute("<номер>", Replace: WdReplace.wdReplaceAll, ReplaceWith: customerPhoneNumber);
-		doc.Content.Find.Execute("<аванс>", Replace: WdReplace.wdReplaceAll, ReplaceWith: advancePayment);
-		doc.Content.Find.Execute("<стоимость>", Replace: WdReplace.wdReplaceAll, ReplaceWith: totalCost);
-		doc.Content.Find.Execute("<менеджер>", Replace: WdReplace.wdReplaceAll, ReplaceWith: managerName);
-		doc.Content.Find.Execute("<курьер>", Replace: WdReplace.wdReplaceAll, ReplaceWith: courierName);
+		// Add order details
+		body.AppendChild(CreateOrderDetailParagraph("Номер заказа", order.Id.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("ФИО заказчика", order.Fullname));
+		body.AppendChild(CreateOrderDetailParagraph("Адрес", order.Address));
+		body.AppendChild(CreateOrderDetailParagraph("Номер телефона", order.PhoneNumber));
+		body.AppendChild(CreateOrderDetailParagraph("Email", order.Email));
+		body.AppendChild(CreateOrderDetailParagraph("Количество человек", order.NumberOfPeople.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("Внесённый аванс", order.AdvanceAmount.ToString("C")));
+		body.AppendChild(CreateOrderDetailParagraph("Дата заказа", order.OrderDate.ToShortDateString()));
+		body.AppendChild(CreateOrderDetailParagraph("Стоимость", order.Cost.ToString("C")));
 
-		var foodsTable = doc.Tables[1];
-		foreach (var food in CollectFoodsInOrder(order))
-		{
-			var newRow = foodsTable.Rows.Add();
-			newRow.Cells[1].Range.Text = food.Food.Title;
-			newRow.Cells[2].Range.Text = food.Amount.ToString();
-			newRow.Cells[3].Range.Text = food.Cost.ToString("C");
-		}
-
-		var dishesTable = doc.Tables[2];
-		foreach (var dishInOrder in CollectDishesInOrder(order))
-		{
-			var newRow = dishesTable.Rows.Add();
-			newRow.Cells[1].Range.Text = dishInOrder.Dish.Title;
-			newRow.Cells[2].Range.Text = dishInOrder.Quantity.ToString();
-			newRow.Cells[3].Range.Text = dishInOrder.Cost.ToString("C");
-		}
-
-		const string savePath = @"./Report.docx";
-		doc.SaveAs2(savePath);
-
-		doc.Close();
-		wordApp.Quit();
-		System.Runtime.InteropServices.Marshal.ReleaseComObject(wordApp);
+		// Save the document
+		mainPart.Document.Save();
 	}
 
-	private static IEnumerable<DishInOrder> CollectDishesInOrder(Order order)
-		=> DbWorker.Context.DishesInOrders
-		           .AsEnumerable()
-		           .Where((dio) => dio.Order == order);
+	private static void CreateTitle(OpenXmlElement body)
+	{
+		var titleRun = new Run();
+		var titleRunProperties = new RunProperties
+		{
+			FontSize = new FontSize { Val = "40" },
+			RunFonts = new RunFonts { Ascii = "Bookman Old Style" },
+		};
+		titleRun.AppendChild(titleRunProperties);
+		titleRun.AppendChild(new Text("Кейтеринг-агентство"));
+		titleRun.AppendChild(new Break());
+		titleRun.AppendChild(new Text("«Catering Life»"));
+		var titleParagraph = new Paragraph(titleRun)
+		{
+			ParagraphProperties = new ParagraphProperties(new Justification { Val = JustificationValues.Center }),
+		};
+		body.AppendChild(titleParagraph);
+	}
 
-	private static IEnumerable<FoodInOrder> CollectFoodsInOrder(Order order)
-		=> DbWorker.Context.FoodsInOrders
-		           .AsEnumerable()
-		           .Where((fio) => fio.Order == order);
+	private static Paragraph CreateOrderDetailParagraph(string label, string value)
+	{
+		var labelRun = new Run(new Text($"{label}:"))
+		{
+			RunProperties = new RunProperties(new Bold()),
+		};
+		var valueRun = new Run(new Text(value));
+		var paragraph = new Paragraph();
+		paragraph.Append(labelRun);
+		paragraph.Append(valueRun);
+		return paragraph;
+	}
 }

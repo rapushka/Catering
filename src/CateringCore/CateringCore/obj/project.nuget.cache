@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "B4a+0n1rq0ge07H/ZE0OMCvrZmko9jJPOU2+hVhfjmugBoRqOTP18Na2+rMddRQ9F85HsQKW5nKdKfkuFKbuvA==",
+  "dgSpecHash": "e+ceBHVmZRsGqitI0g9PsmTTyl3gB6x6vdcTzn0VSIARpBoMZA652joye6jymMkPvzyCTT3ii+TArbK4QohFPA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Diploms\\Catering\\src\\CateringCore\\CateringCore\\CateringCore.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Rapuska\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\dotnetprojects.extended.wpf.toolkit\\4.5.71\\dotnetprojects.extended.wpf.toolkit.4.5.71.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.5\\microsoft.data.sqlite.core.7.0.5.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\Rapuska\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.4\\sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\Rapuska\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Rapuska\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
