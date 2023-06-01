@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using Catering.DbWorking;
-using CateringCore.Model;
+﻿using CateringCore.Model;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Paragraph = DocumentFormat.OpenXml.Wordprocessing.Paragraph;
-using Table = DocumentFormat.OpenXml.Wordprocessing.Table;
 
 namespace CateringCore.Windows.Pages;
 
@@ -28,11 +22,7 @@ public class ReportFactory
 		var body = mainPart.Document.AppendChild(new Body());
 
 		// Add a title to the document
-		var titleParagraph = new Paragraph(new Run(new Text("Order Receipt")))
-		{
-			ParagraphProperties = new ParagraphProperties(new Justification { Val = JustificationValues.Center }),
-		};
-		body.AppendChild(titleParagraph);
+		CreateTitle(body);
 
 		// Add order details
 		body.AppendChild(CreateOrderDetailParagraph("Order ID:", order.Id.ToString()));
@@ -43,13 +33,28 @@ public class ReportFactory
 		body.AppendChild(CreateOrderDetailParagraph("Number of People:", order.NumberOfPeople.ToString()));
 		body.AppendChild(CreateOrderDetailParagraph("Advance Amount:", order.AdvanceAmount.ToString("C")));
 		body.AppendChild(CreateOrderDetailParagraph("Order State:", order.State));
-		body.AppendChild
-			(CreateOrderDetailParagraph("Fulfillment Date:", order.FulfillmentDate.ToShortDateString()));
+		body.AppendChild(CreateOrderDetailParagraph("Fulfillment Date:", order.FulfillmentDate.ToShortDateString()));
 		body.AppendChild(CreateOrderDetailParagraph("Order Date:", order.OrderDate.ToShortDateString()));
 		body.AppendChild(CreateOrderDetailParagraph("Total Cost:", order.Cost.ToString("C")));
 
 		// Save the document
 		mainPart.Document.Save();
+	}
+
+	private static void CreateTitle(Body body)
+	{
+		var titleRun = new Run(new Text("Кейтеринг-агентство\n«Catering Life»"));
+		var titleRunProperties = new RunProperties
+		{
+			FontSize = new FontSize { Val = "20" },
+			RunFonts = new RunFonts { Ascii = "Bookman Old Style" },
+		};
+		titleRun.AppendChild(titleRunProperties);
+		var titleParagraph = new Paragraph(titleRun)
+		{
+			ParagraphProperties = new ParagraphProperties(new Justification { Val = JustificationValues.Center }),
+		};
+		body.AppendChild(titleParagraph);
 	}
 
 	private static Paragraph CreateOrderDetailParagraph(string label, string value)
