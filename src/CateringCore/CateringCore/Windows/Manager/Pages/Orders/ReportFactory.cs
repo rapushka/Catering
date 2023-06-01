@@ -20,120 +20,46 @@ public class ReportFactory
 
 	public static void CreateReceipt(Order order)
 	{
-		const string templatePath = @"./ReportTemplate.docx";
-		const string savePath = @"./Report.docx";
+		var fileName = $"Receipt_Order_{order.Id}.docx";
 
-		using var doc = WordprocessingDocument.CreateFromTemplate(templatePath);
-		// Get the main document part
-		var mainPart = doc.MainDocumentPart;
+		using var document = WordprocessingDocument.Create(fileName, WordprocessingDocumentType.Document);
+		var mainPart = document.AddMainDocumentPart();
+		mainPart.Document = new Document();
+		var body = mainPart.Document.AppendChild(new Body());
 
-		// Replace placeholders in the main document
-		foreach (var paragraph in mainPart!.Document.Body!.Descendants<Paragraph>())
+		// Add a title to the document
+		var titleParagraph = new Paragraph(new Run(new Text("Order Receipt")))
 		{
-			foreach (var text in paragraph.Descendants<Text>())
-			{
-				ReplacePlaceholder(text, order);
-			}
-		}
+			ParagraphProperties = new ParagraphProperties(new Justification { Val = JustificationValues.Center }),
+		};
+		body.AppendChild(titleParagraph);
 
-		// Replace placeholders in the header
-		foreach (var headerPart in mainPart.HeaderParts)
-		{
-			foreach (var paragraph in headerPart.Header.Descendants<Paragraph>())
-			{
-				foreach (var text in paragraph.Descendants<Text>())
-				{
-					ReplacePlaceholder(text, order);
-				}
-			}
-		}
+		// Add order details
+		body.AppendChild(CreateOrderDetailParagraph("Order ID:", order.Id.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("Customer Name:", order.Fullname));
+		body.AppendChild(CreateOrderDetailParagraph("Address:", order.Address));
+		body.AppendChild(CreateOrderDetailParagraph("Phone Number:", order.PhoneNumber));
+		body.AppendChild(CreateOrderDetailParagraph("Email:", order.Email));
+		body.AppendChild(CreateOrderDetailParagraph("Number of People:", order.NumberOfPeople.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("Advance Amount:", order.AdvanceAmount.ToString("C")));
+		body.AppendChild(CreateOrderDetailParagraph("Order State:", order.State));
+		body.AppendChild
+			(CreateOrderDetailParagraph("Fulfillment Date:", order.FulfillmentDate.ToShortDateString()));
+		body.AppendChild(CreateOrderDetailParagraph("Order Date:", order.OrderDate.ToShortDateString()));
+		body.AppendChild(CreateOrderDetailParagraph("Total Cost:", order.Cost.ToString("C")));
 
-		// Replace placeholders in the footer
-		foreach (var footerPart in mainPart.FooterParts)
-		{
-			foreach (var paragraph in footerPart.Footer.Descendants<Paragraph>())
-			{
-				foreach (var text in paragraph.Descendants<Text>())
-				{
-					ReplacePlaceholder(text, order);
-				}
-			}
-		}
-
-		// Get the first table (foods table) and fill it with data
-		var foodsTable = mainPart.Document.Body.Descendants<Table>().FirstOrDefault();
-		if (foodsTable != null)
-		{
-			foreach (var food in CollectFoodsInOrder(order))
-			{
-				var newRow = new TableRow
-				(
-					new TableCell(new Paragraph(new Run(new Text(food.Food.Title)))),
-					new TableCell(new Paragraph(new Run(new Text(food.Amount.ToString())))),
-					new TableCell(new Paragraph(new Run(new Text(food.Cost.ToString("C")))))
-				);
-				foodsTable.Append(newRow);
-			}
-		}
-
-		// Get the second table (dishes table) and fill it with data
-		var dishesTable = mainPart.Document.Body.Descendants<Table>().Skip(1).FirstOrDefault();
-		if (dishesTable != null)
-		{
-			foreach (var dishInOrder in CollectDishesInOrder(order))
-			{
-				var newRow = new TableRow
-				(
-					new TableCell(new Paragraph(new Run(new Text(dishInOrder.Dish.Title)))),
-					new TableCell(new Paragraph(new Run(new Text(dishInOrder.Quantity.ToString())))),
-					new TableCell(new Paragraph(new Run(new Text(dishInOrder.Cost.ToString("C")))))
-				);
-				dishesTable.Append(newRow);
-			}
-		}
-
-		// Save the document to disk
+		// Save the document
 		mainPart.Document.Save();
-		doc.SaveAs(savePath);
-
-		// Close the document and release resources
-		doc.Close();
 	}
 
-	private static void ReplacePlaceholder(OpenXmlLeafTextElement text, Order order)
+	private static Paragraph CreateOrderDetailParagraph(string label, string value)
 	{
-		var placeholders = new[]
-		{
-			"<дата>", "<фио>", "<адрес>", "<номер>", "<аванс>", "<стоимость>", "<менеджер>", "<курьер>",
-		};
-		var replaceText = new[]
-		{
-			DateTime.Today.ToShortDateString(),
-			order.Fullname,
-			order.Address,
-			order.PhoneNumber,
-			order.AdvanceAmount.ToString("C"),
-			order.Cost.ToString(CultureInfo.InvariantCulture),
-			order.Manager.Fullname,
-			order.Courier?.Fullname ?? "Нет информации",
-		};
-
-		for (var i = 0; i < placeholders.Length; i++)
-		{
-			if (text.Text.Contains(placeholders[i]))
-			{
-				text.Text = text.Text.Replace(placeholders[i], replaceText[i]);
-			}
-		}
+		var labelRun = new Run(new Text(label));
+		var valueRun = new Run(new Text(value));
+		labelRun.RunProperties = new RunProperties(new Bold());
+		var paragraph = new Paragraph();
+		paragraph.Append(labelRun);
+		paragraph.Append(valueRun);
+		return paragraph;
 	}
-
-	private static IEnumerable<DishInOrder> CollectDishesInOrder(Order order)
-		=> DbWorker.Context.DishesInOrders
-		           .AsEnumerable()
-		           .Where((dio) => dio.Order == order);
-
-	private static IEnumerable<FoodInOrder> CollectFoodsInOrder(Order order)
-		=> DbWorker.Context.FoodsInOrders
-		           .AsEnumerable()
-		           .Where((fio) => fio.Order == order);
 }

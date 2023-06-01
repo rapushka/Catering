@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using static Catering.DbWorking.DbWorker;
 
@@ -20,11 +21,13 @@ public class Order : Table
 	public DateTime FulfillmentDate { get; set; }
 	public DateTime OrderDate       { get; set; }
 
-	public decimal Cost => FoodsInThisOrder.Sum((fio) => fio.Cost) + DishesInThisOrder.Sum((dio) => dio.Cost);
+	public decimal Cost => Foods.Sum((fio) => fio.Cost) + Dishes.Sum((dio) => dio.Cost);
 
-	private IEnumerable<FoodInOrder> FoodsInThisOrder
+	[NotMapped]
+	public IEnumerable<FoodInOrder> Foods
 		=> Context.FoodsInOrders.AsEnumerable().Where((fio) => fio.Order == this);
-	private IEnumerable<DishInOrder> DishesInThisOrder
+	[NotMapped]
+	public IEnumerable<DishInOrder> Dishes
 		=> Context.DishesInOrders.AsEnumerable().Where((dio) => dio.Order == this);
 
 	public override string ToString() => $"заказ номер {Id} клиента {Fullname}";
