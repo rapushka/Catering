@@ -1,17 +1,14 @@
-﻿using CateringCore.Model;
-using DocumentFormat.OpenXml;
+﻿using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Order = CateringCore.Model.Order;
 using Paragraph = DocumentFormat.OpenXml.Wordprocessing.Paragraph;
 
 namespace CateringCore.Windows.Pages;
 
 public class ReportFactory
 {
-	public const string OfficeExceptionMessage = "Ошибка при создании квитанции, "
-	                                             + "убедитесь, что у вас установлена официальная версия "
-	                                             + "Microsoft Office 2016";
-
 	public static void CreateReceipt(Order order)
 	{
 		var fileName = $"Receipt_Order_{order.Id}.docx";
@@ -21,35 +18,35 @@ public class ReportFactory
 		mainPart.Document = new Document();
 		var body = mainPart.Document.AppendChild(new Body());
 
-		// Add a title to the document
 		CreateTitle(body);
 
 		// Add order details
-		body.AppendChild(CreateOrderDetailParagraph("Order ID:", order.Id.ToString()));
-		body.AppendChild(CreateOrderDetailParagraph("Customer Name:", order.Fullname));
-		body.AppendChild(CreateOrderDetailParagraph("Address:", order.Address));
-		body.AppendChild(CreateOrderDetailParagraph("Phone Number:", order.PhoneNumber));
-		body.AppendChild(CreateOrderDetailParagraph("Email:", order.Email));
-		body.AppendChild(CreateOrderDetailParagraph("Number of People:", order.NumberOfPeople.ToString()));
-		body.AppendChild(CreateOrderDetailParagraph("Advance Amount:", order.AdvanceAmount.ToString("C")));
-		body.AppendChild(CreateOrderDetailParagraph("Order State:", order.State));
-		body.AppendChild(CreateOrderDetailParagraph("Fulfillment Date:", order.FulfillmentDate.ToShortDateString()));
-		body.AppendChild(CreateOrderDetailParagraph("Order Date:", order.OrderDate.ToShortDateString()));
-		body.AppendChild(CreateOrderDetailParagraph("Total Cost:", order.Cost.ToString("C")));
+		body.AppendChild(CreateOrderDetailParagraph("Номер заказа", order.Id.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("ФИО заказчика", order.Fullname));
+		body.AppendChild(CreateOrderDetailParagraph("Адрес", order.Address));
+		body.AppendChild(CreateOrderDetailParagraph("Номер телефона", order.PhoneNumber));
+		body.AppendChild(CreateOrderDetailParagraph("Email", order.Email));
+		body.AppendChild(CreateOrderDetailParagraph("Количество человек", order.NumberOfPeople.ToString()));
+		body.AppendChild(CreateOrderDetailParagraph("Внесённый аванс", order.AdvanceAmount.ToString("C")));
+		body.AppendChild(CreateOrderDetailParagraph("Дата заказа", order.OrderDate.ToShortDateString()));
+		body.AppendChild(CreateOrderDetailParagraph("Стоимость", order.Cost.ToString("C")));
 
 		// Save the document
 		mainPart.Document.Save();
 	}
 
-	private static void CreateTitle(Body body)
+	private static void CreateTitle(OpenXmlElement body)
 	{
-		var titleRun = new Run(new Text("Кейтеринг-агентство\n«Catering Life»"));
+		var titleRun = new Run();
 		var titleRunProperties = new RunProperties
 		{
-			FontSize = new FontSize { Val = "20" },
+			FontSize = new FontSize { Val = "40" },
 			RunFonts = new RunFonts { Ascii = "Bookman Old Style" },
 		};
 		titleRun.AppendChild(titleRunProperties);
+		titleRun.AppendChild(new Text("Кейтеринг-агентство"));
+		titleRun.AppendChild(new Break());
+		titleRun.AppendChild(new Text("«Catering Life»"));
 		var titleParagraph = new Paragraph(titleRun)
 		{
 			ParagraphProperties = new ParagraphProperties(new Justification { Val = JustificationValues.Center }),
@@ -59,9 +56,11 @@ public class ReportFactory
 
 	private static Paragraph CreateOrderDetailParagraph(string label, string value)
 	{
-		var labelRun = new Run(new Text(label));
+		var labelRun = new Run(new Text($"{label}:"))
+		{
+			RunProperties = new RunProperties(new Bold()),
+		};
 		var valueRun = new Run(new Text(value));
-		labelRun.RunProperties = new RunProperties(new Bold());
 		var paragraph = new Paragraph();
 		paragraph.Append(labelRun);
 		paragraph.Append(valueRun);
