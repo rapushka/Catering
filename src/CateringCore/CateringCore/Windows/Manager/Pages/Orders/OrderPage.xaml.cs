@@ -88,16 +88,17 @@ public partial class OrdersListPage
 
 	private void ReceiptButton_OnClick(object sender, RoutedEventArgs e)
 	{
-		try
+		// try
 		{
 			if (EnsureSelectedOrder(out var order))
 			{
 				ReportFactory.CreateReceipt(order);
+				MessageBoxUtils.ShowInfo("Квитанция создана");
 			}
 		}
-		catch (Exception)
+		// catch (Exception)
 		{
-			MessageBoxUtils.ShowError(ReportFactory.OfficeExceptionMessage);
+			// MessageBoxUtils.ShowError(ReportFactory.OfficeExceptionMessage);
 		}
 	}
 }
